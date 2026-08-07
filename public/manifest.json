@@ -1,0 +1,32 @@
+{
+  "name": "Muscle Coach",
+  "short_name": "Muscle Coach",
+  "description": "Personal hypertrophy training coach. Offline-first, no subscription.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#6366F1",
+  "orientation": "portrait",
+  "categories": ["health", "fitness"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Today's Workout",
+      "url": "/today",
+      "description": "Go to today's training session"
+    }
+  ]
+}

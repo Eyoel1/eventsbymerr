@@ -1,26 +1,90 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-slate-900 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white;
+    overflow-x: hidden;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Outfit', sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Gradients */
+.bg-gradient-hero {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+}
+
+.bg-gradient-emerald {
+  background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
+}
+
+.bg-gradient-amber {
+  background: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%);
+}
+
+.bg-gradient-dark-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Glow Effects */
+.glow-indigo {
+  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.4);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+}
+
+.glow-amber {
+  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
+}
+
+/* Page Layout Padding for Mobile Nav */
+.page-content {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  padding-top: 1.25rem;
+  min-height: 100dvh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+  border-radius: 9999px;
+}
+
+/* Hide Spinners for Number Inputs */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Active Touch Highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
