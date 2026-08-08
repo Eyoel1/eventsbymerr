@@ -11,7 +11,7 @@ import { Card } from '@/components/ui/Card';
 import { Modal } from '@/components/ui/Modal';
 import { Badge, MuscleBadgeType } from '@/components/ui/Badge';
 import type { SetLog, ProgramDayExercise, Exercise } from '@/lib/db/schema';
-import { Check, ChevronDown, ChevronUp, RefreshCw, AlertTriangle, X, Info, ArrowLeft, Flame, Award } from 'lucide-react';
+import { Check, ChevronDown, ChevronUp, RefreshCw, AlertTriangle, X, Info, ArrowLeft, ShieldAlert } from 'lucide-react';
 
 export default function WorkoutPage({ params }: { params: Promise<{ sessionId: string }> }) {
   const { sessionId: sessionIdStr } = use(params);
@@ -32,7 +32,6 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
   const [expandedExercise, setExpandedExercise] = useState<number | null>(null);
   const [swapModal, setSwapModal] = useState<{ exercise: Exercise; target: ProgramDayExercise } | null>(null);
   const [techniqueModal, setTechniqueModal] = useState<Exercise | null>(null);
-  const [painModal, setPainModal] = useState<{ setId: number } | null>(null);
   const [finishModal, setFinishModal] = useState(false);
   const [sessionFeel, setSessionFeel] = useState<'great' | 'ok' | 'rough'>('ok');
   const [overrides, setOverrides] = useState<Record<number, number>>({});
@@ -57,7 +56,9 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
     target: ProgramDayExercise,
     weight: number,
     reps: number,
-    rir: number
+    rir: number,
+    painFlag: boolean,
+    painNote?: string
   ) => {
     const effectiveExId = overrides[target.exerciseId] ?? target.exerciseId;
     const existingSets = setLogs.filter(
@@ -70,7 +71,8 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
       weightKg: weight,
       reps,
       rir,
-      painFlag: false,
+      painFlag,
+      painNote: painNote ?? '',
       createdAt: new Date().toISOString(),
     });
   };
@@ -92,16 +94,16 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
   const progress = Math.min(totalSetsLogged / Math.max(totalSetsTarget, 1), 1);
 
   return (
-    <div className="min-h-dvh bg-slate-950 text-slate-100">
+    <div className="min-h-dvh bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
       {/* Header */}
-      <div className="sticky top-0 z-30 glass-nav px-4 py-3 border-b border-slate-800">
+      <div className="sticky top-0 z-30 glass-nav px-4 py-3 border-b border-slate-200 dark:border-slate-800">
         <div className="flex items-center gap-3">
-          <button onClick={() => router.back()} className="p-2 -ml-2 text-slate-400 hover:text-white" aria-label="Back">
+          <button onClick={() => router.back()} className="p-2 -ml-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white" aria-label="Back">
             <ArrowLeft size={22} />
           </button>
           <div className="flex-1 min-w-0">
-            <h1 className="text-base font-black text-white truncate">{programDay.dayLabel}</h1>
-            <p className="text-xs font-bold text-indigo-400">{totalSetsLogged} / {totalSetsTarget} Sets Done</p>
+            <h1 className="text-base font-black text-slate-900 dark:text-white truncate">{programDay.dayLabel}</h1>
+            <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400">{totalSetsLogged} / {totalSetsTarget} Sets Logged</p>
           </div>
           <Button
             variant="success"
@@ -114,9 +116,9 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
           </Button>
         </div>
         {/* Progress Bar */}
-        <div className="mt-2.5 h-2 bg-slate-800 rounded-full overflow-hidden p-0.5">
+        <div className="mt-2.5 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
           <motion.div
-            className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 rounded-full glow-indigo"
+            className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 rounded-full"
             animate={{ width: `${progress * 100}%` }}
             transition={{ duration: 0.3 }}
           />
@@ -144,7 +146,6 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
               onLogSet={handleLogSet}
               onSwap={() => setSwapModal({ exercise, target })}
               onTechnique={() => setTechniqueModal(exercise)}
-              onPainFlag={(setId) => setPainModal({ setId })}
             />
           );
         })}
@@ -169,37 +170,22 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
         {techniqueModal && <TechniqueContent exercise={techniqueModal} />}
       </Modal>
 
-      {/* Pain Flag Modal */}
-      <Modal open={!!painModal} onClose={() => setPainModal(null)} title="⚠️ Pain Flag Notice">
-        <div className="flex flex-col gap-4">
-          <div className="bg-red-500/15 border border-red-500/30 rounded-2xl p-4 text-red-300">
-            <p className="font-extrabold text-red-400 mb-2">Important Safety Notice</p>
-            <p className="text-xs leading-relaxed">
-              This app cannot diagnose pain or injuries. If you experience pain during a movement, <strong>stop immediately</strong>. If pain persists, consult a medical professional.
-            </p>
-          </div>
-          <Button variant="secondary" fullWidth onClick={() => setPainModal(null)} id="pain-modal-close">
-            I Understand
-          </Button>
-        </div>
-      </Modal>
-
       {/* Finish Modal */}
       <Modal open={finishModal} onClose={() => setFinishModal(false)} title="Finish Session">
         <div className="flex flex-col gap-5">
-          <p className="text-slate-300 text-sm font-semibold text-center">How did that session feel?</p>
+          <p className="text-slate-700 dark:text-slate-300 text-sm font-semibold text-center">How did that session feel?</p>
           <div className="flex gap-2">
             {[
-              { value: 'great', label: '🔥 Great', bg: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' },
-              { value: 'ok', label: '👍 OK', bg: 'bg-indigo-500/20 text-indigo-400 border-indigo-500/40' },
-              { value: 'rough', label: '😓 Rough', bg: 'bg-amber-500/20 text-amber-400 border-amber-500/40' },
+              { value: 'great', label: '🔥 Great', bg: 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-500/40' },
+              { value: 'ok', label: '👍 OK', bg: 'bg-indigo-500/20 text-indigo-700 dark:text-indigo-400 border-indigo-500/40' },
+              { value: 'rough', label: '😓 Rough', bg: 'bg-amber-500/20 text-amber-700 dark:text-amber-400 border-amber-500/40' },
             ].map(({ value, label, bg }) => (
               <button
                 key={value}
                 id={`finish-feel-${value}`}
                 onClick={() => setSessionFeel(value as any)}
                 className={`flex-1 py-3.5 rounded-2xl font-black text-sm border-2 transition-all cursor-pointer ${
-                  sessionFeel === value ? bg : 'bg-slate-900 border-slate-800 text-slate-400'
+                  sessionFeel === value ? bg : 'bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 {label}
@@ -217,7 +203,7 @@ export default function WorkoutPage({ params }: { params: Promise<{ sessionId: s
 
 function ExerciseCard({
   target, exercise, isSwapped, exerciseSets, isExpanded,
-  onToggle, onLogSet, onSwap, onTechnique, onPainFlag
+  onToggle, onLogSet, onSwap, onTechnique
 }: {
   target: ProgramDayExercise;
   exercise: Exercise;
@@ -225,10 +211,9 @@ function ExerciseCard({
   exerciseSets: SetLog[];
   isExpanded: boolean;
   onToggle: () => void;
-  onLogSet: (t: ProgramDayExercise, w: number, r: number, rir: number) => void;
+  onLogSet: (t: ProgramDayExercise, w: number, r: number, rir: number, pain: boolean, note?: string) => void;
   onSwap: () => void;
   onTechnique: () => void;
-  onPainFlag: (setId: number) => void;
 }) {
   const setsLogged = exerciseSets.length;
   const isDone = setsLogged >= target.targetSets;
@@ -238,25 +223,37 @@ function ExerciseCard({
   const [reps, setReps] = useState(target.targetRepRangeLow);
   const [rir, setRir] = useState(target.targetRIR);
 
+  // Pain Flag State
+  const [painFlag, setPainFlag] = useState(false);
+  const [painNote, setPainNote] = useState('');
+  const hasPainLogged = exerciseSets.some((s) => s.painFlag);
+
+  const handleSaveSet = () => {
+    onLogSet(target, weight, reps, rir, painFlag, painNote);
+    setPainFlag(false);
+    setPainNote('');
+  };
+
   return (
-    <Card variant={isDone ? 'default' : 'elevated'} className={isDone ? 'opacity-60 border-slate-800' : 'border-indigo-500/20'}>
+    <Card variant={isDone ? 'default' : 'elevated'} className={isDone ? 'opacity-70' : 'border-indigo-500/20'}>
       <button
         className="flex items-center gap-3.5 w-full text-left cursor-pointer"
         onClick={onToggle}
         id={`exercise-toggle-${exercise.id}`}
       >
         <div className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 ${
-          isDone ? 'bg-emerald-500/20 text-emerald-400' : 'bg-indigo-500/20 text-indigo-400 font-black'
+          isDone ? 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-400' : 'bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 font-black'
         }`}>
           {isDone ? <Check size={22} strokeWidth={3} /> : `${setsLogged}/${target.targetSets}`}
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <p className="font-black text-white text-base truncate">{exercise.name}</p>
+            <p className="font-black text-slate-900 dark:text-white text-base truncate">{exercise.name}</p>
             {isSwapped && <Badge variant="warning" size="sm">Swapped</Badge>}
+            {hasPainLogged && <Badge variant="danger" size="sm">⚠️ Pain Flagged</Badge>}
           </div>
-          <p className="text-xs text-slate-400 font-medium">
-            {target.targetSets} × {target.targetRepRangeLow}–{target.targetRepRangeHigh} reps · RIR {target.targetRIR}
+          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            {target.targetSets} × {target.targetRepRangeLow}–{target.targetRepRangeHigh} reps · Target RIR {target.targetRIR}
           </p>
         </div>
         <Badge muscle={exercise.primaryMuscle as MuscleBadgeType} variant="muscle" size="sm" className="hidden sm:inline-flex">
@@ -273,27 +270,46 @@ function ExerciseCard({
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden"
           >
-            <div className="pt-4 flex flex-col gap-4 border-t border-slate-800/60 mt-4">
+            <div className="pt-4 flex flex-col gap-4 border-t border-slate-200/80 dark:border-slate-800/80 mt-4">
               {/* Logged Sets History */}
               {exerciseSets.length > 0 && (
                 <div className="flex flex-col gap-2">
                   {exerciseSets.map((set) => (
-                    <div key={set.id} className="flex items-center gap-3 px-4 py-2.5 bg-slate-900/90 rounded-2xl border border-slate-800">
-                      <span className="text-xs font-black text-indigo-400 w-6">#{set.setNumber}</span>
-                      <span className="text-sm font-black text-white">{set.weightKg} kg</span>
-                      <span className="text-slate-500 text-xs">×</span>
-                      <span className="text-sm font-black text-white">{set.reps} reps</span>
-                      <Badge variant="info" size="sm" className="ml-auto">RIR {set.rir}</Badge>
-                      <Check size={16} className="text-emerald-400" strokeWidth={3} />
+                    <div key={set.id} className="flex flex-col gap-1 p-3 bg-slate-100 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 w-6">#{set.setNumber}</span>
+                        <span className="text-sm font-black text-slate-900 dark:text-white">{set.weightKg} kg</span>
+                        <span className="text-slate-400 text-xs">×</span>
+                        <span className="text-sm font-black text-slate-900 dark:text-white">{set.reps} reps</span>
+                        <Badge variant="info" size="sm" className="ml-auto">RIR {set.rir}</Badge>
+                        {set.painFlag && <Badge variant="danger" size="sm">⚠️ Pain</Badge>}
+                        <Check size={16} className="text-emerald-500" strokeWidth={3} />
+                      </div>
+                      {set.painFlag && (
+                        <p className="text-[11px] text-red-600 dark:text-red-400 font-semibold pl-9">
+                          Note: {set.painNote || 'Discomfort reported.'}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
               )}
 
+              {/* Static Non-Diagnostic Safety Warning if Pain Flagged */}
+              {hasPainLogged && (
+                <div className="bg-red-500/10 border border-red-500/30 rounded-2xl p-3.5 flex items-start gap-2.5 text-red-800 dark:text-red-300">
+                  <ShieldAlert size={20} className="text-red-500 shrink-0 mt-0.5" />
+                  <div className="text-xs leading-relaxed font-medium">
+                    <p className="font-bold text-red-700 dark:text-red-400">Safety Disclaimer</p>
+                    Pain flagged on this movement. Stop immediately if pain persists. Consult a qualified healthcare professional if discomfort continues.
+                  </div>
+                </div>
+              )}
+
               {/* Set Logging Section */}
               {!isDone && (
-                <div className="bg-slate-900 rounded-3xl p-4 border border-indigo-500/30 glow-indigo">
-                  <p className="text-xs font-black text-indigo-400 mb-3 uppercase tracking-wider text-center">
+                <div className="bg-slate-100 dark:bg-slate-900 rounded-3xl p-4 border border-indigo-500/30">
+                  <p className="text-xs font-black text-indigo-600 dark:text-indigo-400 mb-3 uppercase tracking-wider text-center">
                     LOG SET #{setsLogged + 1}
                   </p>
                   <div className="flex flex-col gap-4">
@@ -317,8 +333,8 @@ function ExerciseCard({
 
                     {/* RIR Pill Selector */}
                     <div className="flex flex-col items-center gap-1.5">
-                      <span className="text-xs text-slate-400 font-extrabold uppercase tracking-wider">
-                        Target RIR (Reps In Reserve)
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 font-extrabold uppercase tracking-wider">
+                        RIR (Reps In Reserve)
                       </span>
                       <div className="flex gap-1.5 w-full max-w-xs">
                         {[0, 1, 2, 3, 4, 5].map((r) => (
@@ -328,8 +344,8 @@ function ExerciseCard({
                             onClick={() => setRir(r)}
                             className={`flex-1 h-10 rounded-xl font-black text-sm transition-all cursor-pointer ${
                               rir === r
-                                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/40 border border-indigo-400/40'
-                                : 'bg-slate-800 text-slate-400 hover:text-white border border-slate-700'
+                                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 border border-indigo-400/40'
+                                : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700'
                             }`}
                           >
                             {r}
@@ -338,11 +354,42 @@ function ExerciseCard({
                       </div>
                     </div>
 
+                    {/* Low-Friction Pain Flag Toggle */}
+                    <div className="flex flex-col gap-2 pt-1 border-t border-slate-200 dark:border-slate-800">
+                      <button
+                        type="button"
+                        id={`pain-flag-toggle-${exercise.id}`}
+                        onClick={() => setPainFlag(!painFlag)}
+                        className={`flex items-center justify-between px-4 py-2.5 rounded-2xl border transition-all cursor-pointer ${
+                          painFlag
+                            ? 'bg-red-500/20 border-red-500/50 text-red-700 dark:text-red-300 font-bold'
+                            : 'bg-white dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60 text-slate-500 dark:text-slate-400 text-xs font-semibold'
+                        }`}
+                      >
+                        <span className="flex items-center gap-2">
+                          <AlertTriangle size={16} className={painFlag ? 'text-red-500' : 'text-slate-400'} />
+                          {painFlag ? '⚠️ Pain Flagged on this set' : 'Flag Pain / Discomfort'}
+                        </span>
+                        <span className="text-[10px] uppercase font-bold">{painFlag ? 'ON' : 'OFF'}</span>
+                      </button>
+
+                      {painFlag && (
+                        <input
+                          type="text"
+                          id={`pain-note-${exercise.id}`}
+                          placeholder="Optional note: e.g. sharp pinch in shoulder..."
+                          value={painNote}
+                          onChange={(e) => setPainNote(e.target.value)}
+                          className="px-3.5 py-2.5 rounded-xl border border-red-500/40 bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-xs font-medium"
+                        />
+                      )}
+                    </div>
+
                     <Button
                       variant="gradient"
                       size="lg"
                       fullWidth
-                      onClick={() => onLogSet(target, weight, reps, rir)}
+                      onClick={handleSaveSet}
                       id={`log-set-btn-${exercise.id}`}
                       className="mt-1 glow-indigo"
                     >
@@ -385,7 +432,7 @@ function SwapModalContent({
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-xs text-slate-400">
+      <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
         Choose a valid substitute. Replaces this movement for today's session only.
       </p>
       {substitutes.map((sub) => (
@@ -393,11 +440,11 @@ function SwapModalContent({
           key={sub.id}
           id={`swap-to-${sub.id}`}
           onClick={() => onSwap(sub.id!)}
-          className="flex items-center gap-3 p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-indigo-500 text-left transition-all cursor-pointer"
+          className="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-indigo-500 text-left transition-all cursor-pointer"
         >
           <div className="flex-1 min-w-0">
-            <p className="font-black text-white text-sm truncate">{sub.name}</p>
-            <p className="text-xs text-slate-400 capitalize mt-0.5">{sub.equipment} · {sub.primaryMuscle}</p>
+            <p className="font-black text-slate-900 dark:text-white text-sm truncate">{sub.name}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 capitalize mt-0.5">{sub.equipment} · {sub.primaryMuscle}</p>
           </div>
           <Badge muscle={sub.primaryMuscle as MuscleBadgeType} variant="muscle" size="sm">
             {sub.primaryMuscle}
@@ -405,7 +452,7 @@ function SwapModalContent({
         </button>
       ))}
       {substitutes.length === 0 && (
-        <p className="text-xs text-slate-500 text-center py-4">No substitutes configured.</p>
+        <p className="text-xs text-slate-500 text-center py-4 font-medium">No substitutes configured.</p>
       )}
     </div>
   );
@@ -427,9 +474,9 @@ function TechniqueContent({ exercise }: { exercise: Exercise }) {
         <Badge variant="purple" size="md">{exercise.difficultyTier}</Badge>
       </div>
       {sections.map(({ label, text }) => (
-        <div key={label} className="bg-slate-900 rounded-2xl p-3.5 border border-slate-800">
-          <p className="font-extrabold text-white text-xs uppercase tracking-wide mb-1">{label}</p>
-          <p className="text-xs text-slate-300 leading-relaxed">{text}</p>
+        <div key={label} className="bg-slate-50 dark:bg-slate-900 rounded-2xl p-3.5 border border-slate-200 dark:border-slate-800">
+          <p className="font-extrabold text-slate-900 dark:text-white text-xs uppercase tracking-wide mb-1">{label}</p>
+          <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">{text}</p>
         </div>
       ))}
     </div>

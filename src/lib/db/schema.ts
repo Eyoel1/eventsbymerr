@@ -50,12 +50,14 @@ export interface Profile {
 
 export interface Exercise {
   id?: number;
+  slug: string;
   name: string;
   primaryMuscle: MuscleGroup;
   secondaryMuscles: MuscleGroup[];
   equipment: Equipment;
   difficultyTier: DifficultyTier;
   substituteIds: number[];
+  substituteSlugs?: string[];
   techniqueNotes: {
     setup: string;
     execution: string;

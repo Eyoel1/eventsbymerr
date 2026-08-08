@@ -76,8 +76,8 @@ export default function ProgressPage() {
   return (
     <div className="page-content px-4 flex flex-col gap-6 max-w-lg mx-auto">
       <div className="pt-2">
-        <h1 className="text-2xl font-black text-white tracking-tight">Progress Hub 🔥</h1>
-        <p className="text-slate-400 text-xs font-medium">Your hypertrophy trajectory</p>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Progress Hub 🔥</h1>
+        <p className="text-slate-500 dark:text-slate-400 text-xs font-medium">Coach view of your hypertrophy trajectory</p>
       </div>
 
       {/* Hero Stats */}
@@ -92,7 +92,7 @@ export default function ProgressPage() {
           <p className="text-2xl font-black">{streak?.thisMonth ?? 0}</p>
           <p className="text-[10px] text-emerald-100 font-bold uppercase tracking-wider">This Month</p>
         </Card>
-        <Card variant="amber" className="text-center py-4 px-2 glow-amber">
+        <Card variant="amber" className="text-center py-4 px-2">
           <Weight size={22} className="text-slate-950 mx-auto mb-1" />
           <p className="text-2xl font-black text-slate-950">
             {bodyMetrics?.length ? `${bodyMetrics[bodyMetrics.length - 1]?.bodyweightKg}kg` : '–'}
@@ -105,8 +105,8 @@ export default function ProgressPage() {
       <Card variant="elevated" className="border-indigo-500/20">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-xs font-bold text-indigo-400 uppercase tracking-wider">Metric Trend</p>
-            <h2 className="text-lg font-black text-white">Bodyweight History</h2>
+            <p className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">Body Trend</p>
+            <h2 className="text-lg font-black text-slate-900 dark:text-white">Bodyweight Tracking</h2>
           </div>
           <Button
             variant="secondary"
@@ -114,7 +114,7 @@ export default function ProgressPage() {
             onClick={() => setLogWeight(!logWeight)}
             id="log-weight-toggle"
           >
-            <Plus size={14} /> Log Weigh-In
+            <Plus size={14} /> Log Weight
           </Button>
         </div>
 
@@ -131,7 +131,7 @@ export default function ProgressPage() {
               placeholder={`Weight (${profile?.weightUnit ?? 'kg'})`}
               value={weightInput}
               onChange={(e) => setWeightInput(e.target.value)}
-              className="flex-1 h-11 px-3 rounded-2xl border border-slate-700 bg-slate-900 text-white text-sm"
+              className="flex-1 h-11 px-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm"
             />
             <Button size="sm" onClick={handleLogWeight} id="bodyweight-save-btn">Save</Button>
           </motion.div>
@@ -146,9 +146,9 @@ export default function ProgressPage() {
                   <stop offset="95%" stopColor="#6366F1" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
-              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#94a3b8' }} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} tickLine={false} axisLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" vertical={false} />
+              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} />
+              <YAxis tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
               <Tooltip
                 contentStyle={{
                   background: '#0f172a', border: '1px solid #334155', borderRadius: 16,
@@ -166,22 +166,22 @@ export default function ProgressPage() {
             </AreaChart>
           </ResponsiveContainer>
         ) : (
-          <div className="h-32 flex items-center justify-center bg-slate-900/60 rounded-2xl border border-slate-800">
-            <p className="text-slate-500 text-xs font-semibold">Log 2+ weigh-ins to see line chart</p>
+          <div className="h-32 flex items-center justify-center bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <p className="text-slate-500 text-xs font-semibold">Log 2+ weigh-ins to see chart trend</p>
           </div>
         )}
       </Card>
 
       {/* Strength chart */}
       <Card variant="elevated" className="border-purple-500/20">
-        <h2 className="text-lg font-black text-white mb-1">Overload Tracker</h2>
-        <p className="text-xs text-slate-400 mb-4">Track top-set weight over time per exercise</p>
+        <h2 className="text-lg font-black text-slate-900 dark:text-white mb-1">Overload Tracker</h2>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Track top-set weight over time per exercise</p>
 
         <select
           id="exercise-select"
           value={selectedExerciseId ?? ''}
           onChange={(e) => setSelectedExerciseId(e.target.value ? parseInt(e.target.value) : undefined)}
-          className="w-full h-12 px-4 rounded-2xl border border-slate-700 bg-slate-900 text-white text-sm font-semibold mb-4 cursor-pointer"
+          className="w-full h-12 px-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm font-semibold mb-4 cursor-pointer shadow-xs"
         >
           <option value="">Select exercise to plot…</option>
           {(exercises ?? []).map((ex) => (
@@ -192,9 +192,9 @@ export default function ProgressPage() {
         {exerciseChartData.length > 1 ? (
           <ResponsiveContainer width="100%" height={170}>
             <LineChart data={exerciseChartData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
-              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#94a3b8' }} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: '#94a3b8' }} tickLine={false} axisLine={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#cbd5e1" vertical={false} />
+              <XAxis dataKey="date" tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} />
+              <YAxis tick={{ fontSize: 10, fill: '#64748b' }} tickLine={false} axisLine={false} />
               <Tooltip
                 contentStyle={{
                   background: '#0f172a', border: '1px solid #334155', borderRadius: 16,
@@ -212,11 +212,11 @@ export default function ProgressPage() {
             </LineChart>
           </ResponsiveContainer>
         ) : selectedExerciseId ? (
-          <div className="h-28 flex items-center justify-center bg-slate-900/60 rounded-2xl border border-slate-800">
+          <div className="h-28 flex items-center justify-center bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800">
             <p className="text-slate-500 text-xs font-semibold">Log 2+ sessions of this movement to render graph</p>
           </div>
         ) : (
-          <div className="h-28 flex items-center justify-center bg-slate-900/60 rounded-2xl border border-slate-800">
+          <div className="h-28 flex items-center justify-center bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800">
             <p className="text-slate-500 text-xs font-semibold">Select an exercise from dropdown above</p>
           </div>
         )}
@@ -226,11 +226,11 @@ export default function ProgressPage() {
       <Card variant="elevated">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <p className="text-xs font-bold text-purple-400 uppercase tracking-wider">Visual Physique</p>
-            <h2 className="text-lg font-black text-white">Progress Photos</h2>
+            <p className="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">Visual Physique</p>
+            <h2 className="text-lg font-black text-slate-900 dark:text-white">Progress Photos</h2>
           </div>
           <label className="cursor-pointer" htmlFor="photo-upload">
-            <div className="flex items-center gap-1.5 h-10 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-lg shadow-indigo-600/30">
+            <div className="flex items-center gap-1.5 h-10 px-4 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-600/20">
               <Camera size={16} /> Upload Photo
             </div>
             <input
@@ -251,8 +251,8 @@ export default function ProgressPage() {
             ))}
           </div>
         ) : (
-          <div className="h-32 flex flex-col items-center justify-center gap-2 bg-slate-900/60 rounded-2xl border border-slate-800">
-            <ImageIcon size={32} className="text-slate-600" />
+          <div className="h-32 flex flex-col items-center justify-center gap-2 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800">
+            <ImageIcon size={32} className="text-slate-400 dark:text-slate-600" />
             <p className="text-slate-500 text-xs font-medium">No progress photos uploaded yet</p>
           </div>
         )}
@@ -261,7 +261,7 @@ export default function ProgressPage() {
       {/* Lightbox */}
       {photoView && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 backdrop-blur-md"
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 backdrop-blur-md"
           onClick={() => setPhotoView(null)}
         >
           <img src={photoView} alt="Progress photo" className="max-w-full max-h-full object-contain rounded-3xl" />
@@ -278,15 +278,15 @@ function PhotoThumb({ metric, onClick }: { metric: any; onClick: (url: string) =
     reader.onload = (e) => setUrl(e.target?.result as string);
     reader.readAsDataURL(metric.photoBlob);
   }
-  if (!url) return <div className="aspect-square bg-slate-800 rounded-2xl animate-pulse" />;
+  if (!url) return <div className="aspect-square bg-slate-200 dark:bg-slate-800 rounded-2xl animate-pulse" />;
   return (
     <button onClick={() => onClick(url!)} className="block group cursor-pointer" id={`photo-${metric.id}`}>
       <img
         src={url}
         alt={metric.date}
-        className="aspect-square object-cover rounded-2xl w-full border border-slate-800 group-hover:border-indigo-500 transition-all"
+        className="aspect-square object-cover rounded-2xl w-full border border-slate-200 dark:border-slate-800 group-hover:border-indigo-500 transition-all"
       />
-      <p className="text-[10px] font-bold text-slate-400 text-center mt-1">{formatDisplayDate(metric.date)}</p>
+      <p className="text-[10px] font-bold text-slate-500 dark:text-slate-400 text-center mt-1">{formatDisplayDate(metric.date)}</p>
     </button>
   );
 }

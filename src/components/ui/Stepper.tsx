@@ -39,11 +39,11 @@ export function Stepper({
   return (
     <div className={cn('flex flex-col items-center gap-1.5', className)}>
       {label && (
-        <span className="text-xs text-slate-400 font-extrabold uppercase tracking-wider">
+        <span className="text-[11px] text-slate-500 dark:text-slate-400 font-extrabold uppercase tracking-wider">
           {label}
         </span>
       )}
-      <div className="flex items-center rounded-2xl bg-slate-900 border border-slate-700/80 p-1 shadow-inner">
+      <div className="flex items-center rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-1 shadow-inner">
         <button
           type="button"
           aria-label={`Decrease ${label}`}
@@ -51,12 +51,12 @@ export function Stepper({
           onPointerUp={stopHold}
           onPointerLeave={stopHold}
           onClick={() => change(-step)}
-          className="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-90 text-indigo-400 font-black transition-all"
+          className="w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-90 text-indigo-600 dark:text-indigo-400 font-black transition-all shadow-xs border border-slate-200/60 dark:border-slate-700/60 cursor-pointer"
         >
           <Minus size={18} strokeWidth={3} />
         </button>
         <div className="w-16 h-11 flex items-center justify-center">
-          <span className="text-xl font-black text-white tracking-tight">{value}</span>
+          <span className="text-xl font-black text-slate-900 dark:text-white tracking-tight">{value}</span>
         </div>
         <button
           type="button"
@@ -65,7 +65,7 @@ export function Stepper({
           onPointerUp={stopHold}
           onPointerLeave={stopHold}
           onClick={() => change(step)}
-          className="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-90 text-indigo-400 font-black transition-all"
+          className="w-11 h-11 flex items-center justify-center rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-90 text-indigo-600 dark:text-indigo-400 font-black transition-all shadow-xs border border-slate-200/60 dark:border-slate-700/60 cursor-pointer"
         >
           <Plus size={18} strokeWidth={3} />
         </button>

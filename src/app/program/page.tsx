@@ -5,7 +5,7 @@ import { useRecentSessions } from '@/lib/hooks/useToday';
 import { useAllExercises } from '@/lib/hooks/useProgress';
 import { Card } from '@/components/ui/Card';
 import { Badge, MuscleBadgeType } from '@/components/ui/Badge';
-import { Calendar, Dumbbell, BarChart2, ChevronDown, ChevronUp, Sparkles, Layers } from 'lucide-react';
+import { Calendar, Dumbbell, ChevronDown, ChevronUp, Layers } from 'lucide-react';
 import { useState } from 'react';
 
 const SPLIT_LABELS = {
@@ -27,11 +27,11 @@ export default function ProgramPage() {
     return (
       <div className="page-content px-4 max-w-lg mx-auto">
         <div className="pt-4 mb-6">
-          <h1 className="text-2xl font-black text-white">Program Overview</h1>
+          <h1 className="text-2xl font-black text-slate-900 dark:text-white">Program Overview</h1>
         </div>
         <Card variant="elevated" className="text-center py-12">
-          <Dumbbell size={44} className="text-slate-600 mx-auto mb-3" />
-          <p className="text-slate-400 font-medium">No active program. Complete onboarding to generate one.</p>
+          <Dumbbell size={44} className="text-slate-400 dark:text-slate-600 mx-auto mb-3" />
+          <p className="text-slate-600 dark:text-slate-400 font-medium">No active program. Complete onboarding to generate one.</p>
         </Card>
       </div>
     );
@@ -59,8 +59,8 @@ export default function ProgramPage() {
   return (
     <div className="page-content px-4 flex flex-col gap-5 max-w-lg mx-auto">
       <div className="pt-2">
-        <h1 className="text-2xl font-black text-white tracking-tight">Active Program</h1>
-        <p className="text-slate-400 text-xs font-medium">{program.name}</p>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Active Program</h1>
+        <p className="text-slate-500 dark:text-slate-400 text-xs font-medium">{program.name}</p>
       </div>
 
       {/* Phase Overview */}
@@ -68,7 +68,7 @@ export default function ProgramPage() {
         <Card variant="hero" className="glow-indigo">
           <div className="flex items-start justify-between">
             <div>
-              <p className="text-indigo-200 text-[10px] font-black uppercase tracking-wider mb-1">PROGRAM STATUS</p>
+              <p className="text-indigo-200 text-[10px] font-black uppercase tracking-wider mb-1">COACH DESIGNED SPLIT</p>
               <h2 className="text-2xl font-black mb-2">Phase {program.phase}</h2>
               <div className="flex flex-wrap gap-2">
                 <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md">
@@ -92,7 +92,7 @@ export default function ProgramPage() {
 
       {/* Weekly Schedule Strip */}
       <Card variant="elevated">
-        <h3 className="font-extrabold text-white text-sm uppercase tracking-wider mb-3">This Week's Attendance</h3>
+        <h3 className="font-extrabold text-slate-900 dark:text-white text-xs uppercase tracking-wider mb-3">This Week's Attendance</h3>
         <div className="flex gap-2">
           {DAY_LABELS.map((label, i) => {
             const isToday = i === today.getDay();
@@ -104,8 +104,8 @@ export default function ProgramPage() {
                   isToday
                     ? 'bg-indigo-600 text-white border-indigo-400 glow-indigo'
                     : hasSession
-                    ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40'
-                    : 'bg-slate-900 border-slate-800 text-slate-500'
+                    ? 'bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400 border-emerald-500/40'
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-500'
                 }`}
               >
                 <span className="text-[10px] font-black">{label}</span>
@@ -120,23 +120,23 @@ export default function ProgramPage() {
 
       {/* Program Days List */}
       <div>
-        <h3 className="font-extrabold text-white text-sm uppercase tracking-wider mb-3">Training Split Breakdown</h3>
+        <h3 className="font-extrabold text-slate-900 dark:text-white text-xs uppercase tracking-wider mb-3">Interleaved Schedule Breakdown</h3>
         <div className="flex flex-col gap-3">
           {programDays.map((day) => {
             const isExpanded = expandedDay === day.id;
             return (
-              <Card key={day.id} variant="default" className="border-slate-800">
+              <Card key={day.id} variant="default">
                 <button
                   className="flex items-center gap-3.5 w-full text-left cursor-pointer"
                   onClick={() => setExpandedDay(isExpanded ? null : day.id!)}
                   id={`program-day-${day.id}`}
                 >
-                  <div className="w-11 h-11 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center shrink-0">
+                  <div className="w-11 h-11 bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 rounded-2xl flex items-center justify-center shrink-0">
                     <Calendar size={20} />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-black text-white text-base truncate">{day.dayLabel}</p>
-                    <p className="text-xs text-slate-400 font-semibold">{day.exercises.length} Movements</p>
+                    <p className="font-black text-slate-900 dark:text-white text-base truncate">{day.dayLabel}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">{day.exercises.length} Movements</p>
                   </div>
                   {isExpanded ? <ChevronUp size={20} className="text-slate-400" /> : <ChevronDown size={20} className="text-slate-400" />}
                 </button>
@@ -145,7 +145,7 @@ export default function ProgramPage() {
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
-                    className="mt-4 overflow-hidden border-t border-slate-800/80 pt-4"
+                    className="mt-4 overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80 pt-4"
                   >
                     <div className="flex flex-col gap-2.5">
                       {day.exercises.map((ex, i) => {
@@ -154,14 +154,14 @@ export default function ProgramPage() {
                         return (
                           <div
                             key={i}
-                            className="flex items-center gap-3 p-3 bg-slate-900 rounded-2xl border border-slate-800"
+                            className="flex items-center gap-3 p-3 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800"
                           >
-                            <span className="w-6 h-6 rounded-lg bg-slate-800 text-slate-400 text-xs font-black flex items-center justify-center shrink-0">
+                            <span className="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-black flex items-center justify-center shrink-0">
                               {i + 1}
                             </span>
                             <div className="flex-1 min-w-0">
-                              <p className="font-bold text-white text-sm truncate">{exercise.name}</p>
-                              <p className="text-xs text-slate-400">
+                              <p className="font-bold text-slate-900 dark:text-white text-sm truncate">{exercise.name}</p>
+                              <p className="text-xs text-slate-500 dark:text-slate-400">
                                 {ex.targetSets}× {ex.targetRepRangeLow}–{ex.targetRepRangeHigh} reps · RIR {ex.targetRIR} · Rest {Math.floor(ex.restSeconds / 60)}m
                               </p>
                             </div>

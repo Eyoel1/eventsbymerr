@@ -131,6 +131,9 @@ export async function generateProgram(profile: Profile): Promise<void> {
     const upperDays = Math.ceil(days / 2);
     const lowerDays = days - upperDays;
 
+    const rawUpperDays: Omit<ProgramDay, 'id'>[] = [];
+    const rawLowerDays: Omit<ProgramDay, 'id'>[] = [];
+
     for (let i = 0; i < upperDays; i++) {
       const isA = i % 2 === 0;
       const exercises: ProgramDayExercise[] = [];
@@ -156,11 +159,11 @@ export async function generateProgram(profile: Profile): Promise<void> {
         shoulderExtra.forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
       }
 
-      programDays.push({
+      rawUpperDays.push({
         programId: programId as number,
         dayLabel: `Upper ${isA ? 'A' : 'B'}`,
         exercises,
-        order: i,
+        order: 0,
       });
     }
 
@@ -184,15 +187,53 @@ export async function generateProgram(profile: Profile): Promise<void> {
       const corePool = pickExercises(availableExercises, 'core', 1);
       corePool.forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
 
-      programDays.push({
+      rawLowerDays.push({
         programId: programId as number,
         dayLabel: `Lower ${isA ? 'A' : 'B'}`,
         exercises,
-        order: upperDays + i,
+        order: 0,
+      });
+    }
+
+    // Interleave upper and lower days: Upper A -> Lower A -> Upper B -> Lower B
+    let orderIndex = 0;
+    const maxLen = Math.max(rawUpperDays.length, rawLowerDays.length);
+    for (let i = 0; i < maxLen; i++) {
+      if (i < rawUpperDays.length) {
+        programDays.push({ ...rawUpperDays[i], order: orderIndex++ });
+      }
+      if (i < rawLowerDays.length) {
+        programDays.push({ ...rawLowerDays[i], order: orderIndex++ });
+      }
+    }
+  } else {
+    // PPL Split
+    const labels = ['Push', 'Pull', 'Legs'];
+    for (let i = 0; i < days; i++) {
+      const labelType = labels[i % 3];
+      const exercises: ProgramDayExercise[] = [];
+      let order = 0;
+      if (labelType === 'Push') {
+        pickExercises(availableExercises, 'chest', 2).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, true)));
+        pickExercises(availableExercises, 'shoulders', 1).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, true)));
+        pickExercises(availableExercises, 'triceps', 2).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
+      } else if (labelType === 'Pull') {
+        pickExercises(availableExercises, 'back', 2).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, true)));
+        pickExercises(availableExercises, 'shoulders', 1).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
+        pickExercises(availableExercises, 'biceps', 2).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
+      } else {
+        pickExercises(availableExercises, 'quads', 2).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, true)));
+        pickExercises(availableExercises, 'hamstrings', 1).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, true)));
+        pickExercises(availableExercises, 'calves', 1).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
+        pickExercises(availableExercises, 'core', 1).forEach(ex => exercises.push(makeProgramDayExercise(ex, order++, false)));
+      }
+      programDays.push({
+        programId: programId as number,
+        dayLabel: `Day ${i + 1} – ${labelType}`,
+        exercises,
+        order: i,
       });
     }
   }
-
-  // Interleave upper/lower if needed
   await db.programDays.bulkAdd(programDays as ProgramDay[]);
 }

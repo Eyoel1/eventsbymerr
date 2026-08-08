@@ -47,6 +47,9 @@ export async function generateWeeklyReview(
     if (result.isPlateau) plateauExerciseIds.push(exId);
   }
 
+  const painLogs = allSetLogs.filter((l) => l.painFlag);
+  const painCount = painLogs.length;
+
   const completionSummary = sessionCompletionRate(
     sessions,
     scheduledSessionsPerWeek
@@ -55,23 +58,27 @@ export async function generateWeeklyReview(
   const completedCount = sessions.filter((s) => s.status === 'completed').length;
   const roughCount = sessions.filter((s) => s.sessionFeel === 'rough').length;
 
-  let recommendation = 'Continue as planned — solid week.';
+  let recommendation = 'Solid effort this week — stay consistent!';
   if (deload.triggered) {
-    recommendation = `Deload recommended: ${deload.reason}`;
+    recommendation = `Time to recover: ${deload.reason}`;
+  } else if (painCount > 0) {
+    recommendation = `Pain flagged on ${painCount} set(s). Take a closer look and consider swapping joint-unfriendly exercises.`;
   } else if (plateauExerciseIds.length > 0) {
-    recommendation = `${plateauExerciseIds.length} exercise(s) showing plateau signs. See exercise cards for suggestions.`;
+    recommendation = `${plateauExerciseIds.length} exercise(s) hit a plateau. Try swapping variations or adjusting rest times.`;
   } else if (roughCount >= 2) {
-    recommendation = 'Multiple rough sessions noted. Monitor fatigue closely next week.';
+    recommendation = 'Multiple rough sessions noted. Prioritize sleep & recovery before pushing heavier weights.';
   } else if (completedCount < scheduledSessionsPerWeek) {
-    recommendation = 'Below target sessions this week. Aim for full completion next week.';
+    recommendation = 'Fell slightly short of session target. Focus on hitting full frequency next week!';
   }
 
-  const summary = `Week ${formatDate(periodStart)} to ${formatDate(periodEnd)}.
-${completionSummary}.
-${roughCount > 0 ? `${roughCount} session(s) felt rough.` : 'All sessions felt manageable.'}
-${deload.triggered ? '⚠️ Deload flag: ' + deload.reason : ''}
-${plateauExerciseIds.length > 0 ? `📉 Plateau detected on ${plateauExerciseIds.length} exercise(s).` : ''}
-Recommendation: ${recommendation}`;
+  const summary = `Coach Notes (${formatDate(periodStart)} – ${formatDate(periodEnd)}):
+• Adherence: ${completionSummary}.
+• Session feel: ${roughCount > 0 ? `${roughCount} rough session(s) logged.` : 'All sessions felt smooth & manageable.'}
+${painCount > 0 ? `• ⚠️ Pain flagged on ${painCount} set(s) this week — worth a closer look.` : ''}
+${deload.triggered ? '• ⚠️ Deload trigger: ' + deload.reason : ''}
+${plateauExerciseIds.length > 0 ? `• 📉 Stalled progress detected on ${plateauExerciseIds.length} movement(s).` : ''}
+
+👉 Recommendation: ${recommendation}`;
 
   const decisions: ReviewDecision = {
     deloadTriggered: deload.triggered,
@@ -125,22 +132,47 @@ export async function generateMonthlyReview(
   const completedSessions = sessions.filter((s) => s.status === 'completed').length;
   const expectedSessions = scheduledSessionsPerWeek * 4;
   const adherencePct = Math.round((completedSessions / Math.max(expectedSessions, 1)) * 100);
+  const painCount = allSetLogs.filter((l) => l.painFlag).length;
 
-  const nextPhaseRecommended = adherencePct >= 75 && !deload.triggered && plateauExerciseIds.length === 0;
+  const nextPhaseRecommended = adherencePct >= 75 && !deload.triggered && plateauExerciseIds.length === 0 && painCount === 0;
 
-  const volumeChange = adherencePct >= 80 ? 'increase' : adherencePct < 60 ? 'decrease' : 'maintain';
+  // Performance-driven volume adjustment decision
+  let volumeChange: 'increase' | 'decrease' | 'maintain' = 'maintain';
+  let volumeReasoning = '';
 
-  const summary = `Monthly Review: ${formatDate(periodStart)} to ${formatDate(periodEnd)}.
-Adherence: ${completedSessions}/${expectedSessions} sessions (${adherencePct}%).
-${deload.triggered ? '⚠️ Fatigue flags detected — deload before next phase.' : 'No major fatigue flags.'}
-${plateauExerciseIds.length > 0 ? `📉 ${plateauExerciseIds.length} exercise(s) plateaued — consider variations in Phase 2.` : 'Progressive overload achieved across most exercises.'}
-Recommendation: ${nextPhaseRecommended ? '✅ Ready for Phase 2 — consider increasing volume or exercise difficulty.' : deload.triggered ? '⚠️ Complete deload week before starting Phase 2.' : '🔄 Continue Phase 1 for another 2-4 weeks, focusing on consistency.'}`;
+  if (adherencePct >= 80) {
+    if (deload.triggered || plateauExerciseIds.length >= 2) {
+      volumeChange = 'maintain';
+      volumeReasoning = `Great consistency (${adherencePct}%), but ${plateauExerciseIds.length} movements plateaued — keeping volume steady while refreshing exercise variations.`;
+    } else if (painCount > 2) {
+      volumeChange = 'maintain';
+      volumeReasoning = `High adherence (${adherencePct}%), but ${painCount} pain flags were logged. Maintaining current set volume to avoid joint strain.`;
+    } else {
+      volumeChange = 'increase';
+      volumeReasoning = `Excellent adherence (${adherencePct}%) and steady strength overload — ready for a slight volume increase!`;
+    }
+  } else if (adherencePct < 60 || deload.triggered) {
+    volumeChange = 'decrease';
+    volumeReasoning = `Adherence was ${adherencePct}% with fatigue flags present — lowering set volume to optimize recovery.`;
+  } else {
+    volumeChange = 'maintain';
+    volumeReasoning = `Steady consistency (${adherencePct}%) — keeping set volume unchanged.`;
+  }
+
+  const summary = `Monthly Coaching Report (${formatDate(periodStart)} – ${formatDate(periodEnd)}):
+• Adherence: ${completedSessions}/${expectedSessions} workouts completed (${adherencePct}%).
+• Fatigue Status: ${deload.triggered ? '⚠️ Deload signals present — recovery period needed.' : 'No major systemic fatigue flags.'}
+• Overload Status: ${plateauExerciseIds.length > 0 ? `📉 ${plateauExerciseIds.length} exercise(s) plateaued.` : 'Consistent progressive overload logged across most lifts.'}
+${painCount > 0 ? `• Pain Flags: ${painCount} set(s) reported discomfort.` : ''}
+
+💡 Volume Recommendation: ${volumeReasoning}
+👉 Next Steps: ${nextPhaseRecommended ? '✅ Excellent work — recommended to advance to Phase 2!' : deload.triggered ? '⚠️ Complete a 1-week deload before starting the next block.' : '🔄 Continue current phase, focusing on execution quality and hitting full session target.'}`;
 
   const decisions: ReviewDecision = {
     deloadTriggered: deload.triggered,
     plateauExerciseIds,
     nextPhaseRecommended,
-    volumeChange: volumeChange as 'increase' | 'decrease' | 'maintain',
+    volumeChange,
   };
 
   return {

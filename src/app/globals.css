@@ -4,7 +4,7 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    @apply bg-slate-900 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white;
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200;
     overflow-x: hidden;
   }
 
@@ -13,9 +13,26 @@
   }
 }
 
+/* Custom Theme Surface Utilities */
+.bg-surface {
+  @apply bg-white dark:bg-slate-900;
+}
+
+.bg-surface-elevated {
+  @apply bg-slate-50 dark:bg-slate-800/80;
+}
+
+.border-theme {
+  @apply border-slate-200 dark:border-slate-800;
+}
+
+.text-theme-muted {
+  @apply text-slate-500 dark:text-slate-400;
+}
+
 /* Custom Gradients */
 .bg-gradient-hero {
-  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #DB2777 100%);
 }
 
 .bg-gradient-emerald {
@@ -26,41 +43,27 @@
   background: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%);
 }
 
-.bg-gradient-dark-card {
-  background: linear-gradient(145deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
-}
-
-/* Glassmorphism */
+/* Glassmorphism with Light / Dark support */
 .glass-card {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-sm dark:shadow-2xl;
 }
 
 .glass-nav {
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800/80 shadow-lg dark:shadow-2xl;
 }
 
-/* Glow Effects */
+/* Restrained Ambient Glows for Emphasis */
 .glow-indigo {
-  box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.25);
 }
 
 .glow-emerald {
-  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
-}
-
-.glow-amber {
-  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.25);
 }
 
 /* Page Layout Padding for Mobile Nav */
 .page-content {
-  padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   padding-top: 1.25rem;
   min-height: 100dvh;
 }
@@ -73,7 +76,7 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.3);
   border-radius: 9999px;
 }
 

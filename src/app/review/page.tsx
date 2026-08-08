@@ -9,7 +9,7 @@ import { generateWeeklyReview, generateMonthlyReview } from '@/lib/engine/review
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { TrendingDown, Minus, Star, AlertTriangle, CheckCircle, RefreshCw, Sparkles } from 'lucide-react';
+import { TrendingDown, Star, AlertTriangle, CheckCircle, RefreshCw } from 'lucide-react';
 import { formatDisplayDate } from '@/lib/utils/dateHelpers';
 
 export default function ReviewPage() {
@@ -85,8 +85,8 @@ export default function ReviewPage() {
   return (
     <div className="page-content px-4 flex flex-col gap-5 max-w-lg mx-auto">
       <div className="pt-2">
-        <h1 className="text-2xl font-black text-white tracking-tight">Coaching Reviews</h1>
-        <p className="text-slate-400 text-xs font-medium">Rule-based analytical evaluations</p>
+        <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Coaching Reviews</h1>
+        <p className="text-slate-500 dark:text-slate-400 text-xs font-medium font-medium">Analytical evaluation of performance & fatigue</p>
       </div>
 
       {/* Action Buttons */}
@@ -116,9 +116,9 @@ export default function ReviewPage() {
       {/* Reviews List */}
       {(reviews ?? []).length === 0 ? (
         <Card variant="elevated" className="text-center py-12">
-          <Star size={44} className="text-slate-600 mx-auto mb-3" />
-          <p className="text-slate-300 font-bold text-base mb-1">No Reviews Generated Yet</p>
-          <p className="text-slate-500 text-xs max-w-xs mx-auto">
+          <Star size={44} className="text-slate-400 dark:text-slate-600 mx-auto mb-3" />
+          <p className="text-slate-900 dark:text-white font-bold text-base mb-1">No Reviews Generated Yet</p>
+          <p className="text-slate-500 text-xs max-w-xs mx-auto font-medium">
             Log workouts and trigger your first weekly coaching evaluation above.
           </p>
         </Card>
@@ -135,26 +135,26 @@ export default function ReviewPage() {
                 <div className="flex items-center gap-3 mb-3">
                   <div className={`w-11 h-11 rounded-2xl flex items-center justify-center ${
                     review.type === 'monthly'
-                      ? 'bg-purple-500/20 text-purple-400'
-                      : 'bg-indigo-500/20 text-indigo-400'
+                      ? 'bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400'
+                      : 'bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400'
                   }`}>
                     <Star size={20} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2">
-                      <p className="font-black text-white text-base capitalize">{review.type} Review</p>
+                      <p className="font-black text-slate-900 dark:text-white text-base capitalize">{review.type} Review</p>
                       <Badge variant={review.type === 'monthly' ? 'purple' : 'info'} size="sm">
                         {review.type}
                       </Badge>
                     </div>
-                    <p className="text-xs text-slate-400 font-medium">
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                       {formatDisplayDate(review.periodStart)} – {formatDisplayDate(review.periodEnd)}
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-slate-900 rounded-2xl p-4 border border-slate-800 mb-3">
-                  <p className="text-xs text-slate-300 leading-relaxed whitespace-pre-line font-medium">
+                <div className="bg-slate-100 dark:bg-slate-900 rounded-2xl p-4 border border-slate-200 dark:border-slate-800 mb-3">
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-line font-medium">
                     {review.generatedSummary}
                   </p>
                 </div>

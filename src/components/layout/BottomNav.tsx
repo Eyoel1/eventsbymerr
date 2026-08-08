@@ -17,7 +17,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed bottom-3 left-0 right-0 z-50 px-4 max-w-md mx-auto pointer-events-none safe-bottom">
-      <div className="glass-nav rounded-3xl p-1.5 shadow-2xl shadow-black/80 pointer-events-auto border border-white/10 flex items-center justify-around">
+      <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-3xl p-1.5 shadow-lg dark:shadow-2xl pointer-events-auto border border-slate-200/80 dark:border-slate-800/80 flex items-center justify-around">
         {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
           const active = pathname === href || pathname.startsWith(href + '/');
           return (
@@ -30,7 +30,7 @@ export function BottomNav() {
               {active && (
                 <motion.div
                   layoutId="active-pill"
-                  className="absolute inset-0 bg-gradient-to-r from-indigo-600/90 to-purple-600/90 rounded-2xl glow-indigo border border-indigo-400/30"
+                  className="absolute inset-0 bg-indigo-600 dark:bg-gradient-to-r dark:from-indigo-600 dark:to-purple-600 rounded-2xl glow-indigo shadow-md"
                   transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                 />
               )}
@@ -40,13 +40,13 @@ export function BottomNav() {
                   className={`transition-transform duration-200 ${
                     active
                       ? 'text-white scale-110'
-                      : 'text-slate-400 hover:text-slate-200'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
                   }`}
                   strokeWidth={active ? 2.5 : 2}
                 />
                 <span
                   className={`text-[10px] font-bold tracking-tight ${
-                    active ? 'text-white' : 'text-slate-400'
+                    active ? 'text-white' : 'text-slate-500 dark:text-slate-400'
                   }`}
                 >
                   {label}

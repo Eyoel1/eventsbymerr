@@ -121,8 +121,8 @@ export default function OnboardingPage() {
         <Dumbbell size={48} className="text-white" strokeWidth={1.5} />
       </motion.div>
       <div>
-        <h1 className="text-3xl font-black text-white tracking-tight mb-2">Muscle Coach</h1>
-        <p className="text-slate-400 text-sm max-w-xs mx-auto leading-relaxed font-medium">
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Muscle Coach</h1>
+        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xs mx-auto leading-relaxed font-medium">
           Personal hypertrophy training coach. <br />
           100% local on-device logic. Zero auth.
         </p>
@@ -131,13 +131,13 @@ export default function OnboardingPage() {
         {[
           { icon: Target, text: 'Double progression overload engine' },
           { icon: Zap, text: 'Empirical deload & plateau detection' },
-          { icon: Calendar, text: 'Auto-generated hypertrophy splits' },
+          { icon: Calendar, text: 'Interleaved hypertrophy splits' },
         ].map(({ icon: Icon, text }) => (
-          <div key={text} className="flex items-center gap-3.5 bg-slate-900/80 border border-slate-800 rounded-2xl px-4 py-3.5">
-            <div className="w-8 h-8 rounded-xl bg-indigo-500/20 flex items-center justify-center shrink-0">
-              <Icon size={18} className="text-indigo-400" />
+          <div key={text} className="flex items-center gap-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl px-4 py-3.5 shadow-xs">
+            <div className="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 flex items-center justify-center shrink-0">
+              <Icon size={18} />
             </div>
-            <span className="text-xs text-slate-200 font-bold text-left">{text}</span>
+            <span className="text-xs text-slate-800 dark:text-slate-200 font-bold text-left">{text}</span>
           </div>
         ))}
       </div>
@@ -149,35 +149,35 @@ export default function OnboardingPage() {
     // Step 1: Basic Stats
     <div key="stats" className="flex flex-col gap-6">
       <div>
-        <h2 className="text-2xl font-black text-white">Basic Stats</h2>
-        <p className="text-slate-400 text-xs mt-1 font-medium">Personalize your training baseline.</p>
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Basic Stats</h2>
+        <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 font-medium">Personalize your training baseline.</p>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Age</label>
+          <label className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Age</label>
           <input
             id="onboarding-age"
             type="number"
             value={form.age}
             onChange={(e) => set('age', parseInt(e.target.value) || 18)}
             min={13} max={80}
-            className="h-14 px-4 rounded-2xl border border-slate-700 bg-slate-900 text-white font-black text-xl text-center"
+            className="h-14 px-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black text-xl text-center shadow-xs"
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Weight (kg)</label>
+          <label className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Weight (kg)</label>
           <input
             id="onboarding-weight"
             type="number"
             value={form.bodywightKg}
             onChange={(e) => set('bodywightKg', parseFloat(e.target.value) || 60)}
             min={30} max={250} step={0.5}
-            className="h-14 px-4 rounded-2xl border border-slate-700 bg-slate-900 text-white font-black text-xl text-center"
+            className="h-14 px-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black text-xl text-center shadow-xs"
           />
         </div>
       </div>
       <div className="flex flex-col gap-1.5">
-        <label className="text-xs font-black text-slate-400 uppercase tracking-wider">Sex</label>
+        <label className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sex</label>
         <div className="flex gap-2">
           {(['male', 'female', 'other'] as Sex[]).map((s) => (
             <button
@@ -187,8 +187,8 @@ export default function OnboardingPage() {
               onClick={() => set('sex', s)}
               className={`flex-1 h-13 rounded-2xl border-2 font-black text-sm capitalize transition-all cursor-pointer ${
                 form.sex === s
-                  ? 'border-indigo-500 bg-indigo-600/20 text-indigo-400 shadow-lg shadow-indigo-500/20'
-                  : 'border-slate-800 bg-slate-900 text-slate-400'
+                  ? 'border-indigo-500 bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 dark:bg-indigo-600/20'
+                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400'
               }`}
             >
               {s}
@@ -204,8 +204,8 @@ export default function OnboardingPage() {
     // Step 2: Experience Level
     <div key="experience" className="flex flex-col gap-5">
       <div>
-        <h2 className="text-2xl font-black text-white">Experience Level</h2>
-        <p className="text-slate-400 text-xs mt-1 font-medium">Select your background so we set rep/RIR targets accurately.</p>
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Experience Level</h2>
+        <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 font-medium">Select your background so we set rep/RIR targets accurately.</p>
       </div>
       {[
         { value: 'beginner', label: 'Beginner', desc: '< 1 year consistent lifting', emoji: '🌱' },
@@ -219,17 +219,17 @@ export default function OnboardingPage() {
           onClick={() => { set('experienceLevel', opt.value as any); setTimeout(goNext, 180); }}
           className={`flex items-center gap-4 p-4 rounded-3xl border-2 text-left transition-all cursor-pointer ${
             form.experienceLevel === opt.value
-              ? 'border-indigo-500 bg-indigo-600/20 glow-indigo'
-              : 'border-slate-800 bg-slate-900'
+              ? 'border-indigo-500 bg-indigo-600/10 dark:bg-indigo-600/20 glow-indigo'
+              : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
           }`}
         >
           <span className="text-3xl">{opt.emoji}</span>
           <div className="flex-1">
-            <div className="font-black text-white text-base">{opt.label}</div>
-            <div className="text-xs text-slate-400 font-medium">{opt.desc}</div>
+            <div className="font-black text-slate-900 dark:text-white text-base">{opt.label}</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">{opt.desc}</div>
           </div>
           {form.experienceLevel === opt.value && (
-            <Check size={22} className="text-indigo-400 shrink-0" strokeWidth={3} />
+            <Check size={22} className="text-indigo-600 dark:text-indigo-400 shrink-0" strokeWidth={3} />
           )}
         </button>
       ))}
@@ -238,11 +238,11 @@ export default function OnboardingPage() {
     // Step 3: Schedule
     <div key="schedule" className="flex flex-col gap-6">
       <div>
-        <h2 className="text-2xl font-black text-white">Training Schedule</h2>
-        <p className="text-slate-400 text-xs mt-1 font-medium">How many days per week will you commit?</p>
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Training Schedule</h2>
+        <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 font-medium">How many days per week will you commit?</p>
       </div>
       <div className="flex flex-col gap-2">
-        <label className="text-xs font-black text-indigo-400 uppercase tracking-wider">
+        <label className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
           Target Frequency: {form.trainingDaysPerWeek} Days / Week
         </label>
         <div className="flex gap-2">
@@ -255,23 +255,23 @@ export default function OnboardingPage() {
               className={`flex-1 h-14 rounded-2xl border-2 font-black text-xl transition-all cursor-pointer ${
                 form.trainingDaysPerWeek === d
                   ? 'border-indigo-500 bg-indigo-600 text-white glow-indigo'
-                  : 'border-slate-800 bg-slate-900 text-slate-400'
+                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400'
               }`}
             >
               {d}
             </button>
           ))}
         </div>
-        <p className="text-xs text-slate-400 font-medium mt-1">
+        <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-1">
           {form.trainingDaysPerWeek <= 3
             ? '✓ Full Body Split (3x/wk) — High frequency per muscle group'
             : form.trainingDaysPerWeek === 4
-            ? '✓ Upper / Lower Split (4x/wk) — Balanced frequency & recovery'
+            ? '✓ Interleaved Upper / Lower Split (4x/wk) — Balanced frequency & recovery'
             : '✓ Push / Pull / Legs Split — Dedicated volume per day'}
         </p>
       </div>
       <div className="flex flex-col gap-2">
-        <label className="text-xs font-black text-slate-400 uppercase tracking-wider">
+        <label className="text-xs font-black text-slate-500 dark:text-slate-400 uppercase tracking-wider">
           Max Session Time: {form.maxSessionMinutes} min
         </label>
         <input
@@ -294,8 +294,8 @@ export default function OnboardingPage() {
     // Step 4: Equipment
     <div key="equipment" className="flex flex-col gap-5">
       <div>
-        <h2 className="text-2xl font-black text-white">Equipment Access</h2>
-        <p className="text-slate-400 text-xs mt-1 font-medium">Select all equipment available in your gym.</p>
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Equipment Access</h2>
+        <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 font-medium">Select all equipment available in your gym.</p>
       </div>
       <div className="grid grid-cols-2 gap-2.5">
         {EQUIPMENT_OPTIONS.map((eq) => {
@@ -308,13 +308,13 @@ export default function OnboardingPage() {
               onClick={() => toggleEquipment(eq.value)}
               className={`flex items-center gap-3 p-3.5 rounded-2xl border-2 text-left transition-all cursor-pointer ${
                 selected
-                  ? 'border-indigo-500 bg-indigo-600/20 text-white'
-                  : 'border-slate-800 bg-slate-900 text-slate-400'
+                  ? 'border-indigo-500 bg-indigo-600/10 dark:bg-indigo-600/20 text-slate-900 dark:text-white font-bold'
+                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400'
               }`}
             >
               <span className="text-2xl">{eq.emoji}</span>
               <span className="font-bold text-xs flex-1">{eq.label}</span>
-              {selected && <Check size={16} className="text-indigo-400 shrink-0" strokeWidth={3} />}
+              {selected && <Check size={16} className="text-indigo-600 dark:text-indigo-400 shrink-0" strokeWidth={3} />}
             </button>
           );
         })}
@@ -333,8 +333,8 @@ export default function OnboardingPage() {
     // Step 5: Limitations + Finish
     <div key="injuries" className="flex flex-col gap-5">
       <div>
-        <h2 className="text-2xl font-black text-white">Injuries & Limitations</h2>
-        <p className="text-slate-400 text-xs mt-1 font-medium">Optional — avoids aggravating movements.</p>
+        <h2 className="text-2xl font-black text-slate-900 dark:text-white">Injuries & Limitations</h2>
+        <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 font-medium">Optional — avoids aggravating movements.</p>
       </div>
       <div className="flex flex-col gap-2">
         {INJURY_OPTIONS.map((inj) => {
@@ -351,11 +351,11 @@ export default function OnboardingPage() {
               }}
               className={`flex items-center gap-3 px-4 py-3 rounded-2xl border-2 text-left transition-all cursor-pointer ${
                 selected
-                  ? 'border-amber-500 bg-amber-500/20 text-amber-300'
-                  : 'border-slate-800 bg-slate-900 text-slate-400'
+                  ? 'border-amber-500 bg-amber-500/10 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold'
+                  : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400'
               }`}
             >
-              <AlertTriangle size={18} className={selected ? 'text-amber-400' : 'text-slate-600'} />
+              <AlertTriangle size={18} className={selected ? 'text-amber-500' : 'text-slate-400'} />
               <span className="font-bold text-xs">{inj}</span>
             </button>
           );
@@ -367,7 +367,7 @@ export default function OnboardingPage() {
         value={form.injuryLimitations}
         onChange={(e) => set('injuryLimitations', e.target.value)}
         rows={2}
-        className="w-full px-4 py-3 rounded-2xl border border-slate-800 bg-slate-900 text-white text-xs resize-none"
+        className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-medium resize-none shadow-xs"
       />
       <Button
         variant="gradient"
@@ -383,22 +383,22 @@ export default function OnboardingPage() {
   ];
 
   return (
-    <div className="min-h-dvh bg-slate-950 flex flex-col justify-center px-4 py-8 max-w-lg mx-auto">
+    <div className="min-h-dvh bg-slate-50 dark:bg-slate-950 flex flex-col justify-center px-4 py-8 max-w-lg mx-auto">
       {step > 0 && (
         <div className="mb-6">
           <div className="flex items-center justify-between mb-2">
             <button
               onClick={goPrev}
-              className="p-2 -ml-2 text-slate-400 hover:text-white"
+              className="p-2 -ml-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               id="onboarding-back-btn"
             >
               <ChevronLeft size={24} />
             </button>
-            <span className="text-xs font-black text-indigo-400 uppercase tracking-widest">Step {step} / {TOTAL_STEPS - 1}</span>
+            <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">Step {step} / {TOTAL_STEPS - 1}</span>
           </div>
-          <div className="h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+          <div className="h-2 bg-slate-200 dark:bg-slate-900 rounded-full overflow-hidden border border-slate-200 dark:border-slate-800">
             <motion.div
-              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full glow-indigo"
+              className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"
               animate={{ width: `${(step / (TOTAL_STEPS - 1)) * 100}%` }}
               transition={{ duration: 0.3 }}
             />

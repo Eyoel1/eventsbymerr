@@ -24,7 +24,7 @@ export class MuscleCoachDB extends Dexie {
     super('MuscleCoachDB');
     this.version(1).stores({
       profiles: '++id',
-      exercises: '++id, primaryMuscle, equipment, difficultyTier',
+      exercises: '++id, slug, primaryMuscle, equipment, difficultyTier',
       programs: '++id, status',
       programDays: '++id, programId, order',
       workoutSessions: '++id, programDayId, date, status',
