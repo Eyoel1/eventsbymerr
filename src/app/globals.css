@@ -1,93 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
-@import 'tailwindcss';
+/* Global Reset & Base Variables - Luxury Light Editorial Theme */
 
-@layer base {
-  body {
-    font-family: 'Inter', sans-serif;
-    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200;
-    overflow-x: hidden;
-  }
+:root {
+  /* Brand Luxury Color Palette (Warm & Light) */
+  --color-bronze: #85684B;       /* Primary antique gold from logo */
+  --color-bronze-rgb: 133, 104, 75;
+  --color-champagne: #C8B195;    /* Soft warm secondary metallic */
+  --color-champagne-rgb: 200, 177, 149;
+  
+  /* Light Editorial Backgrounds (Warm Light Sand/Champagne Tone) */
+  --color-alabaster: #F4ECE1;    /* Primary warm light sand/champagne background */
+  --color-sand: #EAE0D0;         /* Secondary warm sand background */
+  --color-cream: #EFE6D8;        /* Accent warm cream background */
+  --color-pearl: #E2D6C4;        /* Deep sand/champagne divider tone */
+  
+  /* Dark Contrast Typography (Espresso) */
+  --color-espresso: #2C221A;     /* Primary text color */
+  --color-espresso-rgb: 44, 34, 26;
+  
+  --color-text-dark: #2C221A;
+  --color-text-light: #FDFBF8;
+  --color-border-light: rgba(133, 104, 75, 0.15);
+  --color-border-dark: rgba(200, 177, 149, 0.15);
 
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Outfit', sans-serif;
-  }
+  --font-serif: var(--font-serif, 'Cormorant Garamond', serif);
+  --font-sans: var(--font-sans, 'DM Sans', sans-serif);
+  --font-cursive: var(--font-cursive, 'Pinyon Script', cursive);
+  
+  --transition-smooth: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-slow: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Custom Theme Surface Utilities */
-.bg-surface {
-  @apply bg-white dark:bg-slate-900;
-}
-
-.bg-surface-elevated {
-  @apply bg-slate-50 dark:bg-slate-800/80;
-}
-
-.border-theme {
-  @apply border-slate-200 dark:border-slate-800;
-}
-
-.text-theme-muted {
-  @apply text-slate-500 dark:text-slate-400;
-}
-
-/* Custom Gradients */
-.bg-gradient-hero {
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #DB2777 100%);
-}
-
-.bg-gradient-emerald {
-  background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
-}
-
-.bg-gradient-amber {
-  background: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #FBBF24 100%);
-}
-
-/* Glassmorphism with Light / Dark support */
-.glass-card {
-  @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-sm dark:shadow-2xl;
-}
-
-.glass-nav {
-  @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800/80 shadow-lg dark:shadow-2xl;
-}
-
-/* Restrained Ambient Glows for Emphasis */
-.glow-indigo {
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.25);
-}
-
-.glow-emerald {
-  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.25);
-}
-
-/* Page Layout Padding for Mobile Nav */
-.page-content {
-  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
-  padding-top: 1.25rem;
-  min-height: 100dvh;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(99, 102, 241, 0.3);
-  border-radius: 9999px;
-}
-
-/* Hide Spinners for Number Inputs */
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Active Touch Highlight */
 * {
-  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  background-color: var(--color-alabaster);
+  color: var(--color-text-dark);
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-alabaster);
+  color: var(--color-text-dark);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom Scrollbar for Luxury Aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-alabaster);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bronze);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-champagne);
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drawStroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes floatSoft {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(3deg);
+  }
+}
+
+.float-animation {
+  animation: floatSoft 6s ease-in-out infinite;
+}
+
+.fade-in-up {
+  animation: fadeIn 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Form styling resets */
+input, textarea, button {
+  font-family: inherit;
+}
+
+
+
+/* English display controls */
+.am {
+  display: none !important;
+}
+.en {
+  display: inline;
+}
+div.en, p.en, section.en {
+  display: block;
+}
+

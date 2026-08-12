@@ -1,0 +1,369 @@
+.servicesSection {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--color-espresso);
+  transition: background-color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+.canvasBackground {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.38fr 0.62fr;
+  height: auto;
+  gap: 0;
+}
+
+/* Left Panel: Service Navigation (Sticky) */
+.navPanel {
+  padding: 100px 40px 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid rgba(133, 104, 75, 0.12);
+  background-color: rgba(253, 251, 248, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.sectionHeader {
+  margin-bottom: 20px;
+}
+
+.sectionTag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-bronze);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-size: 38px;
+  line-height: 1.2;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 460px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Custom mini scrollbar for navigation list */
+.servicesList::-webkit-scrollbar {
+  width: 2px;
+}
+
+.servicesList::-webkit-scrollbar-track {
+  background: rgba(133, 104, 75, 0.05);
+}
+
+.servicesList::-webkit-scrollbar-thumb {
+  background: rgba(133, 104, 75, 0.3);
+  border-radius: 1px;
+}
+
+.serviceNavItem {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 0;
+  cursor: pointer;
+  color: inherit;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  border-bottom: 1px solid rgba(133, 104, 75, 0.1);
+  opacity: 0.4;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: var(--transition-smooth);
+  width: 100%;
+}
+
+.serviceNavItem:hover {
+  opacity: 0.9;
+  padding-left: 8px;
+}
+
+.navActive {
+  opacity: 1;
+  border-bottom-color: var(--color-bronze);
+  color: var(--color-bronze);
+  padding-left: 16px;
+  font-weight: 500;
+}
+
+.navNumber {
+  font-size: 11px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.navTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right Panel: Content Stage (Stacked sequential cards) */
+.stagePanel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.slideCard {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 80px 40px;
+}
+
+/* Gallery Print Layout Content */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 580px;
+  box-sizing: border-box;
+  opacity: 0.15;
+  transform: translateY(20px);
+  transition: opacity 1.2s cubic-bezier(0.25, 1, 0.3, 1),
+              transform 1.2s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.growing.cardContent,
+.slideCard.growing .cardContent {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardHeader {
+  text-align: center;
+  width: 100%;
+}
+
+.cardCounter {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-bronze);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
+
+.cardSubtitle {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-size: 26px;
+  font-family: var(--font-serif);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Fine-Art Portrait Image Frame */
+.imageFrameContainer {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  max-width: 320px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+.imageOffsetFrame {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: -12px;
+  bottom: -12px;
+  border: 1px solid var(--color-bronze);
+  z-index: 1;
+}
+
+.imageWindow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 15px 35px rgba(53, 42, 30, 0.08);
+}
+
+.slideImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 3s cubic-bezier(0.25, 1, 0.3, 1);
+}
+
+.growing .slideImage {
+  transform: scale(1.04);
+}
+
+/* Text Body Description & Horizontal Details List */
+.cardInfoBody {
+  width: 100%;
+  text-align: center;
+}
+
+.cardDesc {
+  font-size: 13.5px;
+  line-height: 1.7;
+  opacity: 0.85;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto 15px auto;
+}
+
+.detailsDivider {
+  height: 1px;
+  width: 40px;
+  background-color: var(--color-bronze);
+  opacity: 0.25;
+  margin: 0 auto 15px auto;
+}
+
+.detailsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detailItem {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-espresso);
+  opacity: 0.9;
+}
+
+.bulletGold {
+  color: var(--color-bronze);
+  font-size: 6px;
+}
+
+@media (max-width: 991px) {
+  .canvasBackground {
+    position: absolute;
+    height: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  
+  .navPanel {
+    padding: 40px 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(133, 104, 75, 0.12);
+    position: relative;
+    height: auto;
+    backdrop-filter: none;
+  }
+  
+  .servicesList {
+    max-height: 180px;
+  }
+  
+  .slideCard {
+    height: auto;
+    min-height: 80vh;
+    padding: 50px 20px;
+    scroll-snap-align: start;
+  }
+  
+  .cardContent,
+  .slideCard .cardContent {
+    height: auto;
+    gap: 20px;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .imageFrameContainer {
+    height: 300px;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sectionTitle {
+    font-size: 30px;
+  }
+  
+  .serviceNavItem {
+    font-size: 16px;
+  }
+  
+  .cardTitle {
+    font-size: 22px;
+  }
+  
+  .imageFrameContainer {
+    height: 280px;
+    max-width: 240px;
+  }
+}

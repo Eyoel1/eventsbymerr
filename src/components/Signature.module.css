@@ -1,0 +1,87 @@
+.signatureContainer {
+  display: block;
+  width: min(860px, 92vw);
+  margin: 10px auto 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.signatureContainer.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.signatureSvg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+
+.scriptPath {
+  fill: var(--color-espresso);
+  fill-opacity: 0;
+  stroke: var(--color-espresso);
+  stroke-width: 22px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Animations mapping for paths */
+.active .sg0 {
+  animation: draw 0.32s ease-out forwards 0.30s, fillSig 0.7s ease forwards 0.97s;
+}
+
+.active .sg1 {
+  animation: draw 0.32s ease-out forwards 0.52s, fillSig 0.7s ease forwards 1.19s;
+}
+
+.active .sg2 {
+  animation: draw 0.32s ease-out forwards 0.74s, fillSig 0.7s ease forwards 1.41s;
+}
+
+.active .sg3 {
+  animation: draw 0.32s ease-out forwards 0.96s, fillSig 0.7s ease forwards 1.63s;
+}
+
+.active .sg4 {
+  animation: draw 0.32s ease-out forwards 1.18s, fillSig 0.7s ease forwards 1.85s;
+}
+
+.active .sg5 {
+  animation: draw 0.32s ease-out forwards 1.40s, fillSig 0.7s ease forwards 2.07s;
+}
+
+.active .sg6 {
+  animation: draw 0.32s ease-out forwards 1.62s, fillSig 0.7s ease forwards 2.29s;
+}
+
+.active .sg7 {
+  animation: draw 0.32s ease-out forwards 1.84s, fillSig 0.7s ease forwards 2.51s;
+}
+
+.active .sg8 {
+  animation: draw 0.32s ease-out forwards 2.06s, fillSig 0.7s ease forwards 2.73s;
+}
+
+.active .sg9 {
+  animation: draw 0.32s ease-out forwards 2.28s, fillSig 0.7s ease forwards 2.95s;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillSig {
+  from {
+    fill-opacity: 0;
+    stroke-width: 22px;
+  }
+  to {
+    fill-opacity: 1;
+    stroke-width: 0px;
+  }
+}

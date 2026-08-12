@@ -1,0 +1,129 @@
+.soundscapesContainer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-family: var(--font-sans);
+}
+
+.promptBubble {
+  background: var(--color-bronze);
+  color: var(--color-alabaster);
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: pulseSoft 3s infinite ease-in-out;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.promptArrow {
+  position: absolute;
+  bottom: -6px;
+  right: 24px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--color-bronze);
+}
+
+.audioButton {
+  background: rgba(30, 24, 19, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 177, 149, 0.25);
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: var(--color-champagne);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.audioButton:hover {
+  border-color: var(--color-champagne);
+  background: rgba(133, 104, 75, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(133, 104, 75, 0.2);
+}
+
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  width: 16px;
+  height: 14px;
+}
+
+.bar {
+  width: 2px;
+  height: 3px;
+  background-color: var(--color-champagne);
+  border-radius: 1px;
+  transition: height 0.3s ease;
+}
+
+/* Playing Animation */
+.playing .bar:nth-child(1) {
+  animation: bounceBar 0.8s ease-in-out infinite alternate;
+}
+.playing .bar:nth-child(2) {
+  animation: bounceBar 0.5s ease-in-out infinite alternate 0.15s;
+}
+.playing .bar:nth-child(3) {
+  animation: bounceBar 0.9s ease-in-out infinite alternate 0.05s;
+}
+.playing .bar:nth-child(4) {
+  animation: bounceBar 0.6s ease-in-out infinite alternate 0.2s;
+}
+
+.themeLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 0.5s ease, opacity 0.5s ease;
+}
+
+.audioButton:hover .themeLabel,
+.playing .themeLabel {
+  max-width: 220px;
+  opacity: 1;
+}
+
+@keyframes bounceBar {
+  0% {
+    height: 3px;
+  }
+  100% {
+    height: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .soundscapesContainer {
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .themeLabel {
+    display: none !important; /* Hide label on mobile to save screen space */
+  }
+}

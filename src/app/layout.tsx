@@ -1,47 +1,52 @@
-import type { Metadata, Viewport } from 'next';
-import './globals.css';
-import { ThemeProvider } from '@/components/layout/ThemeProvider';
-import { BottomNav } from '@/components/layout/BottomNav';
-import { ClientOnly } from '@/components/layout/ClientOnly';
-import { ServiceWorkerRegistrar } from '@/components/layout/ServiceWorkerRegistrar';
+import type { Metadata } from "next";
+import { Cormorant_Garamond, DM_Sans, Pinyon_Script } from "next/font/google";
+import "./globals.css";
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-sans",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  display: "swap",
+});
+
+const pinyonScript = Pinyon_Script({
+  variable: "--font-cursive",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: 'Muscle Coach',
-  description: 'Your personal hypertrophy training coach. Offline-first, privacy-focused.',
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: 'Muscle Coach',
+  title: "Events by Mer | Luxury Event & Wedding Planning Addis Ababa",
+  description: "Events by Mer is a premier luxury event planning and production company based in Addis Ababa, Ethiopia. We specialize in designing and producing unforgettable weddings, private celebrations, and elegant styling.",
+  icons: {
+    icon: "/favicon.ico",
   },
-  openGraph: {
-    title: 'Muscle Coach',
-    description: 'Personal hypertrophy training coach',
-    type: 'website',
+  other: {
+    google: "notranslate",
   },
 };
 
-export const viewport: Viewport = {
-  themeColor: '#6366F1',
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-};
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${dmSans.variable} ${pinyonScript.variable}`}
+    >
       <body>
-        <ThemeProvider>
-          <main className="max-w-lg mx-auto relative">
-            {children}
-          </main>
-          <ClientOnly>
-            <ServiceWorkerRegistrar />
-            <BottomNav />
-          </ClientOnly>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
