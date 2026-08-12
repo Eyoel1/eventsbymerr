@@ -369,10 +369,10 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/wedding_luxury.jpg",
-    themeColor: "#FDFBF8",
-    soundThemeIdx: 0,
-    particleThemeIdx: 0
+    image: "/images/service_wedding_planning.jpg",
+    themeColor: "#F5EFE6",
+    soundThemeIdx: 3,
+    particleThemeIdx: 2 // Spotlights
   },
   {
     id: "photography",
@@ -442,7 +442,7 @@ const SERVICES: ServiceItem[] = [
     desc: (
       <>
         <span className="en">Producing breathtaking digital films. We oversee professional documentary and cinema camera crews, audio feeds, and editing directions to deliver high-end cinematic captures.</span>
-        <span className="am">ልብ የሚነኩ ዲጂታል ፊልሞችን ማዘጋጀት። ከፍተኛ ደረጃ ያላቸውን የሲኒማ ምስሎች ለማቅረብ ባለሙያ የፊልም ሰራተኞችን፣ የድምጽ ቀረጻዎችን እና የአስተያየት ሂደቶችን እንቆጣጠራለን።</span>
+        <span className="am">ልብ የሚነኩ ዲጂታል ፊልሞችን ማዘጋጀት። ከፍተኛ ደረጃ ያላቸውን የሲኒማ ምስሎችን ለማቅረብ ባለሙያ የፊልም ሰራተኞችን፣ የድምጽ ቀረጻዎችን እና የአስተያየት ሂደቶችን እንቆጣጠራለን።</span>
       </>
     ),
     details: [
@@ -471,7 +471,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/production_luxury.jpg",
+    image: "/images/service_event_production.jpg",
     themeColor: "#FAF6F0",
     soundThemeIdx: 3,
     particleThemeIdx: 3
@@ -522,7 +522,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/celebration_luxury.jpg",
+    image: "/images/service_floral_design.jpg",
     themeColor: "#FDFBF8",
     soundThemeIdx: 3,
     particleThemeIdx: 2
@@ -573,7 +573,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/styling_luxury.jpg",
+    image: "/images/service_event_styling.jpg",
     themeColor: "#F5EFE6",
     soundThemeIdx: 2,
     particleThemeIdx: 3
@@ -624,7 +624,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/styling_luxury.jpg",
+    image: "/images/service_wedding_design.jpg",
     themeColor: "#FAF6F0",
     soundThemeIdx: 2,
     particleThemeIdx: 3
