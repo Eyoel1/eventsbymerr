@@ -318,7 +318,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/about-brand.jpg",
+    image: "/images/service_floral_design.jpg",
     themeColor: "#FAF6F0",
     soundThemeIdx: 1,
     particleThemeIdx: 1
@@ -522,7 +522,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/production_luxury.jpg",
+    image: "/images/celebration_luxury.jpg",
     themeColor: "#FDFBF8",
     soundThemeIdx: 3,
     particleThemeIdx: 2

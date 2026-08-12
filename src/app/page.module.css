@@ -210,7 +210,7 @@
 
 .heroRingSvg {
   position: absolute;
-  top: -590px;
+  top: -542px;
   left: 50%;
   transform: translateX(-50%) scaleX(-1);
   transform-origin: center center;
