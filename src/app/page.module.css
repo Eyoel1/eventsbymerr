@@ -1005,11 +1005,14 @@
   }
 
   .heroRingSvg {
-    top: -460px;
-    width: 170vw;
-    height: 170vw;
-    max-width: 920px;
-    max-height: 920px;
+    top: -480px !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(90deg) scaleX(-1) !important;
+    transform-origin: center center !important;
+    width: 880px !important;
+    height: 880px !important;
+    max-width: none !important;
+    max-height: none !important;
   }
 
   .aboutLayout {
@@ -1048,11 +1051,14 @@
   }
   
   .heroRingSvg {
-    top: -420px;
-    width: 180vw;
-    height: 180vw;
-    max-width: 820px;
-    max-height: 820px;
+    top: -460px !important;
+    left: 50% !important;
+    transform: translateX(-50%) rotate(90deg) scaleX(-1) !important;
+    transform-origin: center center !important;
+    width: 820px !important;
+    height: 820px !important;
+    max-width: none !important;
+    max-height: none !important;
   }
 
   .aboutImagePanel {
