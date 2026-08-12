@@ -212,7 +212,7 @@
   position: absolute;
   top: -380px;
   left: 50%;
-  transform: translateX(-50%) rotate(90deg) scaleX(-1);
+  transform: translateX(-50%) scaleX(-1);
   transform-origin: center center;
   width: 1180px;
   height: 1180px;
@@ -1005,14 +1005,9 @@
   }
 
   .heroRingSvg {
-    top: -480px !important;
-    left: 50% !important;
-    transform: translateX(-50%) rotate(90deg) scaleX(-1) !important;
-    transform-origin: center center !important;
-    width: 880px !important;
-    height: 880px !important;
-    max-width: none !important;
-    max-height: none !important;
+    top: -385px;
+    width: min(840px, 165vw);
+    height: min(840px, 165vw);
   }
 
   .aboutLayout {
@@ -1051,14 +1046,9 @@
   }
   
   .heroRingSvg {
-    top: -460px !important;
-    left: 50% !important;
-    transform: translateX(-50%) rotate(90deg) scaleX(-1) !important;
-    transform-origin: center center !important;
-    width: 820px !important;
-    height: 820px !important;
-    max-width: none !important;
-    max-height: none !important;
+    top: -355px;
+    width: min(770px, 175vw);
+    height: min(770px, 175vw);
   }
 
   .aboutImagePanel {
