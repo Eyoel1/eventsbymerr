@@ -63,7 +63,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/wedding_luxury.jpg",
+    image: "/images/service_wedding_planning.jpg",
     themeColor: "#FDFBF8", // Alabaster Warm White
     soundThemeIdx: 0, // Wedding loop
     particleThemeIdx: 0 // Rose petals
@@ -114,7 +114,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/wedding_luxury.jpg",
+    image: "/images/service_wedding_design.jpg",
     themeColor: "#F5EFE6", // Sand Gold
     soundThemeIdx: 0,
     particleThemeIdx: 0
@@ -165,7 +165,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/styling_luxury.jpg",
+    image: "/images/service_event_styling.jpg",
     themeColor: "#FAF6F0", // Cream
     soundThemeIdx: 2, // Styling loop
     particleThemeIdx: 2 // Spotlights
@@ -216,7 +216,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/production_luxury.jpg",
+    image: "/images/service_event_production.jpg",
     themeColor: "#FDFBF8",
     soundThemeIdx: 3, // Production loop
     particleThemeIdx: 3 // Camera concentric lines
@@ -267,7 +267,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/celebration_luxury.jpg",
+    image: "/images/service_floral_design.jpg",
     themeColor: "#F5EFE6",
     soundThemeIdx: 1, // Celebration loop
     particleThemeIdx: 1 // Shimmer dust
@@ -318,7 +318,7 @@ const SERVICES: ServiceItem[] = [
         </>
       )
     ],
-    image: "/images/celebration_luxury.jpg",
+    image: "/images/about-brand.jpg",
     themeColor: "#FAF6F0",
     soundThemeIdx: 1,
     particleThemeIdx: 1
