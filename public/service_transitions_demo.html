@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services Transition Effects Showcase — Events by Mer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-alabaster: #F4ECE1;
+      --color-bronze: #85684B;
+      --color-espresso: #2C221A;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'DM Sans', sans-serif;
+      --anim-duration: 2.2s; /* Default Slow-Motion for crystal clear inspection */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-alabaster);
+      color: var(--color-espresso);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .demoHeader {
+      text-align: center;
+      max-width: 750px;
+      margin-bottom: 25px;
+    }
+
+    .demoTag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      color: var(--color-bronze);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .demoTitle {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .demoSub {
+      font-size: 14px;
+      color: rgba(44, 34, 26, 0.75);
+      line-height: 1.6;
+    }
+
+    /* Controls Bar */
+    .controlsGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 35px;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .rowLabel {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--color-bronze);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .buttonsRow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .effectBtn, .speedBtn {
+      background: rgba(133, 104, 75, 0.08);
+      border: 1px solid rgba(133, 104, 75, 0.3);
+      color: var(--color-espresso);
+      padding: 10px 18px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .effectBtn:hover, .effectBtn.active,
+    .speedBtn:hover, .speedBtn.active {
+      background: var(--color-bronze);
+      color: var(--color-alabaster);
+      border-color: var(--color-bronze);
+      box-shadow: 0 4px 15px rgba(133, 104, 75, 0.2);
+    }
+
+    .stageCard {
+      background: rgba(253, 251, 248, 0.7);
+      border: 1px solid rgba(133, 104, 75, 0.25);
+      border-radius: 12px;
+      padding: 70px 40px;
+      width: 100%;
+      max-width: 740px;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(44, 34, 26, 0.05);
+    }
+
+    .cardHeader {
+      margin-bottom: 24px;
+      width: 100%;
+    }
+
+    .offerTag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      color: var(--color-bronze);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .counter {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--color-bronze);
+      display: block;
+      margin-bottom: 8px;
+      opacity: 0.75;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--color-bronze);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-family: var(--font-serif);
+      font-size: 40px;
+      font-weight: 400;
+      color: var(--color-espresso);
+      line-height: 1.2;
+    }
+
+    .divider {
+      height: 1px;
+      width: 80px;
+      background-color: var(--color-bronze);
+      opacity: 0.3;
+      margin: 22px auto;
+      transform-origin: center;
+    }
+
+    .desc {
+      font-size: 16.5px;
+      line-height: 1.85;
+      font-weight: 300;
+      max-width: 580px;
+      color: var(--color-espresso);
+      opacity: 0.9;
+    }
+
+    /* ---------------------------------------------------- */
+    /* DYNAMIC TRANSITION EFFECTS WITH SPEED CONTROLLER */
+    /* ---------------------------------------------------- */
+
+    /* EFFECT 1: Soft Fade & Float Rise */
+    .effect-1 .offerTag,
+    .effect-1 .counter,
+    .effect-1 .subtitle,
+    .effect-1 .title,
+    .effect-1 .divider,
+    .effect-1 .desc {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1),
+                  transform var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .effect-1.animate .offerTag,
+    .effect-1.animate .counter,
+    .effect-1.animate .subtitle,
+    .effect-1.animate .title,
+    .effect-1.animate .divider,
+    .effect-1.animate .desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* EFFECT 2: Cinematic Horizontal Split Reveal */
+    .effect-2 .offerTag,
+    .effect-2 .counter,
+    .effect-2 .subtitle,
+    .effect-2 .title {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1),
+                  transform var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .effect-2 .desc {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1),
+                  transform var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .effect-2 .divider {
+      opacity: 0;
+      transform: scaleX(0);
+      transition: transform var(--anim-duration) ease, opacity var(--anim-duration) ease;
+    }
+
+    .effect-2.animate .offerTag,
+    .effect-2.animate .counter,
+    .effect-2.animate .subtitle,
+    .effect-2.animate .title,
+    .effect-2.animate .desc {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .effect-2.animate .divider {
+      opacity: 0.3;
+      transform: scaleX(1);
+    }
+
+    /* EFFECT 3: Architectural Scale & Expand */
+    .effect-3 .cardHeader {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1),
+                  transform var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .effect-3 .divider {
+      opacity: 0;
+      transform: scaleX(0);
+      transition: transform var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1), opacity var(--anim-duration) ease;
+    }
+
+    .effect-3 .desc {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1),
+                  transform var(--anim-duration) cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .effect-3.animate .cardHeader {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .effect-3.animate .divider {
+      opacity: 0.3;
+      transform: scaleX(1);
+    }
+
+    .effect-3.animate .desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* EFFECT 4: Cascading Line-by-Line Stagger */
+    .effect-4 .offerTag { opacity: 0; transform: translateY(20px); transition: all calc(var(--anim-duration) * 0.5) ease 0.1s; }
+    .effect-4 .counter { opacity: 0; transform: translateY(20px); transition: all calc(var(--anim-duration) * 0.5) ease 0.3s; }
+    .effect-4 .subtitle { opacity: 0; transform: translateY(20px); transition: all calc(var(--anim-duration) * 0.5) ease 0.5s; }
+    .effect-4 .title { opacity: 0; transform: translateY(20px); transition: all calc(var(--anim-duration) * 0.5) ease 0.7s; }
+    .effect-4 .divider { opacity: 0; transform: scaleX(0); transition: all calc(var(--anim-duration) * 0.5) ease 0.9s; }
+    .effect-4 .desc { opacity: 0; transform: translateY(20px); transition: all calc(var(--anim-duration) * 0.5) ease 1.1s; }
+
+    .effect-4.animate .offerTag,
+    .effect-4.animate .counter,
+    .effect-4.animate .subtitle,
+    .effect-4.animate .title,
+    .effect-4.animate .desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .effect-4.animate .divider {
+      opacity: 0.3;
+      transform: scaleX(1);
+    }
+
+    .actionArea {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .replayBtn {
+      background: var(--color-espresso);
+      color: #B79A72;
+      border: none;
+      padding: 14px 32px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(44, 34, 26, 0.15);
+    }
+
+    .replayBtn:hover {
+      background: #352A1E;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(44, 34, 26, 0.25);
+    }
+
+    .loopToggleBtn {
+      background: transparent;
+      border: 1px solid var(--color-bronze);
+      color: var(--color-espresso);
+      padding: 13px 20px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .loopToggleBtn.active {
+      background: rgba(133, 104, 75, 0.15);
+      border-color: var(--color-bronze);
+    }
+
+    .effectDescBox {
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--color-bronze);
+      font-style: italic;
+      text-align: center;
+      min-height: 40px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="demoHeader">
+    <span class="demoTag">SLOW-MOTION & SPEED CONTROLLER</span>
+    <h1 class="demoTitle">Services Transition Showcase</h1>
+    <p class="demoSub">Select a speed setting (Slow-Motion, Normal, or Fast) and toggle between effects to clearly observe every detail.</p>
+  </div>
+
+  <div class="controlsGroup">
+    <div style="text-align: center;">
+      <span class="rowLabel">Step 1: Choose Animation Speed</span>
+      <div class="buttonsRow">
+        <button class="speedBtn active" onclick="setSpeed('2.5s', this)">🐢 Slow Motion (2.5s)</button>
+        <button class="speedBtn" onclick="setSpeed('1.2s', this)">⏱️ Normal Speed (1.2s)</button>
+        <button class="speedBtn" onclick="setSpeed('0.6s', this)">⚡ Fast (0.6s)</button>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 10px;">
+      <span class="rowLabel">Step 2: Choose Transition Style</span>
+      <div class="buttonsRow">
+        <button class="effectBtn active" onclick="selectEffect(1)">1. Soft Fade & Float Rise</button>
+        <button class="effectBtn" onclick="selectEffect(2)">2. Horizontal Split Reveal</button>
+        <button class="effectBtn" onclick="selectEffect(3)">3. Architectural Scale & Expand</button>
+        <button class="effectBtn" onclick="selectEffect(4)">4. Cascading Line-by-Line</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="stageCard" class="stageCard effect-1">
+    <div class="cardHeader">
+      <span class="offerTag">WHAT WE OFFER</span>
+      <span class="counter">SERVICE 01 / 12</span>
+      <span class="subtitle">Flawless Orchestration from Concept to Vows</span>
+      <h2 class="title">Wedding Planning & Coordination</h2>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="desc">
+      From budgeting to venue layout and timeline orchestration, we handle every microscopic logistical detail. We align premium partners across Ethiopia to execute your wedding with absolute poise.
+    </p>
+  </div>
+
+  <div class="actionArea">
+    <button class="replayBtn" onclick="triggerAnimation()">▶ Replay Current Transition</button>
+    <button id="loopBtn" class="loopToggleBtn" onclick="toggleAutoLoop()">🔁 Auto-Loop: OFF</button>
+  </div>
+
+  <div id="effectDescBox" class="effectDescBox">
+    Effect 1: Soft Editorial Fade & Float Rise — Smooth, calm floating upward reveal.
+  </div>
+
+  <script>
+    let currentEffect = 1;
+    let loopInterval = null;
+
+    const descriptions = {
+      1: "Effect 1: Soft Editorial Fade & Float Rise — Smooth, calm floating upward reveal.",
+      2: "Effect 2: Horizontal Split Reveal — Header slides from left (-60px), description slides from right (+60px).",
+      3: "Effect 3: Architectural Scale & Expand — Title scales gracefully into view (0.9 -> 1) with expanding gold divider line.",
+      4: "Effect 4: Cascading Line-by-Line — Sequential element-by-element typewriter entrance with staggered delays."
+    };
+
+    function setSpeed(duration, btnEl) {
+      document.documentElement.style.setProperty('--anim-duration', duration);
+      document.querySelectorAll('.speedBtn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+      triggerAnimation();
+    }
+
+    function selectEffect(num) {
+      currentEffect = num;
+      document.querySelectorAll('.effectBtn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === num - 1);
+      });
+      
+      const card = document.getElementById('stageCard');
+      card.className = `stageCard effect-${num}`;
+      document.getElementById('effectDescBox').innerText = descriptions[num];
+
+      triggerAnimation();
+    }
+
+    function triggerAnimation() {
+      const card = document.getElementById('stageCard');
+      card.classList.remove('animate');
+      setTimeout(() => {
+        card.classList.add('animate');
+      }, 80);
+    }
+
+    function toggleAutoLoop() {
+      const btn = document.getElementById('loopBtn');
+      if (loopInterval) {
+        clearInterval(loopInterval);
+        loopInterval = null;
+        btn.classList.remove('active');
+        btn.innerText = '🔁 Auto-Loop: OFF';
+      } else {
+        triggerAnimation();
+        loopInterval = setInterval(triggerAnimation, 3500);
+        btn.classList.add('active');
+        btn.innerText = '🔁 Auto-Loop: ON';
+      }
+    }
+
+    // Auto start on load
+    window.onload = () => {
+      triggerAnimation();
+    };
+  </script>
+
+</body>
+</html>

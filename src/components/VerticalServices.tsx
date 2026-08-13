@@ -702,6 +702,9 @@ export default function VerticalServices({ onIndexChange }: VerticalServicesProp
                 <div className={styles.cardContent}>
                   {/* Header: Counter, Subtitle and Title */}
                   <div className={styles.cardHeader}>
+                    <span className={styles.mainSectionOfferTag}>
+                      WHAT WE OFFER
+                    </span>
                     <span className={styles.cardCounter}>
                       SERVICE {idx < 9 ? `0${idx + 1}` : idx + 1} / 12
                     </span>
@@ -711,20 +714,7 @@ export default function VerticalServices({ onIndexChange }: VerticalServicesProp
                     <h3 className={styles.cardTitle}>{service.title}</h3>
                   </div>
 
-                  {/* Centered Portrait Image Frame */}
-                  <div className={styles.imageFrameContainer}>
-                    <div className={styles.imageOffsetFrame} />
-                    <div className={styles.imageWindow}>
-                      <Image
-                        src={service.image}
-                        alt="Service Visual"
-                        fill
-                        priority={idx < 2}
-                        className={styles.slideImage}
-                        sizes="(max-width: 991px) 100vw, 40vw"
-                      />
-                    </div>
-                  </div>
+                  <div className={styles.detailsDivider} />
 
                   {/* Footer Description */}
                   <div className={styles.cardInfoBody}>

@@ -208,29 +208,47 @@
   z-index: 1;
 }
 
-.heroRingSvg {
+.heroArchSvg {
   position: absolute;
-  top: -542px;
+  top: 52%;
   left: 50%;
-  transform: translateX(-50%) scaleX(-1);
-  transform-origin: center center;
-  width: 1180px;
-  height: 1180px;
+  transform: translate(-50%, -50%);
+  width: min(780px, 92vw);
+  height: min(880px, 85vh);
   z-index: 1;
   pointer-events: none;
   overflow: visible;
 }
 
-.heroRingCircle {
+.heroArchMainPath {
   fill: none;
-  stroke: rgba(133, 104, 75, 0.18);
+  stroke: rgba(133, 104, 75, 0.25);
   stroke-width: 1.5px;
-  stroke-dasharray: 3644;
-  stroke-dashoffset: 3644;
-  animation: drawHeroCircle 2.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+  animation: drawHeroArch 2.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
 }
 
-@keyframes drawHeroCircle {
+.heroArchInnerPath {
+  fill: none;
+  stroke: rgba(133, 104, 75, 0.12);
+  stroke-width: 1px;
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
+  animation: drawHeroArch 2.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+}
+
+.heroArchCrownLine {
+  stroke: rgba(133, 104, 75, 0.3);
+  stroke-width: 1px;
+}
+
+.heroArchCrownDot {
+  fill: var(--color-bronze);
+  opacity: 0.6;
+}
+
+@keyframes drawHeroArch {
   to {
     stroke-dashoffset: 0;
   }
@@ -1004,10 +1022,10 @@
     font-size: 54px;
   }
 
-  .heroRingSvg {
-    top: -385px;
-    width: min(840px, 165vw);
-    height: min(840px, 165vw);
+  .heroArchSvg {
+    top: 50%;
+    width: min(440px, 92vw);
+    height: min(640px, 80vh);
   }
 
   .aboutLayout {
@@ -1045,10 +1063,10 @@
     padding: 16px 20px;
   }
   
-  .heroRingSvg {
-    top: -355px;
-    width: min(770px, 175vw);
-    height: min(770px, 175vw);
+  .heroArchSvg {
+    top: 50%;
+    width: min(360px, 92vw);
+    height: min(540px, 78vh);
   }
 
   .aboutImagePanel {

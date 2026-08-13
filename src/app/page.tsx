@@ -185,8 +185,11 @@ export default function Home() {
 
       <section id="home" className={styles.heroSection}>
         <div className={styles.heroBackground} />
-        <svg className={styles.heroRingSvg} viewBox="0 0 1200 1200" aria-hidden="true">
-          <circle cx="600" cy="600" r="580" className={styles.heroRingCircle} />
+        <svg className={styles.heroArchSvg} viewBox="0 0 800 1000" aria-hidden="true">
+          <path d="M 120 1000 V 420 A 280 280 0 0 1 680 420 V 1000" className={styles.heroArchMainPath} />
+          <path d="M 160 1000 V 435 A 240 240 0 0 1 640 435 V 1000" className={styles.heroArchInnerPath} />
+          <line x1="360" y1="120" x2="440" y2="120" className={styles.heroArchCrownLine} />
+          <circle cx="400" cy="120" r="4" className={styles.heroArchCrownDot} />
         </svg>
         <div className={styles.heroContent}>
           <span className={`${styles.heroMotto} en`}>WEDDING PLANNING & EVENT PRODUCTION</span>
