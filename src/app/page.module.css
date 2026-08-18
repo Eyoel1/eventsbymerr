@@ -177,10 +177,7 @@
 
 /* 2. Hero Section */
 .heroSection {
-  height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  flex-shrink: 0;
+  min-height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -188,7 +185,7 @@
   align-items: center;
   text-align: center;
   background-color: var(--color-alabaster);
-  padding: 0 20px;
+  padding: 120px 20px 80px;
   overflow: hidden;
   box-sizing: border-box;
 }

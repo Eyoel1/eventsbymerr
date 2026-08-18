@@ -47,8 +47,8 @@ export default function Home() {
           <a href="#home" className={styles.navLink} aria-label="Navigate to Home">
             <span>Home</span>
           </a>
-          <a href="#about" className={styles.navLink} aria-label="Navigate to About Us">
-            <span>About</span>
+          <a href="#services" className={styles.navLink} aria-label="Navigate to Services Catalog">
+            <span>Services</span>
           </a>
         </nav>
 
@@ -67,8 +67,8 @@ export default function Home() {
         </div>
         
         <nav className={`${styles.navLinks} ${styles.navRight}`} aria-label="Primary Navigation Right">
-          <a href="#services" className={styles.navLink} aria-label="Navigate to Services Catalog">
-            <span>Services</span>
+          <a href="#about" className={styles.navLink} aria-label="Navigate to About Us">
+            <span>About</span>
           </a>
           <a href="#contact" className={styles.navLink} aria-label="Navigate to Inquiry and Contact">
             <span>Inquiry</span>
@@ -107,13 +107,13 @@ export default function Home() {
             <span className={styles.mobileNavNum}>01</span>
             <span>Home</span>
           </a>
-          <a href="#about" onClick={() => setMobileMenuOpen(false)} className={styles.mobileNavLink} aria-label="About Us">
-            <span className={styles.mobileNavNum}>02</span>
-            <span>About Us</span>
-          </a>
           <a href="#services" onClick={() => setMobileMenuOpen(false)} className={styles.mobileNavLink} aria-label="Services Catalog">
-            <span className={styles.mobileNavNum}>03</span>
+            <span className={styles.mobileNavNum}>02</span>
             <span>Services Catalog</span>
+          </a>
+          <a href="#about" onClick={() => setMobileMenuOpen(false)} className={styles.mobileNavLink} aria-label="About Us">
+            <span className={styles.mobileNavNum}>03</span>
+            <span>About Us</span>
           </a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)} className={styles.mobileNavLink} aria-label="Inquire and Contact">
             <span className={styles.mobileNavNum}>04</span>
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero Section */}
+      {/* Section 1: Hero Section */}
       <section id="home" className={styles.heroSection} aria-label="Hero Introduction">
         <div className={styles.heroBackground} />
         <svg className={styles.heroArchSvg} viewBox="0 0 800 1000" aria-hidden="true" role="presentation">
@@ -149,14 +149,14 @@ export default function Home() {
             <span>EXPLORE SERVICES</span>
           </a>
         </div>
-
-        <a href="#about" className={styles.heroScroll} aria-label="Scroll down to About section">
-          <span>SCROLL</span>
-          <div className={styles.scrollLine} />
-        </a>
       </section>
 
-      {/* About Section - Editorial Collage Layout */}
+      {/* Section 2: Services Section (Immediately After Hero) */}
+      <section id="services" className={styles.servicesSectionWrapper} aria-labelledby="servicesHeadingTitle">
+        <ServicesAccordion />
+      </section>
+
+      {/* Section 3: About Section (After Services) */}
       <section id="about" className={styles.aboutSection} aria-labelledby="aboutHeadingTitle">
         <div className={styles.aboutContainer}>
           <div className={styles.aboutHeading}>
@@ -213,18 +213,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section — Expanding Editorial Slits */}
-      <section id="services" className={styles.servicesSectionWrapper}>
-        <ServicesAccordion />
-      </section>
-
-      {/* Contact & Inquiry Section */}
-      <section id="contact" className={styles.contactAndFooterSection}>
+      {/* Section 4: Contact & Inquiry Section */}
+      <section id="contact" className={styles.contactAndFooterSection} aria-labelledby="contactHeadingTitle">
         <div className={styles.contactContainer}>
           <div className={styles.contactInfo}>
             <div className={styles.contactHeader}>
               <span className={styles.contactTag}>INQUIRY</span>
-              <h2 className={styles.contactTitle}>Let’s Begin Designing</h2>
+              <h2 id="contactHeadingTitle" className={styles.contactTitle}>Let’s Begin Designing</h2>
               <p className={styles.contactDesc}>
                 Whether planning a timeless luxury wedding, private celebration, or high-end event production 
                 in Addis Ababa and across Ethiopia, we are here to execute your vision with absolute precision.
@@ -296,6 +291,7 @@ export default function Home() {
                     <option value="wedding">Luxury Wedding Planning</option>
                     <option value="styling">Event Styling & Design</option>
                     <option value="production">Technical Event Production</option>
+                    <option value="photography">Wedding Photography & Videography</option>
                     <option value="private">Private Celebration / Gala</option>
                     <option value="corporate">Corporate Event</option>
                   </select>
@@ -336,15 +332,15 @@ export default function Home() {
         </div>
 
         {/* Footer Bottom Bar */}
-        <footer className={styles.footerBottomBar}>
+        <footer className={styles.footerBottomBar} aria-label="Site Footer">
           <div className={styles.footerInner}>
             <span className={styles.copyright}>© {new Date().getFullYear()} Events by Mer. All rights reserved.</span>
-            <div className={styles.footerLinks}>
+            <nav className={styles.footerLinks} aria-label="Footer Navigation">
               <a href="#home">Home</a>
-              <a href="#about">About</a>
               <a href="#services">Services</a>
+              <a href="#about">About</a>
               <a href="#contact">Inquiry</a>
-            </div>
+            </nav>
           </div>
         </footer>
       </section>
