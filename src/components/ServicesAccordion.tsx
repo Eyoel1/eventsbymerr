@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ServicesAccordion.module.css";
 
-interface ServiceItem {
+export interface ServiceItem {
   id: string;
   num: string;
   shortTitle: string;
@@ -13,7 +13,7 @@ interface ServiceItem {
   image: string;
 }
 
-const SERVICES: ServiceItem[] = [
+export const SERVICES: ServiceItem[] = [
   {
     id: "wedding-planning",
     num: "01",
@@ -66,7 +66,8 @@ const SERVICES: ServiceItem[] = [
 
 export default function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [modalService, setModalService] = useState<ServiceItem | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedServiceId, setSelectedServiceId] = useState<string>("all-services");
   const [modalSubmitted, setModalSubmitted] = useState(false);
   const [modalData, setModalData] = useState({
     name: "",
@@ -77,9 +78,19 @@ export default function ServicesAccordion() {
     notes: ""
   });
 
+  // Find currently active service object for display in modal banner
+  const currentModalService = SERVICES.find((s) => s.id === selectedServiceId) || {
+    id: "all-services",
+    num: "★",
+    shortTitle: "Bespoke Consultation",
+    title: "Comprehensive Wedding Consultation",
+    desc: "Personalized consultation with Mer to discuss multi-service bespoke planning, coordination, and production.",
+    image: "/images/about-brand.webp"
+  };
+
   // Lock body scroll when modal is open
   useEffect(() => {
-    if (modalService) {
+    if (isModalOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -87,16 +98,17 @@ export default function ServicesAccordion() {
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [modalService]);
+  }, [isModalOpen]);
 
-  const handleOpenModal = (service: ServiceItem, e: React.MouseEvent) => {
+  const handleOpenModal = (serviceId: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    setModalService(service);
+    setSelectedServiceId(serviceId);
     setModalSubmitted(false);
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setModalService(null);
+    setIsModalOpen(false);
     setModalSubmitted(false);
     setModalData({
       name: "",
@@ -186,7 +198,7 @@ export default function ServicesAccordion() {
                     type="button"
                     className={styles.cardInquireBtn}
                     aria-label={`Inquire about ${service.title}`}
-                    onClick={(e) => handleOpenModal(service, e)}
+                    onClick={(e) => handleOpenModal(service.id, e)}
                   >
                     <span>INQUIRE ABOUT THIS SERVICE →</span>
                   </button>
@@ -208,7 +220,7 @@ export default function ServicesAccordion() {
         </div>
         <button
           type="button"
-          onClick={(e) => handleOpenModal(SERVICES[0], e)}
+          onClick={(e) => handleOpenModal("all-services", e)}
           className={styles.catalogCtaBtn}
           aria-label="Book a Consultation"
         >
@@ -219,7 +231,7 @@ export default function ServicesAccordion() {
       {/* ============================================================ */}
       {/* BESPOKE SERVICE MODAL POP-UP */}
       {/* ============================================================ */}
-      {modalService && (
+      {isModalOpen && (
         <div
           className={styles.modalBackdrop}
           onClick={handleCloseModal}
@@ -234,14 +246,16 @@ export default function ServicesAccordion() {
             {/* Modal Header with Service Photo Banner */}
             <div className={styles.modalHeroBanner}>
               <Image
-                src={modalService.image}
-                alt={modalService.title}
+                src={currentModalService.image}
+                alt={currentModalService.title}
                 fill
                 className={styles.modalBannerImage}
               />
               <div className={styles.modalBannerOverlay}>
-                <span className={styles.modalServiceTag}>SERVICE {modalService.num} INQUIRY</span>
-                <h3 id="modalServiceTitle" className={styles.modalServiceHeading}>{modalService.title}</h3>
+                <span className={styles.modalServiceTag}>
+                  {selectedServiceId === "all-services" ? "BESPOKE CONSULTATION" : `SERVICE ${currentModalService.num} INQUIRY`}
+                </span>
+                <h3 id="modalServiceTitle" className={styles.modalServiceHeading}>{currentModalService.title}</h3>
               </div>
               <button
                 type="button"
@@ -260,11 +274,28 @@ export default function ServicesAccordion() {
                   <div className={styles.successGlowIcon}>✦</div>
                   <h4 className={styles.successTitle}>Inquiry Confirmed</h4>
                   <p className={styles.successText}>
-                    Thank you for selecting <strong>{modalService.title}</strong>. Mer and our lead production team will reach out directly within 24 hours.
+                    Thank you for reaching out for <strong>{currentModalService.title}</strong>. Mer and our lead production team will reach out directly within 24 hours.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleModalSubmit} className={styles.modalForm}>
+                  {/* Selectable Service Dropdown */}
+                  <div className={styles.modalFieldGroup}>
+                    <label className={styles.modalFieldLabel}>SELECT SERVICE OF INTEREST</label>
+                    <select
+                      value={selectedServiceId}
+                      onChange={(e) => setSelectedServiceId(e.target.value)}
+                      className={styles.modalInput}
+                    >
+                      <option value="all-services">✦ Comprehensive Consultation / All Services</option>
+                      {SERVICES.map((s) => (
+                        <option key={s.id} value={s.id}>
+                          {s.num}. {s.title}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
                   <div className={styles.modalFormRow}>
                     <div className={styles.modalFieldGroup}>
                       <label className={styles.modalFieldLabel}>YOUR NAME</label>
@@ -341,7 +372,7 @@ export default function ServicesAccordion() {
                   </div>
 
                   <button type="submit" className={styles.modalSubmitBtn}>
-                    <span>SUBMIT INQUIRY FOR {modalService.shortTitle.toUpperCase()} →</span>
+                    <span>SUBMIT INQUIRY FOR {currentModalService.shortTitle.toUpperCase()} →</span>
                   </button>
                 </form>
               )}
