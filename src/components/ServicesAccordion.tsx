@@ -75,6 +75,10 @@ const SERVICES: ServiceItem[] = [
 export default function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const handleToggle = (idx: number) => {
+    setActiveIndex(idx);
+  };
+
   return (
     <div className={styles.servicesSection}>
       <div className={styles.sectionHeader}>
@@ -98,11 +102,11 @@ export default function ServicesAccordion() {
               aria-label={`Service ${service.num}: ${service.title}`}
               className={`${styles.fashionPanel} ${isActive ? styles.active : ""}`}
               onMouseEnter={() => setActiveIndex(idx)}
-              onClick={() => setActiveIndex(idx)}
+              onClick={() => handleToggle(idx)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  setActiveIndex(idx);
+                  handleToggle(idx);
                 }
               }}
             >
@@ -117,10 +121,19 @@ export default function ServicesAccordion() {
                 />
               </div>
 
-              {/* Vertical Title when collapsed on desktop */}
+              {/* Collapsed Vertical Title (Desktop Only) */}
               <div className={styles.panelVerticalTitle}>
                 <span className={styles.verticalNum}>{service.num}</span>
                 <span className={styles.verticalText}>{service.shortTitle}</span>
+              </div>
+
+              {/* Mobile Collapsed/Active Banner Header (Mobile Only) */}
+              <div className={styles.mobileBannerBar}>
+                <div className={styles.mobileBannerLeft}>
+                  <span className={styles.mobileNum}>{service.num}</span>
+                  <span className={styles.mobileTitle}>{service.shortTitle}</span>
+                </div>
+                <span className={styles.mobileToggleIcon}>{isActive ? "—" : "+"}</span>
               </div>
 
               {/* Full Expanded Overlay Content */}

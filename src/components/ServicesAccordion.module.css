@@ -39,7 +39,9 @@
   font-weight: 300;
 }
 
-/* Horizontal Expanding Slits Container */
+/* ============================================================ */
+/* DESKTOP ACCORDION LAYOUT */
+/* ============================================================ */
 .fashionAccordion {
   display: flex;
   height: 600px;
@@ -59,8 +61,9 @@
   border: 1px solid rgba(133, 104, 75, 0.25);
   box-shadow: 0 15px 35px rgba(44, 34, 26, 0.08);
   transition: flex 0.75s cubic-bezier(0.25, 1, 0.3, 1),
-              transform 0.4s ease,
-              border-color 0.4s ease;
+              height 0.6s cubic-bezier(0.25, 1, 0.3, 1),
+              border-color 0.4s ease,
+              box-shadow 0.4s ease;
 }
 
 .fashionPanel:hover,
@@ -93,7 +96,7 @@
   transform: scale(1.04);
 }
 
-/* Collapsed State Vertical Label */
+/* Collapsed State Vertical Label (Desktop Only) */
 .panelVerticalTitle {
   position: absolute;
   top: 40px;
@@ -127,6 +130,11 @@
 .fashionPanel:hover .panelVerticalTitle,
 .fashionPanel.active .panelVerticalTitle {
   opacity: 0;
+}
+
+/* Mobile Banner Bar (Hidden on Desktop) */
+.mobileBannerBar {
+  display: none;
 }
 
 /* Expanded State Dark Vignette & Narrative Overlay */
@@ -195,46 +203,117 @@
 }
 
 /* ============================================================ */
-/* RESPONSIVENESS */
+/* MOBILE & TABLET RESPONSIVENESS */
 /* ============================================================ */
 @media (max-width: 991px) {
   .servicesSection {
-    padding: 70px 20px;
+    padding: 60px 16px;
+  }
+
+  .sectionTitle {
+    font-size: 36px;
+  }
+
+  .sectionSub {
+    font-size: 14px;
   }
 
   .fashionAccordion {
+    display: flex;
     flex-direction: column;
     height: auto;
-    gap: 16px;
+    gap: 14px;
   }
 
   .fashionPanel {
-    flex: 1;
-    height: 180px;
+    flex: none;
+    width: 100%;
+    height: 140px;
+    min-height: 140px;
     border-radius: 8px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .fashionPanel:hover,
   .fashionPanel.active {
-    flex: 1;
+    flex: none;
     height: 380px;
+    min-height: 380px;
+    border-color: var(--color-bronze);
+    box-shadow: 0 12px 30px rgba(44, 34, 26, 0.18);
   }
 
   .panelVerticalTitle {
     display: none;
   }
 
+  /* Mobile Top Bar on each panel */
+  .mobileBannerBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px;
+    background: linear-gradient(to bottom, rgba(44, 34, 26, 0.85) 0%, transparent 100%);
+    z-index: 4;
+    color: #FAF4EB;
+    pointer-events: none;
+  }
+
+  .mobileBannerLeft {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .mobileNum {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--color-bronze-light);
+  }
+
+  .mobileTitle {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: #FAF4EB;
+  }
+
+  .mobileToggleIcon {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--color-bronze-light);
+  }
+
+  .panelOverlay {
+    padding: 20px;
+    background: linear-gradient(
+      to top,
+      rgba(44, 34, 26, 0.96) 0%,
+      rgba(44, 34, 26, 0.6) 60%,
+      rgba(44, 34, 26, 0.2) 100%
+    );
+  }
+
   .panelFullContent {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .fashionPanel.active .panelFullContent {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .panelOverlay {
-    padding: 24px 20px;
-  }
-
   .panelHeading {
-    font-size: 26px;
+    font-size: 22px;
+    line-height: 1.25;
+    margin-bottom: 10px;
   }
 
   .panelDescription {
@@ -245,19 +324,29 @@
 
 @media (max-width: 576px) {
   .sectionTitle {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .fashionPanel {
-    height: 160px;
+    height: 130px;
+    min-height: 130px;
   }
 
-  .fashionPanel:hover,
   .fashionPanel.active {
     height: 360px;
+    min-height: 360px;
+  }
+
+  .mobileTitle {
+    font-size: 16px;
   }
 
   .panelHeading {
-    font-size: 22px;
+    font-size: 20px;
+  }
+
+  .panelDescription {
+    font-size: 13px;
+    line-height: 1.55;
   }
 }
