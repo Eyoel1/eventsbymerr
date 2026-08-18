@@ -89,7 +89,14 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/images/logo.webp", type: "image/webp" },
+      { url: "/favicon.ico" }
+    ],
+    apple: [
+      { url: "/images/logo.webp" }
+    ],
+    shortcut: "/images/logo.webp"
   },
 };
 
@@ -100,8 +107,8 @@ const jsonLd = {
   description:
     "Premier luxury wedding planning, styling, and event production house in Addis Ababa, Ethiopia.",
   url: "https://eventsbymer.com",
-  logo: "https://eventsbymer.com/images/logo.jpg",
-  image: "https://eventsbymer.com/images/user_photos/service_ethiopian_ceremony.jpg",
+  logo: "https://eventsbymer.com/images/logo.webp",
+  image: "https://eventsbymer.com/images/about-brand.webp",
   telephone: "+251911000000",
   email: "contact@eventsbymer.com",
   address: {

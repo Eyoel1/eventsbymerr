@@ -330,20 +330,43 @@ export default function Home() {
             )}
           </div>
         </div>
-
-        {/* Footer Bottom Bar */}
-        <footer className={styles.footerBottomBar} aria-label="Site Footer">
-          <div className={styles.footerInner}>
-            <span className={styles.copyright}>© {new Date().getFullYear()} Events by Mer. All rights reserved.</span>
-            <nav className={styles.footerLinks} aria-label="Footer Navigation">
-              <a href="#home">Home</a>
-              <a href="#services">Services</a>
-              <a href="#about">About</a>
-              <a href="#contact">Inquiry</a>
-            </nav>
-          </div>
-        </footer>
       </section>
+
+      {/* Luxury Brand Footer */}
+      <footer className={styles.luxuryFooter} aria-label="Site Footer">
+        <div className={styles.footerTopRow}>
+          <div className={styles.footerBrand}>
+            <div className={styles.footerLogoContainer}>
+              <Image
+                src="/images/logo.webp"
+                alt="Events by Mer Logo"
+                width={36}
+                height={36}
+                className={styles.footerLogoImage}
+              />
+              <span className={styles.footerBrandName}>Events by Mer</span>
+            </div>
+            <p className={styles.footerMotto}>Intentional Design · Flawless Execution</p>
+          </div>
+
+          <nav className={styles.footerNav} aria-label="Footer Navigation">
+            <a href="#home" className={styles.footerNavLink}>Home</a>
+            <a href="#services" className={styles.footerNavLink}>Services</a>
+            <a href="#about" className={styles.footerNavLink}>About</a>
+            <a href="#contact" className={styles.footerNavLink}>Inquiry</a>
+          </nav>
+        </div>
+
+        <div className={styles.footerDivider} />
+
+        <div className={styles.footerBottomRow}>
+          <span className={styles.footerLocation}>Addis Ababa, Ethiopia</span>
+          <span className={styles.footerCopyright}>© {new Date().getFullYear()} Events by Mer. All rights reserved.</span>
+          <a href="#home" className={styles.backToTopBtn} aria-label="Back to Top">
+            <span>Back to Top ↑</span>
+          </a>
+        </div>
+      </footer>
 
     </main>
   );
