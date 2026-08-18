@@ -537,10 +537,9 @@
 .contactAndFooterSection {
   background-color: var(--color-cream);
   color: var(--color-text-dark);
-  padding: 120px 0 0 0;
+  padding: 100px 0 80px 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-sizing: border-box;
 }
 
@@ -570,112 +569,129 @@
 .contactTag {
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   color: var(--color-bronze);
   text-transform: uppercase;
 }
 
 .contactTitle {
-  font-size: 42px;
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 4vw, 48px);
   line-height: 1.15;
+  color: var(--color-espresso);
 }
 
 .contactDesc {
-  font-size: 14px;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
   line-height: 1.7;
-  opacity: 0.85;
-  font-weight: 300;
+  color: rgba(44, 34, 26, 0.8);
+  max-width: 420px;
 }
 
-.infoDetails {
+.contactDetails {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding-top: 10px;
 }
 
-.infoItem {
+.contactBlock {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.infoLabel {
-  font-size: 10px;
+.contactBlockLabel {
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.2em;
   color: var(--color-bronze);
+  text-transform: uppercase;
 }
 
-.infoValue {
-  font-size: 14px;
-  font-weight: 300;
-  opacity: 0.9;
+.contactBlockValue {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--color-espresso);
 }
 
-/* Inquiry Form */
+.contactFormWrapper {
+  background-color: transparent;
+}
+
+.formSuccessState {
+  background-color: var(--color-alabaster);
+  border: 1px solid rgba(133, 104, 75, 0.2);
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+}
+
+.formSuccessTitle {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--color-bronze);
+  margin-bottom: 12px;
+}
+
+.formSuccessText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(44, 34, 26, 0.85);
+}
+
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px; /* Slightly tighter gap to fit screen height */
-}
-
-.formRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 22px;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  position: relative;
+  gap: 8px;
 }
 
 .label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   color: var(--color-bronze);
+  text-transform: uppercase;
 }
 
-.input, .textarea, .select {
+.input, .select, .textarea {
+  width: 100%;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(133, 104, 75, 0.3);
-  padding: 8px 0;
+  padding: 10px 0;
+  font-family: var(--font-serif);
+  font-size: 16px;
   color: var(--color-espresso);
-  font-size: 14px;
-  font-weight: 300;
-  outline: none;
   transition: var(--transition-smooth);
 }
 
-.input:focus, .textarea:focus, .select:focus {
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
   border-bottom-color: var(--color-bronze);
 }
 
-.select option {
-  background-color: var(--color-alabaster);
-  color: var(--color-espresso);
-}
-
 .textarea {
-  resize: none;
+  resize: vertical;
 }
 
 .submitBtn {
   align-self: flex-start;
-  background: none;
+  background-color: transparent;
   border: 1px solid var(--color-bronze);
-  padding: 12px 30px;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
   color: var(--color-bronze);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 14px 32px;
   cursor: pointer;
   border-radius: 4px;
   transition: var(--transition-smooth);
@@ -689,11 +705,11 @@
   box-shadow: 0 8px 24px rgba(133, 104, 75, 0.2);
 }
 
-/* 7. Luxury Brand Footer Section */
+/* 7. Luxury Brand Footer Section - Slim & Balanced */
 .luxuryFooter {
   background-color: var(--color-espresso);
-  border-top: 1px solid rgba(183, 154, 114, 0.25);
-  padding: 80px 40px 40px;
+  border-top: 1px solid rgba(183, 154, 114, 0.22);
+  padding: 32px 40px 24px;
   color: var(--color-alabaster);
   width: 100%;
   box-sizing: border-box;
@@ -706,19 +722,19 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 20px;
 }
 
 .footerBrand {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .footerLogoContainer {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footerLogoImage {
@@ -728,14 +744,14 @@
 
 .footerBrandName {
   font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   color: #FAF4EB;
   letter-spacing: 0.04em;
 }
 
 .footerMotto {
-  font-size: 11.5px;
+  font-size: 10.5px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-bronze-light);
@@ -745,12 +761,12 @@
 .footerNav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 
 .footerNavLink {
   color: rgba(244, 236, 225, 0.85);
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -766,8 +782,8 @@
 .footerDivider {
   max-width: 1200px;
   height: 1px;
-  background: rgba(183, 154, 114, 0.22);
-  margin: 45px auto 25px;
+  background: rgba(183, 154, 114, 0.18);
+  margin: 18px auto 14px;
 }
 
 .footerBottomRow {
@@ -777,9 +793,9 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
-  font-size: 12px;
-  color: rgba(244, 236, 225, 0.65);
+  gap: 12px;
+  font-size: 11.5px;
+  color: rgba(244, 236, 225, 0.6);
   letter-spacing: 0.04em;
 }
 
@@ -793,7 +809,7 @@
 
 .backToTopBtn {
   color: var(--color-bronze-light);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-decoration: none;

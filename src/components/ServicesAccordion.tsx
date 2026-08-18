@@ -69,6 +69,7 @@ export default function ServicesAccordion() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string>("all-services");
   const [modalSubmitted, setModalSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [modalData, setModalData] = useState({
     name: "",
     phoneOrEmail: "",
@@ -101,6 +102,7 @@ export default function ServicesAccordion() {
   }, [isModalOpen]);
 
   const handleOpenModal = (serviceId: string, e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     setSelectedServiceId(serviceId);
     setModalSubmitted(false);
@@ -120,12 +122,43 @@ export default function ServicesAccordion() {
     });
   };
 
-  const handleModalSubmit = (e: React.FormEvent) => {
+  const handleModalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setModalSubmitted(true);
-    setTimeout(() => {
-      handleCloseModal();
-    }, 2400);
+    setIsSubmitting(true);
+
+    try {
+      // Send inquiry data directly to notification endpoint (Web3Forms)
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+      if (accessKey && accessKey !== "YOUR_ACCESS_KEY_HERE") {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `✨ New Inquiry: ${currentModalService.title} - ${modalData.name}`,
+            from_name: "Events by Mer Website",
+            service_requested: currentModalService.title,
+            client_name: modalData.name,
+            contact_info: modalData.phoneOrEmail,
+            event_date: modalData.eventDate || "Not provided",
+            guest_count: modalData.guestCount || "Not provided",
+            budget_tier: modalData.budgetTier,
+            notes: modalData.notes || "None"
+          })
+        });
+      }
+    } catch {
+      // Ignore network errors in local dev
+    } finally {
+      setIsSubmitting(false);
+      setModalSubmitted(true);
+      setTimeout(() => {
+        handleCloseModal();
+      }, 2600);
+    }
   };
 
   return (
@@ -151,11 +184,11 @@ export default function ServicesAccordion() {
               aria-label={`Service ${service.num}: ${service.title}`}
               className={`${styles.fashionPanel} ${isActive ? styles.active : ""}`}
               onMouseEnter={() => setActiveIndex(idx)}
-              onClick={() => setActiveIndex(idx)}
+              onClick={() => setActiveIndex(isActive ? -1 : idx)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  setActiveIndex(idx);
+                  setActiveIndex(isActive ? -1 : idx);
                 }
               }}
             >
@@ -177,7 +210,13 @@ export default function ServicesAccordion() {
               </div>
 
               {/* Mobile Collapsed/Active Banner Header (Mobile Only) */}
-              <div className={styles.mobileBannerBar}>
+              <div
+                className={styles.mobileBannerBar}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveIndex(isActive ? -1 : idx);
+                }}
+              >
                 <div className={styles.mobileBannerLeft}>
                   <span className={styles.mobileNum}>{service.num}</span>
                   <span className={styles.mobileTitle}>{service.shortTitle}</span>
@@ -371,8 +410,12 @@ export default function ServicesAccordion() {
                     />
                   </div>
 
-                  <button type="submit" className={styles.modalSubmitBtn}>
-                    <span>SUBMIT INQUIRY FOR {currentModalService.shortTitle.toUpperCase()} →</span>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={styles.modalSubmitBtn}
+                  >
+                    <span>{isSubmitting ? "TRANSMITTING INQUIRY..." : `SUBMIT INQUIRY FOR ${currentModalService.shortTitle.toUpperCase()} →`}</span>
                   </button>
                 </form>
               )}

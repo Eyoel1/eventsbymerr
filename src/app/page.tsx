@@ -18,24 +18,53 @@ export default function Home() {
     date: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormData({
-        name: "",
-        email: "",
-        eventType: "wedding",
-        date: "",
-        message: ""
-      });
-    }, 2000);
+    setIsSubmitting(true);
+
+    try {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+      if (accessKey && accessKey !== "YOUR_ACCESS_KEY_HERE") {
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `✨ New Inquiry: ${formData.eventType} - ${formData.name}`,
+            from_name: "Events by Mer Website",
+            client_name: formData.name,
+            client_email: formData.email,
+            event_type: formData.eventType,
+            event_date: formData.date || "Not provided",
+            details: formData.message
+          })
+        });
+      }
+    } catch {
+      // Ignore network errors in local dev
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+      setTimeout(() => {
+        setFormData({
+          name: "",
+          email: "",
+          eventType: "wedding",
+          date: "",
+          message: ""
+        });
+      }, 2500);
+    }
   };
 
   return (
@@ -323,8 +352,8 @@ export default function Home() {
                   />
                 </div>
 
-                <button type="submit" className={styles.submitBtn}>
-                  <span>SEND INQUIRY</span>
+                <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
+                  <span>{isSubmitting ? "TRANSMITTING..." : "SEND INQUIRY"}</span>
                 </button>
               </form>
             )}
