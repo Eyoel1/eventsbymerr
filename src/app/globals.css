@@ -37,16 +37,14 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  height: 100%;
   background-color: var(--color-alabaster);
   color: var(--color-text-dark);
-  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   font-family: var(--font-sans);
-  min-height: 100%;
+  min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -960,19 +960,19 @@
 /* Responsive CSS */
 @media (max-width: 991px) {
   .main {
-    height: 100dvh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
   }
 
-  .heroSection, .aboutSection, .valuesSection, .servicesSectionWrapper, .contactAndFooterSection {
-    height: auto !important;
-    min-height: 100dvh;
-    scroll-snap-align: start !important;
-    scroll-snap-stop: always !important;
-    padding: 100px 20px 60px !important;
+  .heroSection {
+    min-height: 90vh;
+    padding: 120px 20px 60px;
+  }
+
+  .aboutSection, .servicesSectionWrapper, .contactAndFooterSection {
+    height: auto;
+    padding: 80px 20px 40px;
   }
 
   .header {
