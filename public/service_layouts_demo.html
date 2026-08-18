@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10+ Unique Modern Luxury Layouts — Events by Mer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-alabaster: #F4ECE1;
+      --color-sand: #EAE0D3;
+      --color-bronze: #85684B;
+      --color-bronze-light: #B79A72;
+      --color-espresso: #2C221A;
+      --color-cream: #FDFBF8;
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-display: 'Playfair Display', serif;
+      --font-sans: 'DM Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-alabaster);
+      color: var(--color-espresso);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 100px;
+    }
+
+    /* Fixed Top Navigation Bar */
+    .topNav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      width: 100%;
+      background: rgba(244, 236, 225, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(133, 104, 75, 0.2);
+      padding: 14px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 25px rgba(44, 34, 26, 0.08);
+    }
+
+    .topHeaderLine {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1240px;
+      align-items: center;
+    }
+
+    .topTitle {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+      color: var(--color-bronze);
+      text-transform: uppercase;
+    }
+
+    .styleCounter {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--color-espresso);
+      background: rgba(133, 104, 75, 0.12);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .tabGroup {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      max-width: 1240px;
+    }
+
+    .tabBtn {
+      background: rgba(133, 104, 75, 0.07);
+      border: 1px solid rgba(133, 104, 75, 0.25);
+      color: var(--color-espresso);
+      padding: 7px 14px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .tabBtn:hover, .tabBtn.active {
+      background: var(--color-espresso);
+      color: var(--color-bronze-light);
+      border-color: var(--color-espresso);
+      box-shadow: 0 3px 12px rgba(44, 34, 26, 0.2);
+    }
+
+    /* Main Container */
+    .mainContainer {
+      width: 100%;
+      max-width: 1240px;
+      padding: 40px 24px;
+    }
+
+    .styleIntro {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .styleBadge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.3em;
+      color: var(--color-bronze);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .styleHeading {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--color-espresso);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .styleDescription {
+      font-size: 14.5px;
+      color: rgba(44, 34, 26, 0.75);
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .layoutSection {
+      display: none;
+    }
+
+    .layoutSection.active {
+      display: block;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================ */
+    /* STYLE 01: EXPANDING ACCORDION PANELS (FASHION SLITS) */
+    /* ============================================================ */
+    .fashionAccordion {
+      display: flex;
+      height: 580px;
+      width: 100%;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .fashionPanel {
+      flex: 1;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex 0.7s cubic-bezier(0.25, 1, 0.3, 1), transform 0.4s ease;
+      background: var(--color-espresso);
+    }
+
+    .fashionPanel:hover, .fashionPanel.active {
+      flex: 4.5;
+    }
+
+    .fashionPanel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.65;
+      transition: opacity 0.5s ease, transform 0.8s ease;
+    }
+
+    .fashionPanel:hover img, .fashionPanel.active img {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+
+    .fashionPanelOverlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44, 34, 26, 0.92) 0%, rgba(44, 34, 26, 0.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      color: var(--color-alabaster);
+    }
+
+    .panelVerticalTitle {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+      transform-origin: center;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--color-bronze-light);
+      text-transform: uppercase;
+      transition: opacity 0.3s ease;
+    }
+
+    .fashionPanel:hover .panelVerticalTitle,
+    .fashionPanel.active .panelVerticalTitle {
+      opacity: 0;
+    }
+
+    .panelFullContent {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease 0.2s;
+    }
+
+    .fashionPanel:hover .panelFullContent,
+    .fashionPanel.active .panelFullContent {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .panelNum {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      color: var(--color-bronze-light);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .panelTitle {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .panelDesc {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: rgba(244, 236, 225, 0.85);
+      font-weight: 300;
+      max-width: 460px;
+    }
+
+    /* ============================================================ */
+    /* STYLE 02: KINETIC CURSOR-FOLLOWER LIST */
+    /* ============================================================ */
+    .kineticListWrapper {
+      position: relative;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .kineticList {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(133, 104, 75, 0.25);
+    }
+
+    .kineticItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 20px;
+      border-bottom: 1px solid rgba(133, 104, 75, 0.25);
+      cursor: pointer;
+      transition: background 0.3s ease, padding 0.3s ease;
+    }
+
+    .kineticItem:hover {
+      background: rgba(133, 104, 75, 0.06);
+      padding-left: 35px;
+    }
+
+    .kineticLeft {
+      display: flex;
+      align-items: baseline;
+      gap: 30px;
+    }
+
+    .kineticNum {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--color-bronze);
+    }
+
+    .kineticTitle {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+
+    .kineticItem:hover .kineticTitle {
+      color: var(--color-bronze);
+    }
+
+    .kineticArrow {
+      font-size: 20px;
+      color: var(--color-bronze);
+      transition: transform 0.3s ease;
+    }
+
+    .kineticItem:hover .kineticArrow {
+      transform: translateX(10px);
+    }
+
+    .floatingCursorImage {
+      position: fixed;
+      width: 300px;
+      height: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8) rotate(-4deg);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 25px 50px rgba(44, 34, 26, 0.25);
+    }
+
+    .floatingCursorImage.visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    .floatingCursorImage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ============================================================ */
+    /* STYLE 03: ASYMMETRICAL VOGUE EDITORIAL COLLAGE */
+    /* ============================================================ */
+    .vogueCollageGrid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+      align-items: start;
+    }
+
+    .vogueCard {
+      background: rgba(253, 251, 248, 0.7);
+      border: 1px solid rgba(133, 104, 75, 0.2);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(44, 34, 26, 0.05);
+      transition: transform 0.4s ease;
+    }
+
+    .vogueCard:hover {
+      transform: translateY(-5px);
+    }
+
+    .vogueSpan8 { grid-column: span 8; }
+    .vogueSpan4 { grid-column: span 4; }
+    .vogueSpan6 { grid-column: span 6; }
+    .vogueSpan12 { grid-column: span 12; }
+
+    .vogueCardImg {
+      width: 100%;
+      height: 320px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .vogueCardImg.tall { height: 460px; }
+    .vogueCardImg.wide { height: 260px; }
+
+    .vogueCardImg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .vogueCard:hover .vogueCardImg img {
+      transform: scale(1.04);
+    }
+
+    /* ============================================================ */
+    /* STYLE 04: 3D PERSPECTIVE FLIP CARDS */
+    /* ============================================================ */
+    .flipCardsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      perspective: 1200px;
+    }
+
+    .flipCard {
+      height: 440px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .flipCardInner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.3, 1);
+      transform-style: preserve-3d;
+      border-radius: 8px;
+    }
+
+    .flipCard:hover .flipCardInner,
+    .flipCard.flipped .flipCardInner {
+      transform: rotateY(180deg);
+    }
+
+    .flipCardFront, .flipCardBack {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(44, 34, 26, 0.08);
+      border: 1px solid rgba(133, 104, 75, 0.25);
+    }
+
+    .flipCardFront img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .flipFrontOverlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(44, 34, 26, 0.9) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      color: var(--color-alabaster);
+      text-align: left;
+    }
+
+    .flipCardBack {
+      background: var(--color-espresso);
+      color: var(--color-alabaster);
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .flipBackTitle {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      color: var(--color-bronze-light);
+      margin-bottom: 15px;
+    }
+
+    .flipBackDesc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(244, 236, 225, 0.85);
+      font-weight: 300;
+    }
+
+    .flipTip {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--color-bronze-light);
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    /* ============================================================ */
+    /* STYLE 05: ARCHITECTURAL VAULT PORTAL */
+    /* ============================================================ */
+    .vaultPortalContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .portalPillTabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .portalPill {
+      background: transparent;
+      border: 1px solid rgba(133, 104, 75, 0.3);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-espresso);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .portalPill.active {
+      background: var(--color-bronze);
+      color: var(--color-alabaster);
+      border-color: var(--color-bronze);
+    }
+
+    .portalStage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: rgba(253, 251, 248, 0.7);
+      border: 1px solid rgba(133, 104, 75, 0.2);
+      border-radius: 12px;
+      padding: 50px;
+      width: 100%;
+    }
+
+    .portalArchFrame {
+      width: 100%;
+      height: 480px;
+      border-radius: 240px 240px 12px 12px; /* Arch shape */
+      overflow: hidden;
+      border: 2px solid var(--color-bronze);
+      padding: 8px;
+      box-shadow: 0 20px 50px rgba(133, 104, 75, 0.15);
+    }
+
+    .portalArchFrame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 230px 230px 6px 6px;
+      transition: opacity 0.4s ease;
+    }
+
+    /* ============================================================ */
+    /* STYLE 06: DIAGONAL SLICE CARDS */
+    /* ============================================================ */
+    .diagonalGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+    .diagonalCard {
+      background: var(--color-cream);
+      border: 1px solid rgba(133, 104, 75, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .diagonalImgBox {
+      height: 260px;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      overflow: hidden;
+    }
+
+    .diagonalImgBox img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .diagonalCard:hover .diagonalImgBox img {
+      transform: scale(1.08);
+    }
+
+    .diagonalBody {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ============================================================ */
+    /* STYLE 07: STACKED MONOGRAPH BOOKLET SPREAD */
+    /* ============================================================ */
+    .bookletSpread {
+      background: var(--color-cream);
+      border: 1px solid rgba(133, 104, 75, 0.25);
+      border-radius: 8px;
+      padding: 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(44, 34, 26, 0.08);
+    }
+
+    .bookletSpine {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(133, 104, 75, 0.25);
+    }
+
+    .bookletLeft {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bookletRight img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 15px 35px rgba(44, 34, 26, 0.1);
+    }
+
+    /* ============================================================ */
+    /* STYLE 08: LUXURY NUMBERED DRAWERS (COLLAPSIBLE ROWS) */
+    /* ============================================================ */
+    .drawerContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .drawerRow {
+      background: rgba(253, 251, 248, 0.8);
+      border: 1px solid rgba(133, 104, 75, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .drawerHeader {
+      padding: 24px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .drawerHeader:hover {
+      background: rgba(133, 104, 75, 0.05);
+    }
+
+    .drawerTitleGroup {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .drawerNum {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--color-bronze);
+      letter-spacing: 0.15em;
+    }
+
+    .drawerTitle {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    .drawerIcon {
+      font-size: 22px;
+      color: var(--color-bronze);
+      transition: transform 0.3s ease;
+    }
+
+    .drawerRow.open .drawerIcon {
+      transform: rotate(45deg);
+    }
+
+    .drawerContent {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.25, 1, 0.3, 1);
+    }
+
+    .drawerRow.open .drawerContent {
+      max-height: 500px;
+    }
+
+    .drawerBodyInner {
+      padding: 0 30px 30px 30px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .drawerBodyInner img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* ============================================================ */
+    /* STYLE 09: RADIAL CIRCULAR DIAL / ROTATING SELECTOR */
+    /* ============================================================ */
+    .dialContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      background: rgba(253, 251, 248, 0.7);
+      border: 1px solid rgba(133, 104, 75, 0.2);
+      border-radius: 12px;
+      padding: 50px;
+    }
+
+    .dialWheel {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 1px dashed var(--color-bronze);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialCenterImg {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(44, 34, 26, 0.15);
+      border: 3px solid var(--color-bronze);
+    }
+
+    .dialCenterImg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .dialNode {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      background: var(--color-espresso);
+      color: var(--color-alabaster);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dialNode:hover, .dialNode.active {
+      background: var(--color-bronze);
+      transform: scale(1.2);
+    }
+
+    /* ============================================================ */
+    /* STYLE 10: STAGGERED OVERLAPPING CARDS CASCADE */
+    /* ============================================================ */
+    .cascadeContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .cascadeCard {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      background: var(--color-cream);
+      border: 1px solid rgba(133, 104, 75, 0.25);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 15px 35px rgba(44, 34, 26, 0.06);
+      transition: transform 0.3s ease;
+    }
+
+    .cascadeCard:hover {
+      transform: translateX(10px);
+    }
+
+    .cascadeCard img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 900px) {
+      .fashionAccordion {
+        flex-direction: column;
+        height: auto;
+      }
+      .fashionPanel {
+        height: 220px;
+      }
+      .fashionPanel:hover, .fashionPanel.active {
+        height: 380px;
+        flex: 1;
+      }
+      .panelVerticalTitle { display: none; }
+      .panelFullContent { opacity: 1; transform: none; }
+      .vogueCollageGrid { grid-template-columns: 1fr; }
+      .vogueSpan8, .vogueSpan4, .vogueSpan6, .vogueSpan12 { grid-column: span 1; }
+      .portalStage, .bookletSpread, .dialContainer, .cascadeCard, .drawerBodyInner {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+      .bookletSpine { display: none; }
+      .dialWheel { width: 300px; height: 300px; }
+      .dialCenterImg { width: 160px; height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Cursor Preview for Style 02 -->
+  <div id="cursorPreview" class="floatingCursorImage">
+    <img id="cursorImg" src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Preview">
+  </div>
+
+  <!-- Sticky Top Controls Bar -->
+  <header class="topNav">
+    <div class="topHeaderLine">
+      <span class="topTitle">Interactive Layout Showcase</span>
+      <span id="currentStyleBadge" class="styleCounter">Style 01 of 10</span>
+    </div>
+    <div class="tabGroup">
+      <button class="tabBtn active" onclick="showStyle('style1', this, 1)">01. Fashion Accordion Slits</button>
+      <button class="tabBtn" onclick="showStyle('style2', this, 2)">02. Kinetic Cursor Follower</button>
+      <button class="tabBtn" onclick="showStyle('style3', this, 3)">03. Vogue Magazine Collage</button>
+      <button class="tabBtn" onclick="showStyle('style4', this, 4)">04. 3D Perspective Flip</button>
+      <button class="tabBtn" onclick="showStyle('style5', this, 5)">05. Architectural Arch Portal</button>
+      <button class="tabBtn" onclick="showStyle('style6', this, 6)">06. Diagonal Slice Cards</button>
+      <button class="tabBtn" onclick="showStyle('style7', this, 7)">07. Monograph Booklet Spread</button>
+      <button class="tabBtn" onclick="showStyle('style8', this, 8)">08. Numbered Drop Drawers</button>
+      <button class="tabBtn" onclick="showStyle('style9', this, 9)">09. Circular Dial Selector</button>
+      <button class="tabBtn" onclick="showStyle('style10', this, 10)">10. Staggered Cascade Deck</button>
+    </div>
+  </header>
+
+  <main class="mainContainer">
+
+    <!-- ============================================================ -->
+    <!-- STYLE 01: FASHION ACCORDION PANELS -->
+    <!-- ============================================================ -->
+    <section id="style1" class="layoutSection active">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 01 — EXPANDING EDITORIAL SLITS</span>
+        <h2 class="styleHeading">The Fashion Slit Accordion</h2>
+        <p class="styleDescription">Hover or tap any vertical panel to smoothly expand its high-fashion photography and full service scope while the others contract gracefully.</p>
+      </div>
+
+      <div class="fashionAccordion">
+        <div class="fashionPanel active">
+          <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Wedding Planning">
+          <span class="panelVerticalTitle">01 / Full-Service Planning</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 01 / 07</span>
+              <h3 class="panelTitle">Full-Service Wedding Planning & Coordination</h3>
+              <p class="panelDesc">Complete end-to-end guidance from conceptualization to execution with meticulous Ethiopian cultural coordination.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fashionPanel">
+          <img src="/images/user_photos/service_planner_desk.jpg" alt="Vendor Management">
+          <span class="panelVerticalTitle">02 / Vendor Sourcing</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 02 / 07</span>
+              <h3 class="panelTitle">Vendor Sourcing & Management</h3>
+              <p class="panelDesc">Curating Addis Ababa’s finest artisans, florists, caterers, and lighting crews with full deliverable tracking.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fashionPanel">
+          <img src="/images/user_photos/service_timeline_sheets.jpg" alt="Budget Planning">
+          <span class="panelVerticalTitle">03 / Budget Planning</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 03 / 07</span>
+              <h3 class="panelTitle">Budget Planning & Management</h3>
+              <p class="panelDesc">Strategic resource allocation and transparent financial stewardship for effortless peace of mind.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fashionPanel">
+          <img src="/images/user_photos/service_corset_dress.jpg" alt="Timeline Logistics">
+          <span class="panelVerticalTitle">04 / Timeline Logistics</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 04 / 07</span>
+              <h3 class="panelTitle">Timeline & Logistics Management</h3>
+              <p class="panelDesc">Minute-by-minute run-of-show schedules choreographing ceremony entrances and ballroom queues down to the second.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fashionPanel">
+          <img src="/images/user_photos/service_reception_tables.jpg" alt="Event Styling">
+          <span class="panelVerticalTitle">05 / Event Styling</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 05 / 07</span>
+              <h3 class="panelTitle">Event Styling & Design</h3>
+              <p class="panelDesc">Bespoke table arrangements, floral arches, custom linens, and thematic mood creation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fashionPanel">
+          <img src="/images/user_photos/service_lace_dress.jpg" alt="Production">
+          <span class="panelVerticalTitle">06 / Event Production</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 06 / 07</span>
+              <h3 class="panelTitle">Event Production Management</h3>
+              <p class="panelDesc">Technical staging, architectural lighting, acoustics, and structural installations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fashionPanel">
+          <img src="/images/user_photos/service_camera_shoes.jpg" alt="Photography">
+          <span class="panelVerticalTitle">07 / Photo & Video</span>
+          <div class="fashionPanelOverlay">
+            <div class="panelFullContent">
+              <span class="panelNum">SERVICE 07 / 07</span>
+              <h3 class="panelTitle">Wedding Photography & Videography</h3>
+              <p class="panelDesc">Timeless cinematic visual storytelling, capturing genuine emotion and haute couture details.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 02: KINETIC CURSOR FOLLOWER -->
+    <!-- ============================================================ -->
+    <section id="style2" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 02 — AGENCY MINIMALIST KINETIC LIST</span>
+        <h2 class="styleHeading">Kinetic Floating Image List</h2>
+        <p class="styleDescription">Hover your mouse over each numbered service line to see the high-resolution photo smoothly follow your cursor.</p>
+      </div>
+
+      <div class="kineticListWrapper">
+        <div class="kineticList">
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_ethiopian_ceremony.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">01</span>
+              <h3 class="kineticTitle">Full-Service Wedding Planning & Coordination</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_planner_desk.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">02</span>
+              <h3 class="kineticTitle">Vendor Sourcing & Management</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_timeline_sheets.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">03</span>
+              <h3 class="kineticTitle">Budget Planning & Management</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_corset_dress.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">04</span>
+              <h3 class="kineticTitle">Timeline & Logistics Management</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_reception_tables.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">05</span>
+              <h3 class="kineticTitle">Event Styling & Design</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_lace_dress.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">06</span>
+              <h3 class="kineticTitle">Event Production Management</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+
+          <div class="kineticItem" onmouseenter="showCursorImg('/images/user_photos/service_camera_shoes.jpg')" onmouseleave="hideCursorImg()">
+            <div class="kineticLeft">
+              <span class="kineticNum">07</span>
+              <h3 class="kineticTitle">Wedding Photography & Videography</h3>
+            </div>
+            <span class="kineticArrow">↗</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 03: VOGUE MAGAZINE COLLAGE -->
+    <!-- ============================================================ -->
+    <section id="style3" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 03 — ASYMMETRICAL EDITORIAL SPREAD</span>
+        <h2 class="styleHeading">Vogue Magazine Collage</h2>
+        <p class="styleDescription">Varied masonry aspect ratios with gilded borders, reminiscent of an architectural wedding editorial.</p>
+      </div>
+
+      <div class="vogueCollageGrid">
+        <div class="vogueCard vogueSpan8">
+          <div class="vogueCardImg tall">
+            <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Planning">
+          </div>
+          <span class="panelNum">01 / CEREMONY & ORCHESTRATION</span>
+          <h3 class="panelTitle">Full-Service Wedding Planning & Coordination</h3>
+          <p class="panelDesc">Bespoke end-to-end guidance from vision to day-of execution.</p>
+        </div>
+
+        <div class="vogueCard vogueSpan4">
+          <div class="vogueCardImg">
+            <img src="/images/user_photos/service_planner_desk.jpg" alt="Vendors">
+          </div>
+          <span class="panelNum">02 / CURATION</span>
+          <h3 class="panelTitle">Vendor Sourcing & Management</h3>
+          <p class="panelDesc">Coordinating Addis Ababa’s most elite artisans and suppliers.</p>
+        </div>
+
+        <div class="vogueCard vogueSpan4">
+          <div class="vogueCardImg">
+            <img src="/images/user_photos/service_timeline_sheets.jpg" alt="Budget">
+          </div>
+          <span class="panelNum">03 / STEWARDSHIP</span>
+          <h3 class="panelTitle">Budget Planning & Management</h3>
+          <p class="panelDesc">Strategic resource planning and transparent fiscal oversight.</p>
+        </div>
+
+        <div class="vogueCard vogueSpan8">
+          <div class="vogueCardImg wide">
+            <img src="/images/user_photos/service_reception_tables.jpg" alt="Styling">
+          </div>
+          <span class="panelNum">04 / SCENOGRAPHY</span>
+          <h3 class="panelTitle">Event Styling & Design</h3>
+          <p class="panelDesc">Atmospheric mood creation, table scapes, and luxury floral installations.</p>
+        </div>
+
+        <div class="vogueCard vogueSpan6">
+          <div class="vogueCardImg">
+            <img src="/images/user_photos/service_lace_dress.jpg" alt="Production">
+          </div>
+          <span class="panelNum">05 / PRODUCTION</span>
+          <h3 class="panelTitle">Event Production Management</h3>
+          <p class="panelDesc">Technical audio, ambient architectural lighting, and stage engineering.</p>
+        </div>
+
+        <div class="vogueCard vogueSpan6">
+          <div class="vogueCardImg">
+            <img src="/images/user_photos/service_camera_shoes.jpg" alt="Media">
+          </div>
+          <span class="panelNum">06 / CINEMATOGRAPHY</span>
+          <h3 class="panelTitle">Wedding Photography & Videography</h3>
+          <p class="panelDesc">Editorial publication imagery and emotional cinematic films.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 04: 3D PERSPECTIVE FLIP CARDS -->
+    <!-- ============================================================ -->
+    <section id="style4" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 04 — TACTILE 3D INTERACTIVITY</span>
+        <h2 class="styleHeading">3D Perspective Flip Cards</h2>
+        <p class="styleDescription">Hover or tap any card to smoothly flip it in 3D space to reveal the full scope of services and deliverables.</p>
+      </div>
+
+      <div class="flipCardsGrid">
+        <div class="flipCard" onclick="this.classList.toggle('flipped')">
+          <div class="flipCardInner">
+            <div class="flipCardFront">
+              <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Planning">
+              <div class="flipFrontOverlay">
+                <span class="panelNum">01 / WEDDINGS</span>
+                <h3 class="panelTitle">Full-Service Wedding Planning</h3>
+              </div>
+            </div>
+            <div class="flipCardBack">
+              <h4 class="flipBackTitle">Planning & Coordination</h4>
+              <p class="flipBackDesc">Comprehensive end-to-end guidance from conceptualization to execution. We manage all timelines, guest logistics, and day-of orchestration.</p>
+              <span class="flipTip">Tap to Flip Back</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flipCard" onclick="this.classList.toggle('flipped')">
+          <div class="flipCardInner">
+            <div class="flipCardFront">
+              <img src="/images/user_photos/service_planner_desk.jpg" alt="Vendors">
+              <div class="flipFrontOverlay">
+                <span class="panelNum">02 / VENDORS</span>
+                <h3 class="panelTitle">Vendor Sourcing & Management</h3>
+              </div>
+            </div>
+            <div class="flipCardBack">
+              <h4 class="flipBackTitle">Vendor Network</h4>
+              <p class="flipBackDesc">Curating Addis Ababa’s finest artisans, florists, caterers, and lighting crews with full deliverable tracking.</p>
+              <span class="flipTip">Tap to Flip Back</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flipCard" onclick="this.classList.toggle('flipped')">
+          <div class="flipCardInner">
+            <div class="flipCardFront">
+              <img src="/images/user_photos/service_timeline_sheets.jpg" alt="Budget">
+              <div class="flipFrontOverlay">
+                <span class="panelNum">03 / BUDGET</span>
+                <h3 class="panelTitle">Budget Planning & Management</h3>
+              </div>
+            </div>
+            <div class="flipCardBack">
+              <h4 class="flipBackTitle">Fiscal Strategy</h4>
+              <p class="flipBackDesc">Transparent financial planning and strategic resource allocation to maximize every dollar invested.</p>
+              <span class="flipTip">Tap to Flip Back</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flipCard" onclick="this.classList.toggle('flipped')">
+          <div class="flipCardInner">
+            <div class="flipCardFront">
+              <img src="/images/user_photos/service_corset_dress.jpg" alt="Logistics">
+              <div class="flipFrontOverlay">
+                <span class="panelNum">04 / TIMELINE</span>
+                <h3 class="panelTitle">Timeline & Logistics Management</h3>
+              </div>
+            </div>
+            <div class="flipCardBack">
+              <h4 class="flipBackTitle">Precision Scheduling</h4>
+              <p class="flipBackDesc">Microscopic master run-of-show schedules choreographing ceremony entrances and ballroom cues down to the second.</p>
+              <span class="flipTip">Tap to Flip Back</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flipCard" onclick="this.classList.toggle('flipped')">
+          <div class="flipCardInner">
+            <div class="flipCardFront">
+              <img src="/images/user_photos/service_reception_tables.jpg" alt="Styling">
+              <div class="flipFrontOverlay">
+                <span class="panelNum">05 / DESIGN</span>
+                <h3 class="panelTitle">Event Styling & Design</h3>
+              </div>
+            </div>
+            <div class="flipCardBack">
+              <h4 class="flipBackTitle">Atmospheric Scenography</h4>
+              <p class="flipBackDesc">Bespoke table arrangements, floral arches, custom linens, and thematic mood creation tailored to your vision.</p>
+              <span class="flipTip">Tap to Flip Back</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flipCard" onclick="this.classList.toggle('flipped')">
+          <div class="flipCardInner">
+            <div class="flipCardFront">
+              <img src="/images/user_photos/service_camera_shoes.jpg" alt="Media">
+              <div class="flipFrontOverlay">
+                <span class="panelNum">06 / MEDIA</span>
+                <h3 class="panelTitle">Photography & Videography</h3>
+              </div>
+            </div>
+            <div class="flipCardBack">
+              <h4 class="flipBackTitle">Visual Storytelling</h4>
+              <p class="flipBackDesc">Timeless cinematic visual storytelling, capturing genuine emotion and haute couture details in high-res.</p>
+              <span class="flipTip">Tap to Flip Back</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 05: ARCHITECTURAL ARCH PORTAL -->
+    <!-- ============================================================ -->
+    <section id="style5" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 05 — ARCHITECTURAL HERITAGE</span>
+        <h2 class="styleHeading">The Wedding Arch Portal</h2>
+        <p class="styleDescription">Select any service pill to frame its imagery inside an architectural wedding vault arch.</p>
+      </div>
+
+      <div class="vaultPortalContainer">
+        <div class="portalPillTabs">
+          <button class="portalPill active" onclick="setPortal(0, this)">01. Full-Service Planning</button>
+          <button class="portalPill" onclick="setPortal(1, this)">02. Vendor Sourcing</button>
+          <button class="portalPill" onclick="setPortal(2, this)">03. Budget Planning</button>
+          <button class="portalPill" onclick="setPortal(3, this)">04. Timeline Logistics</button>
+          <button class="portalPill" onclick="setPortal(4, this)">05. Event Styling</button>
+          <button class="portalPill" onclick="setPortal(5, this)">06. Event Production</button>
+          <button class="portalPill" onclick="setPortal(6, this)">07. Photography & Video</button>
+        </div>
+
+        <div class="portalStage">
+          <div class="portalArchFrame">
+            <img id="portalImg" src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Arch Portal">
+          </div>
+          <div>
+            <span id="portalNum" class="panelNum">SERVICE 01 / 07</span>
+            <h3 id="portalTitle" style="font-family: var(--font-serif); font-size: 38px; margin-bottom: 16px;">Full-Service Wedding Planning & Coordination</h3>
+            <div style="height: 1px; width: 60px; background: var(--color-bronze); margin-bottom: 20px;"></div>
+            <p id="portalDesc" style="font-size: 15.5px; line-height: 1.8; color: rgba(44, 34, 26, 0.85); font-weight: 300;">Comprehensive end-to-end guidance from conceptualization to execution with meticulous Ethiopian cultural coordination and timeline mastery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 06: DIAGONAL SLICE CARDS -->
+    <!-- ============================================================ -->
+    <section id="style6" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 06 — GEOMETRIC AVANT-GARDE</span>
+        <h2 class="styleHeading">Diagonal Slice Cards</h2>
+        <p class="styleDescription">Modern angular geometry creating dynamic rhythm across your service grid.</p>
+      </div>
+
+      <div class="diagonalGrid">
+        <div class="diagonalCard">
+          <div class="diagonalImgBox">
+            <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Planning">
+          </div>
+          <div class="diagonalBody">
+            <span class="panelNum">01 / PLANNING</span>
+            <h3 class="panelTitle">Full-Service Wedding Planning</h3>
+            <p class="panelDesc">End-to-end bespoke orchestration from initial vision to final guest departure.</p>
+          </div>
+        </div>
+
+        <div class="diagonalCard">
+          <div class="diagonalImgBox">
+            <img src="/images/user_photos/service_planner_desk.jpg" alt="Vendors">
+          </div>
+          <div class="diagonalBody">
+            <span class="panelNum">02 / VENDORS</span>
+            <h3 class="panelTitle">Vendor Sourcing & Management</h3>
+            <p class="panelDesc">Curating and coordinating top-tier collaborators, florists, and technical crews.</p>
+          </div>
+        </div>
+
+        <div class="diagonalCard">
+          <div class="diagonalImgBox">
+            <img src="/images/user_photos/service_reception_tables.jpg" alt="Styling">
+          </div>
+          <div class="diagonalBody">
+            <span class="panelNum">03 / STYLING</span>
+            <h3 class="panelTitle">Event Styling & Design</h3>
+            <p class="panelDesc">Bespoke table arrangements, floral arches, and thematic spatial design.</p>
+          </div>
+        </div>
+
+        <div class="diagonalCard">
+          <div class="diagonalImgBox">
+            <img src="/images/user_photos/service_camera_shoes.jpg" alt="Media">
+          </div>
+          <div class="diagonalBody">
+            <span class="panelNum">04 / MEDIA</span>
+            <h3 class="panelTitle">Photography & Videography</h3>
+            <p class="panelDesc">High-fashion editorial imagery and emotional cinematic wedding films.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 07: MONOGRAPH BOOKLET SPREAD -->
+    <!-- ============================================================ -->
+    <section id="style7" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 07 — COUTURE MONOGRAPH SPREAD</span>
+        <h2 class="styleHeading">Printed Booklet Spread</h2>
+        <p class="styleDescription">Designed like an open, luxury two-page printed monograph with numbered page margins.</p>
+      </div>
+
+      <div class="bookletSpread">
+        <div class="bookletSpine"></div>
+        <div class="bookletLeft">
+          <div>
+            <span class="panelNum">FOLIO N° 01 — SERVICE CATALOG</span>
+            <h3 style="font-family: var(--font-serif); font-size: 38px; margin: 15px 0;">Intentional Design.<br>Flawless Execution.</h3>
+            <p style="font-size: 15px; line-height: 1.85; color: rgba(44,34,26,0.85); font-weight: 300;">From intimate vows to grand ballroom banquets in Addis Ababa, Events by Mer delivers seamless logistical poise and breathtaking aesthetic environments.</p>
+          </div>
+          <div style="margin-top: 30px;">
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+              <li><strong>01</strong> Full-Service Wedding Planning</li>
+              <li><strong>02</strong> Vendor Sourcing & Management</li>
+              <li><strong>03</strong> Budget Planning & Management</li>
+              <li><strong>04</strong> Timeline & Logistics Management</li>
+              <li><strong>05</strong> Event Styling & Design</li>
+              <li><strong>06</strong> Event Production Management</li>
+              <li><strong>07</strong> Wedding Photography & Videography</li>
+            </ul>
+          </div>
+        </div>
+        <div class="bookletRight">
+          <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Monograph">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 08: NUMBERED DROP DRAWERS -->
+    <!-- ============================================================ -->
+    <section id="style8" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 08 — MINIMALIST INTERACTIVE DRAWERS</span>
+        <h2 class="styleHeading">Numbered Slide Drawers</h2>
+        <p class="styleDescription">Click any service header to expand its dedicated photo and deliverable breakdown.</p>
+      </div>
+
+      <div class="drawerContainer">
+        <div class="drawerRow open" onclick="this.classList.toggle('open')">
+          <div class="drawerHeader">
+            <div class="drawerTitleGroup">
+              <span class="drawerNum">01</span>
+              <h3 class="drawerTitle">Full-Service Wedding Planning & Coordination</h3>
+            </div>
+            <span class="drawerIcon">+</span>
+          </div>
+          <div class="drawerContent">
+            <div class="drawerBodyInner">
+              <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Planning">
+              <div>
+                <p class="panelDesc" style="color: var(--color-espresso); font-size: 15px;">Complete end-to-end guidance from conceptualization to execution. We coordinate caterers, florists, performers, and technical crews, managing all contracts seamlessly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawerRow" onclick="this.classList.toggle('open')">
+          <div class="drawerHeader">
+            <div class="drawerTitleGroup">
+              <span class="drawerNum">02</span>
+              <h3 class="drawerTitle">Vendor Sourcing & Management</h3>
+            </div>
+            <span class="drawerIcon">+</span>
+          </div>
+          <div class="drawerContent">
+            <div class="drawerBodyInner">
+              <img src="/images/user_photos/service_planner_desk.jpg" alt="Vendors">
+              <div>
+                <p class="panelDesc" style="color: var(--color-espresso); font-size: 15px;">Curating Addis Ababa’s finest artisans, florists, caterers, and lighting crews with full deliverable tracking.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawerRow" onclick="this.classList.toggle('open')">
+          <div class="drawerHeader">
+            <div class="drawerTitleGroup">
+              <span class="drawerNum">03</span>
+              <h3 class="drawerTitle">Budget Planning & Management</h3>
+            </div>
+            <span class="drawerIcon">+</span>
+          </div>
+          <div class="drawerContent">
+            <div class="drawerBodyInner">
+              <img src="/images/user_photos/service_timeline_sheets.jpg" alt="Budget">
+              <div>
+                <p class="panelDesc" style="color: var(--color-espresso); font-size: 15px;">Strategic financial planning and resource allocation to ensure luxury execution within budget parameters.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawerRow" onclick="this.classList.toggle('open')">
+          <div class="drawerHeader">
+            <div class="drawerTitleGroup">
+              <span class="drawerNum">04</span>
+              <h3 class="drawerTitle">Event Styling & Design</h3>
+            </div>
+            <span class="drawerIcon">+</span>
+          </div>
+          <div class="drawerContent">
+            <div class="drawerBodyInner">
+              <img src="/images/user_photos/service_reception_tables.jpg" alt="Styling">
+              <div>
+                <p class="panelDesc" style="color: var(--color-espresso); font-size: 15px;">Bespoke floral installations, custom linen scapes, and atmospheric lighting environments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 09: CIRCULAR RADIAL DIAL -->
+    <!-- ============================================================ -->
+    <section id="style9" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 09 — CELESTIAL ORBIT DIAL</span>
+        <h2 class="styleHeading">The Circular Radial Dial</h2>
+        <p class="styleDescription">Click the orbiting numbered nodes (01-07) around the central dial to rotate and inspect each service.</p>
+      </div>
+
+      <div class="dialContainer">
+        <div class="dialWheel">
+          <div class="dialCenterImg">
+            <img id="dialImg" src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Dial Center">
+          </div>
+          <!-- 7 Nodes around the circle -->
+          <div class="dialNode active" style="top: 10px; left: 180px;" onclick="setDial(0, this)">01</div>
+          <div class="dialNode" style="top: 70px; right: 30px;" onclick="setDial(1, this)">02</div>
+          <div class="dialNode" style="top: 200px; right: 0px;" onclick="setDial(2, this)">03</div>
+          <div class="dialNode" style="bottom: 50px; right: 50px;" onclick="setDial(3, this)">04</div>
+          <div class="dialNode" style="bottom: 10px; left: 180px;" onclick="setDial(4, this)">05</div>
+          <div class="dialNode" style="bottom: 70px; left: 30px;" onclick="setDial(5, this)">06</div>
+          <div class="dialNode" style="top: 150px; left: 0px;" onclick="setDial(6, this)">07</div>
+        </div>
+
+        <div>
+          <span id="dialNum" class="panelNum">SERVICE 01 / 07</span>
+          <h3 id="dialTitle" style="font-family: var(--font-serif); font-size: 36px; margin-bottom: 15px;">Full-Service Wedding Planning</h3>
+          <p id="dialDesc" style="font-size: 15px; line-height: 1.8; color: rgba(44, 34, 26, 0.85); font-weight: 300;">Comprehensive end-to-end guidance from conceptualization to execution with meticulous Ethiopian cultural coordination.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- STYLE 10: STAGGERED CASCADE DECK -->
+    <!-- ============================================================ -->
+    <section id="style10" class="layoutSection">
+      <div class="styleIntro">
+        <span class="styleBadge">STYLE 10 — FLOATING CASCADE DECK</span>
+        <h2 class="styleHeading">Staggered Card Cascade</h2>
+        <p class="styleDescription">Tactile, offset cards that slide gently on hover with comfortable vertical reading.</p>
+      </div>
+
+      <div class="cascadeContainer">
+        <div class="cascadeCard">
+          <img src="/images/user_photos/service_ethiopian_ceremony.jpg" alt="Planning">
+          <div>
+            <span class="panelNum">01 / ORCHESTRATION</span>
+            <h3 class="panelTitle">Full-Service Wedding Planning & Coordination</h3>
+            <p class="panelDesc" style="color: var(--color-espresso);">End-to-end bespoke orchestration from initial vision to final guest departure.</p>
+          </div>
+        </div>
+
+        <div class="cascadeCard">
+          <img src="/images/user_photos/service_planner_desk.jpg" alt="Vendors">
+          <div>
+            <span class="panelNum">02 / CURATION</span>
+            <h3 class="panelTitle">Vendor Sourcing & Management</h3>
+            <p class="panelDesc" style="color: var(--color-espresso);">Curating and coordinating top-tier collaborators, florists, and technical crews.</p>
+          </div>
+        </div>
+
+        <div class="cascadeCard">
+          <img src="/images/user_photos/service_reception_tables.jpg" alt="Styling">
+          <div>
+            <span class="panelNum">03 / SCENOGRAPHY</span>
+            <h3 class="panelTitle">Event Styling & Design</h3>
+            <p class="panelDesc" style="color: var(--color-espresso);">Bespoke table arrangements, floral arches, and atmospheric mood creation.</p>
+          </div>
+        </div>
+
+        <div class="cascadeCard">
+          <img src="/images/user_photos/service_camera_shoes.jpg" alt="Media">
+          <div>
+            <span class="panelNum">04 / CINEMATOGRAPHY</span>
+            <h3 class="panelTitle">Wedding Photography & Videography</h3>
+            <p class="panelDesc" style="color: var(--color-espresso);">Timeless cinematic visual storytelling and high-fashion editorial films.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    const masterData = [
+      {
+        num: "SERVICE 01 / 07",
+        title: "Full-Service Wedding Planning & Coordination",
+        desc: "Comprehensive end-to-end guidance from conceptualization to execution. We orchestrate vendors, timelines, guest logistics, and day-of management with uncompromising precision.",
+        img: "/images/user_photos/service_ethiopian_ceremony.jpg"
+      },
+      {
+        num: "SERVICE 02 / 07",
+        title: "Vendor Sourcing & Management",
+        desc: "Curating Addis Ababa’s finest artisans, florists, caterers, and lighting crews. We negotiate contracts, manage deliverable timelines, and ensure synchronized teamwork.",
+        img: "/images/user_photos/service_planner_desk.jpg"
+      },
+      {
+        num: "SERVICE 03 / 07",
+        title: "Budget Planning & Management",
+        desc: "Transparent financial planning and strategic resource allocation. We maximize your investment while securing the highest standards of luxury and elegance.",
+        img: "/images/user_photos/service_timeline_sheets.jpg"
+      },
+      {
+        num: "SERVICE 04 / 07",
+        title: "Timeline & Logistics Management",
+        desc: "Microscopic master run-of-show schedules. We choreograph morning preparations, ceremonial entrances, stage transitions, and load-ins down to the second.",
+        img: "/images/user_photos/service_corset_dress.jpg"
+      },
+      {
+        num: "SERVICE 05 / 07",
+        title: "Event Styling & Design",
+        desc: "Bespoke aesthetic styling, luxury floral installations, bespoke table scapes, and atmospheric mood creation tailored to your unique heritage and vision.",
+        img: "/images/user_photos/service_reception_tables.jpg"
+      },
+      {
+        num: "SERVICE 06 / 07",
+        title: "Event Production Management",
+        desc: "Technical staging, architectural lighting, acoustics, and structural installations engineered for flawless performance and immersive atmosphere.",
+        img: "/images/user_photos/service_lace_dress.jpg"
+      },
+      {
+        num: "SERVICE 07 / 07",
+        title: "Wedding Photography & Videography",
+        desc: "Timeless cinematic visual storytelling. We capture genuine emotional moments, intricate cultural couture, and ballroom elegance in editorial publication quality.",
+        img: "/images/user_photos/service_camera_shoes.jpg"
+      }
+    ];
+
+    function showStyle(styleId, btn, num) {
+      document.querySelectorAll('.layoutSection').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tabBtn').forEach(b => b.classList.remove('active'));
+      document.getElementById(styleId).classList.add('active');
+      btn.classList.add('active');
+      document.getElementById('currentStyleBadge').innerText = `Style 0${num} of 10`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Cursor Follower (Style 02)
+    const cursorPreview = document.getElementById('cursorPreview');
+    const cursorImg = document.getElementById('cursorImg');
+    document.addEventListener('mousemove', (e) => {
+      cursorPreview.style.left = `${e.clientX + 30}px`;
+      cursorPreview.style.top = `${e.clientY - 40}px`;
+    });
+
+    function showCursorImg(src) {
+      cursorImg.src = src;
+      cursorPreview.classList.add('visible');
+    }
+
+    function hideCursorImg() {
+      cursorPreview.classList.remove('visible');
+    }
+
+    // Portal Arch (Style 05)
+    function setPortal(idx, btn) {
+      document.querySelectorAll('.portalPill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const data = masterData[idx];
+      const img = document.getElementById('portalImg');
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.src = data.img;
+        document.getElementById('portalNum').innerText = data.num;
+        document.getElementById('portalTitle').innerText = data.title;
+        document.getElementById('portalDesc').innerText = data.desc;
+        img.style.opacity = 1;
+      }, 200);
+    }
+
+    // Radial Dial (Style 09)
+    function setDial(idx, node) {
+      document.querySelectorAll('.dialNode').forEach(n => n.classList.remove('active'));
+      node.classList.add('active');
+      const data = masterData[idx];
+      const img = document.getElementById('dialImg');
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.src = data.img;
+        document.getElementById('dialNum').innerText = data.num;
+        document.getElementById('dialTitle').innerText = data.title;
+        document.getElementById('dialDesc').innerText = data.desc;
+        img.style.opacity = 1;
+      }, 200);
+    }
+  </script>
+
+</body>
+</html>
