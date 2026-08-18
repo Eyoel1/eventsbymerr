@@ -128,8 +128,8 @@ export default function ServicesAccordion() {
 
     try {
       // Send inquiry data directly to notification endpoint (Web3Forms)
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
-      if (accessKey && accessKey !== "YOUR_ACCESS_KEY_HERE") {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "630abce7-e18b-4de9-8b81-87c984494fa0";
+      if (accessKey) {
         await fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: {

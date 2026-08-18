@@ -96,40 +96,51 @@
   transform: scale(1.04);
 }
 
-/* Collapsed State Vertical Label (Desktop Only) */
+/* Collapsed State Vertical Label (Desktop Only) - High-Contrast Luxury Capsule */
 .panelVerticalTitle {
   position: absolute;
-  top: 40px;
+  bottom: 40px;
   left: 50%;
-  transform: translateX(-50%) rotate(-90deg);
-  transform-origin: center;
+  transform: translateX(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 14px;
-  transition: opacity 0.35s ease;
+  gap: 12px;
+  background: rgba(26, 18, 12, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 177, 149, 0.4);
+  padding: 20px 8px;
+  border-radius: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transition: opacity 0.35s ease, transform 0.35s ease;
   pointer-events: none;
   z-index: 2;
 }
 
 .verticalNum {
-  font-size: 13px;
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--color-bronze-light);
+  color: #E6CFAC;
 }
 
 .verticalText {
-  font-size: 12.5px;
+  font-family: var(--font-sans);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.22em;
-  color: #FAF4EB;
+  letter-spacing: 0.2em;
+  color: #FFFFFF;
   text-transform: uppercase;
 }
 
 .fashionPanel:hover .panelVerticalTitle,
 .fashionPanel.active .panelVerticalTitle {
   opacity: 0;
+  transform: translateX(-50%) rotate(180deg) scale(0.95);
 }
 
 /* Mobile Banner Bar (Hidden on Desktop) */
