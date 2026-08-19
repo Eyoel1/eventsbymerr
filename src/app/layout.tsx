@@ -88,16 +88,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  manifest: "/manifest.json",
+  manifest: "/manifest.json?v=2",
   icons: {
     icon: [
-      { url: "/icon.png", sizes: "512x512", type: "image/png" },
-      { url: "/favicon.ico", sizes: "any" }
+      { url: "/icon.png?v=2", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico?v=2", sizes: "any" }
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+      { url: "/apple-touch-icon.png?v=2", sizes: "180x180", type: "image/png" }
     ],
-    shortcut: "/favicon.ico"
+    shortcut: "/icon.png?v=2"
   },
 };
 
@@ -155,9 +155,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       suppressHydrationWarning
     >
       <head>
-        <link rel="icon" href="/icon.png" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/png" href="/icon.png?v=2" />
+        <link rel="shortcut icon" type="image/png" href="/icon.png?v=2" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=2" />
+        <link rel="manifest" href="/manifest.json?v=2" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
