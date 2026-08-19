@@ -88,15 +88,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/images/logo.webp", type: "image/webp" },
-      { url: "/favicon.ico" }
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
     ],
     apple: [
-      { url: "/images/logo.webp" }
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
     ],
-    shortcut: "/images/logo.webp"
+    shortcut: "/favicon.ico"
   },
 };
 
@@ -107,7 +108,7 @@ const jsonLd = {
   description:
     "Premier luxury wedding planning, styling, and event production house in Addis Ababa, Ethiopia.",
   url: "https://eventsbymer.com",
-  logo: "https://eventsbymer.com/images/logo.webp",
+  logo: "https://eventsbymer.com/icon.png",
   image: "https://eventsbymer.com/images/about-brand.webp",
   telephone: "+251911000000",
   email: "contact@eventsbymer.com",
@@ -151,8 +152,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html
       lang="en"
       className={`${cormorant.variable} ${dmSans.variable} ${pinyonScript.variable}`}
+      suppressHydrationWarning
     >
       <head>
+        <link rel="icon" href="/icon.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

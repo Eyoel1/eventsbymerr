@@ -1,32 +1,28 @@
 {
-  "name": "Muscle Coach",
-  "short_name": "Muscle Coach",
-  "description": "Personal hypertrophy training coach. Offline-first, no subscription.",
+  "name": "Events by Mer",
+  "short_name": "Events by Mer",
+  "description": "Premier luxury wedding planning, event styling, and production house in Addis Ababa, Ethiopia.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#6366F1",
+  "background_color": "#F4ECE1",
+  "theme_color": "#785C40",
   "orientation": "portrait",
-  "categories": ["health", "fitness"],
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
+      "src": "/icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ],
-  "shortcuts": [
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
-      "name": "Today's Workout",
-      "url": "/today",
-      "description": "Go to today's training session"
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
     }
   ]
 }
