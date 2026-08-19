@@ -14,7 +14,7 @@ export default function Home() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    eventType: "wedding",
+    eventType: "Full-Wedding Planning & Coordination",
     date: "",
     message: ""
   });
@@ -59,7 +59,7 @@ export default function Home() {
         setFormData({
           name: "",
           email: "",
-          eventType: "wedding",
+          eventType: "Full-Wedding Planning & Coordination",
           date: "",
           message: ""
         });
@@ -99,8 +99,8 @@ export default function Home() {
           <a href="#about" className={styles.navLink} aria-label="Navigate to About Us">
             <span>About</span>
           </a>
-          <a href="#contact" className={styles.navLink} aria-label="Navigate to Inquiry and Contact">
-            <span>Inquiry</span>
+          <a href="#contact" className={styles.headerInquireBtn} aria-label="Navigate to Inquiry and Contact">
+            <span>INQUIRE</span>
           </a>
         </nav>
 
@@ -151,8 +151,15 @@ export default function Home() {
         </nav>
 
         <div className={styles.mobileMenuFooter}>
-          <span>Addis Ababa, Ethiopia</span>
-          <span>info@eventsbymer.com</span>
+          <div className={styles.mobileMenuContactInfo}>
+            <span>Addis Ababa, Ethiopia</span>
+            <a href="tel:+251953525354" className={styles.mobileMenuPhone}>+251 953 525 354</a>
+            <a href="mailto:contact@eventsbymer.com" className={styles.mobileMenuEmail}>contact@eventsbymer.com</a>
+          </div>
+          <div className={styles.mobileMenuSocials}>
+            <a href="https://www.instagram.com/events_by_mer_?utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+            <a href="https://www.tiktok.com/@eventsbymer?_r=1&_t=ZS-991EPfKiOAx" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
+          </div>
         </div>
       </div>
 
@@ -221,19 +228,25 @@ export default function Home() {
               <div className={styles.aboutQuotesGrid}>
                 <div className={styles.quoteBlock}>
                   <div className={styles.quoteTitle}>
-                    <span>Our Vision</span>
+                    <span>VISION</span>
+                  </div>
+                  <div className={styles.quoteHeadline}>
+                    To create celebrations you’ll never want to forget.
                   </div>
                   <div className={styles.quoteText}>
-                    <span>“To become Ethiopia’s leading luxury event planning and production company, recognized for creating timeless experiences.”</span>
+                    We envision weddings that feel unmistakably yours — beautifully designed, deeply personal, and filled with moments that stay with you long after the last guest leaves.
                   </div>
                 </div>
 
                 <div className={styles.quoteBlock}>
                   <div className={styles.quoteTitle}>
-                    <span>Our Mission</span>
+                    <span>MISSION</span>
+                  </div>
+                  <div className={styles.quoteHeadline}>
+                    To turn your vision into an experience worth remembering.
                   </div>
                   <div className={styles.quoteText}>
-                    <span>“To create exceptional events through innovative planning, refined design, and flawless production while delivering an experience that exceeds expectations.”</span>
+                    From the first idea to the final detail, we thoughtfully plan, design, and produce every element of your celebration — creating an atmosphere that feels effortless, intentional, and entirely you.
                   </div>
                 </div>
               </div>
@@ -259,17 +272,61 @@ export default function Home() {
               <div className={styles.contactBlock}>
                 <span className={styles.contactBlockLabel}>✦ LOCATION</span>
                 <span className={styles.contactBlockValue}>Addis Ababa, Ethiopia</span>
-                <span className={styles.contactBlockSub}>Available across Ethiopia & for destination weddings</span>
+                <span className={styles.contactBlockSub}>Available across Ethiopia & for destination celebrations</span>
               </div>
 
               <div className={styles.contactDivider} />
 
               <div className={styles.contactBlock}>
-                <span className={styles.contactBlockLabel}>✦ DIRECT CONCIERGE & INQUIRIES</span>
+                <span className={styles.contactBlockLabel}>✦ DIRECT PHONE & WHATSAPP</span>
+                <a href="tel:+251953525354" className={styles.contactPhoneLink}>
+                  +251 953 525 354
+                </a>
+                <span className={styles.contactBlockSub}>Direct call or WhatsApp concierge</span>
+              </div>
+
+              <div className={styles.contactDivider} />
+
+              <div className={styles.contactBlock}>
+                <span className={styles.contactBlockLabel}>✦ BUSINESS & WEDDING INQUIRIES</span>
                 <a href="mailto:contact@eventsbymer.com" className={styles.contactEmailLink}>
                   contact@eventsbymer.com
                 </a>
                 <span className={styles.contactBlockSub}>Personalized response within 24 business hours</span>
+              </div>
+
+              <div className={styles.contactDivider} />
+
+              <div className={styles.contactBlock}>
+                <span className={styles.contactBlockLabel}>✦ SOCIAL PORTFOLIO</span>
+                <div className={styles.contactSocialsRow}>
+                  <a
+                    href="https://www.instagram.com/events_by_mer_?utm_source=qr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactSocialPill}
+                    aria-label="Events by Mer Instagram"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>Instagram</span>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@eventsbymer?_r=1&_t=ZS-991EPfKiOAx"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactSocialPill}
+                    aria-label="Events by Mer TikTok"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.36 0 .7.07 1.01.19V9.48a6.34 6.34 0 0 0-1.01-.08 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.06a8.16 8.16 0 0 0 4.76 1.52V7.13a4.83 4.83 0 0 1-1-.44z"/>
+                    </svg>
+                    <span>TikTok</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -316,7 +373,7 @@ export default function Home() {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="eventType" className={styles.label}>Event Type</label>
+                  <label htmlFor="eventType" className={styles.label}>Event Service of Interest</label>
                   <select
                     id="eventType"
                     name="eventType"
@@ -324,12 +381,9 @@ export default function Home() {
                     onChange={handleInputChange}
                     className={styles.select}
                   >
-                    <option value="wedding">Luxury Wedding Planning</option>
-                    <option value="styling">Event Styling & Design</option>
-                    <option value="production">Technical Event Production</option>
-                    <option value="photography">Wedding Photography & Videography</option>
-                    <option value="private">Private Celebration / Gala</option>
-                    <option value="corporate">Corporate Event</option>
+                    <option value="Full-Wedding Planning & Coordination">01. Full-Wedding Planning & Coordination</option>
+                    <option value="Wedding Photography & Videography">06. Wedding Photography & Videography</option>
+                    <option value="Both Wedding Planning & Photography">✦ Both Wedding Planning & Photography</option>
                   </select>
                 </div>
 
@@ -385,6 +439,35 @@ export default function Home() {
             <p className={styles.footerMotto}>Intentional Design · Flawless Execution</p>
           </div>
 
+          <div className={styles.footerSocials}>
+            <a
+              href="https://www.instagram.com/events_by_mer_?utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerSocialPill}
+              aria-label="Events by Mer Instagram"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>Instagram</span>
+            </a>
+            <a
+              href="https://www.tiktok.com/@eventsbymer?_r=1&_t=ZS-991EPfKiOAx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerSocialPill}
+              aria-label="Events by Mer TikTok"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.36 0 .7.07 1.01.19V9.48a6.34 6.34 0 0 0-1.01-.08 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.06a8.16 8.16 0 0 0 4.76 1.52V7.13a4.83 4.83 0 0 1-1-.44z"/>
+              </svg>
+              <span>TikTok</span>
+            </a>
+          </div>
+
           <nav className={styles.footerNav} aria-label="Footer Navigation">
             <a href="#home" className={styles.footerNavLink}>Home</a>
             <a href="#services" className={styles.footerNavLink}>Services</a>
@@ -396,7 +479,9 @@ export default function Home() {
         <div className={styles.footerDivider} />
 
         <div className={styles.footerBottomRow}>
-          <span className={styles.footerLocation}>Addis Ababa, Ethiopia</span>
+          <span className={styles.footerLocation}>
+            Addis Ababa, Ethiopia · <a href="tel:+251953525354" className={styles.footerPhoneLink}>+251 953 525 354</a>
+          </span>
           <span className={styles.footerCopyright}>© {new Date().getFullYear()} Events by Mer. All rights reserved.</span>
           <a href="#home" className={styles.backToTopBtn} aria-label="Back to Top">
             <span>Back to Top ↑</span>

@@ -232,15 +232,17 @@ export default function ServicesAccordion() {
                   <div className={styles.panelDivider} />
                   <p className={styles.panelDescription}>{service.desc}</p>
                   
-                  {/* Interactive Pop-up Trigger Button */}
-                  <button
-                    type="button"
-                    className={styles.cardInquireBtn}
-                    aria-label={`Inquire about ${service.title}`}
-                    onClick={(e) => handleOpenModal(service.id, e)}
-                  >
-                    <span>INQUIRE ABOUT THIS SERVICE →</span>
-                  </button>
+                  {/* Interactive Pop-up Trigger Button - Only for Service 01 and Service 06 */}
+                  {(service.id === "wedding-planning" || service.id === "photography-videography") && (
+                    <button
+                      type="button"
+                      className={styles.cardInquireBtn}
+                      aria-label={`Inquire about ${service.title}`}
+                      onClick={(e) => handleOpenModal(service.id, e)}
+                    >
+                      <span>INQUIRE ABOUT THIS SERVICE →</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -326,12 +328,9 @@ export default function ServicesAccordion() {
                       onChange={(e) => setSelectedServiceId(e.target.value)}
                       className={styles.modalInput}
                     >
-                      <option value="all-services">✦ Comprehensive Consultation / All Services</option>
-                      {SERVICES.map((s) => (
-                        <option key={s.id} value={s.id}>
-                          {s.num}. {s.title}
-                        </option>
-                      ))}
+                      <option value="all-services">✦ Comprehensive Consultation / Both Services</option>
+                      <option value="wedding-planning">01. Full-Wedding Planning & Coordination</option>
+                      <option value="photography-videography">06. Wedding Photography & Videography</option>
                     </select>
                   </div>
 

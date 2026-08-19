@@ -34,18 +34,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://eventsbymer.com"),
   title: {
-    default: "Events by Mer | Luxury Wedding & Event Planning Addis Ababa",
+    default: "Events by Mer | Wedding Planning and Event Production",
     template: "%s | Events by Mer",
   },
   description:
-    "Events by Mer is Ethiopia's premier luxury wedding planning, event styling, and production house in Addis Ababa. Bespoke design, vendor curation, and flawless execution.",
+    "Events by Mer is Ethiopia's premier wedding planning, event styling, and event production house in Addis Ababa. Bespoke design, vendor curation, and flawless execution.",
   keywords: [
-    "Luxury Wedding Planner Ethiopia",
-    "Addis Ababa Event Planning",
-    "Ethiopian Luxury Weddings",
-    "Event Production Addis Ababa",
-    "Wedding Styling and Floral Design Ethiopia",
+    "Wedding Planning and Event Production",
     "Events by Mer",
+    "Ethiopian Luxury Weddings",
+    "Addis Ababa Event Production",
+    "Wedding Photography and Videography Addis Ababa",
+    "Full-Wedding Planning Ethiopia",
   ],
   authors: [{ name: "Events by Mer" }],
   creator: "Events by Mer",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
     canonical: "https://eventsbymer.com",
   },
   openGraph: {
-    title: "Events by Mer | Luxury Wedding & Event Planning Addis Ababa",
+    title: "Events by Mer | Wedding Planning and Event Production",
     description:
-      "Premier luxury event planning and high-fashion wedding production in Addis Ababa, Ethiopia. Designed with purpose. Produced with excellence.",
+      "Premier wedding planning and event production house in Addis Ababa, Ethiopia. Designed with purpose. Produced with excellence.",
     url: "https://eventsbymer.com",
     siteName: "Events by Mer",
     images: [
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         url: "/images/user_photos/service_ethiopian_ceremony.jpg",
         width: 1200,
         height: 630,
-        alt: "Events by Mer Luxury Wedding Production",
+        alt: "Events by Mer Wedding Planning and Event Production",
       },
     ],
     locale: "en_US",
@@ -72,9 +72,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Events by Mer | Luxury Wedding & Event Planning Addis Ababa",
+    title: "Events by Mer | Wedding Planning and Event Production",
     description:
-      "Premier luxury event planning and high-fashion wedding production in Addis Ababa, Ethiopia.",
+      "Premier wedding planning and event production house in Addis Ababa, Ethiopia.",
     images: ["/images/user_photos/service_ethiopian_ceremony.jpg"],
   },
   robots: {
@@ -106,12 +106,16 @@ const jsonLd = {
   "@type": "EventPlanningService",
   name: "Events by Mer",
   description:
-    "Premier luxury wedding planning, styling, and event production house in Addis Ababa, Ethiopia.",
+    "Premier wedding planning, styling, and event production house in Addis Ababa, Ethiopia.",
   url: "https://eventsbymer.com",
   logo: "https://eventsbymer.com/icon.png",
   image: "https://eventsbymer.com/images/about-brand.webp",
-  telephone: "+251911000000",
+  telephone: "+251953525354",
   email: "contact@eventsbymer.com",
+  sameAs: [
+    "https://www.instagram.com/events_by_mer_?utm_source=qr",
+    "https://www.tiktok.com/@eventsbymer?_r=1&_t=ZS-991EPfKiOAx"
+  ],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Bole Subcity",
