@@ -255,14 +255,21 @@ export default function Home() {
               </p>
             </div>
 
-            <div className={styles.infoDetails}>
-              <div className={styles.infoItem}>
-                <span className={styles.infoLabel}>LOCATION</span>
-                <span className={styles.infoValue}>Addis Ababa, Ethiopia</span>
+            <div className={styles.contactDetailsCard}>
+              <div className={styles.contactBlock}>
+                <span className={styles.contactBlockLabel}>✦ LOCATION</span>
+                <span className={styles.contactBlockValue}>Addis Ababa, Ethiopia</span>
+                <span className={styles.contactBlockSub}>Available across Ethiopia & for destination weddings</span>
               </div>
-              <div className={styles.infoItem}>
-                <span className={styles.infoLabel}>BUSINESS ENQUIRIES</span>
-                <span className={styles.infoValue}>contact@eventsbymer.com</span>
+
+              <div className={styles.contactDivider} />
+
+              <div className={styles.contactBlock}>
+                <span className={styles.contactBlockLabel}>✦ DIRECT CONCIERGE & INQUIRIES</span>
+                <a href="mailto:contact@eventsbymer.com" className={styles.contactEmailLink}>
+                  contact@eventsbymer.com
+                </a>
+                <span className={styles.contactBlockSub}>Personalized response within 24 business hours</span>
               </div>
             </div>
           </div>
