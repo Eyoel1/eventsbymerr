@@ -61,10 +61,10 @@ export const metadata: Metadata = {
     siteName: "Events by Mer",
     images: [
       {
-        url: "/images/user_photos/service_ethiopian_ceremony.jpg",
+        url: "/images/logo.png",
         width: 1200,
         height: 630,
-        alt: "Events by Mer Wedding Planning and Event Production",
+        alt: "Events by Mer Logo",
       },
     ],
     locale: "en_US",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title: "Events by Mer | Wedding Planning and Event Production",
     description:
       "Premier wedding planning and event production house in Addis Ababa, Ethiopia.",
-    images: ["/images/user_photos/service_ethiopian_ceremony.jpg"],
+    images: ["/images/logo.png"],
   },
   robots: {
     index: true,
