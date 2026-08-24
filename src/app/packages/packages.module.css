@@ -1,0 +1,631 @@
+/* Packages Portal Luxury Styling */
+.portalMain {
+  background-color: var(--color-alabaster);
+  color: var(--color-espresso);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating Portal Header */
+.portalHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  background: rgba(244, 236, 225, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(183, 154, 114, 0.2);
+  box-sizing: border-box;
+}
+
+.brandHomeLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--color-espresso);
+}
+
+.brandLogoImage {
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(133, 104, 75, 0.25));
+}
+
+.brandName {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-espresso);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Language Pill Switcher */
+.langSwitcher {
+  display: flex;
+  background: rgba(183, 154, 114, 0.15);
+  border: 1px solid rgba(183, 154, 114, 0.35);
+  border-radius: 30px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.langBtn {
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-espresso);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.langBtn.activeLang {
+  background: var(--color-espresso);
+  color: #FAF4EB;
+  box-shadow: 0 2px 8px rgba(26, 18, 12, 0.2);
+}
+
+.whatsappHeaderBtn {
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #128C7E;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+}
+
+.whatsappHeaderBtn:hover {
+  background: #25D366;
+  color: #FFFFFF;
+  border-color: #25D366;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
+
+/* Hero Section with Centered Cursive Drawing & Arch */
+.portalHero {
+  position: relative;
+  padding: 140px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 30%, rgba(230, 207, 172, 0.45) 0%, rgba(244, 236, 225, 0.1) 70%);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.heroArchSvg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(540px, 94vw);
+  height: min(720px, 80vh);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroArchMainPath {
+  fill: none;
+  stroke: rgba(183, 154, 114, 0.28);
+  stroke-width: 1.5;
+}
+
+.heroArchInnerPath {
+  fill: none;
+  stroke: rgba(183, 154, 114, 0.16);
+  stroke-width: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.portalBadge {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  background: rgba(183, 154, 114, 0.12);
+  border: 1px solid rgba(183, 154, 114, 0.3);
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+/* Centered Cursive Signature */
+.signatureWrapper {
+  width: min(620px, 92vw);
+  max-width: 620px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portalHeading {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.2;
+  color: var(--color-espresso);
+  margin-bottom: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.portalSubtext {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(44, 34, 26, 0.82);
+  max-width: 600px;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+/* 3-Column Luxury Packages Grid */
+.packagesGridSection {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 28px 100px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* Consistent Uniform Package Card */
+.packageCard {
+  background: #FAF6F0;
+  border: 1px solid rgba(183, 154, 114, 0.28);
+  border-radius: 14px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px rgba(133, 104, 75, 0.06);
+}
+
+.packageCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(133, 104, 75, 0.14);
+  border-color: var(--color-bronze);
+}
+
+/* Card Header */
+.cardHeader {
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(183, 154, 114, 0.2);
+  padding-bottom: 18px;
+}
+
+.packageNum {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--color-bronze);
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.packageTitle {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  line-height: 1.25;
+  color: var(--color-espresso);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Features Checklist */
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(44, 34, 26, 0.88);
+}
+
+.checkIcon {
+  color: var(--color-bronze);
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Card Actions */
+.cardActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.inquirePackageBtn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-bronze);
+  color: var(--color-bronze);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 13px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.inquirePackageBtn:hover {
+  background: var(--color-bronze);
+  color: #FAF4EB;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(133, 104, 75, 0.25);
+}
+
+.whatsappQuickBtn {
+  width: 100%;
+  background: rgba(37, 211, 102, 0.08);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #128C7E;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.whatsappQuickBtn:hover {
+  background: #25D366;
+  color: #FFFFFF;
+  border-color: #25D366;
+}
+
+/* Custom Concierge Bottom Banner */
+.customConciergeBanner {
+  max-width: 1280px;
+  margin: 0 auto 80px;
+  padding: 36px 44px;
+  background: var(--color-espresso);
+  border: 1px solid rgba(183, 154, 114, 0.35);
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  color: #FAF4EB;
+  box-sizing: border-box;
+}
+
+.conciergeText {
+  max-width: 680px;
+}
+
+.conciergeTag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-bronze-light);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.conciergeTitle {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.conciergeDesc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(244, 236, 225, 0.75);
+}
+
+.conciergeActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.conciergeCallBtn {
+  background: var(--color-bronze);
+  color: #FAF4EB;
+  padding: 13px 24px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+}
+
+.conciergeCallBtn:hover {
+  background: var(--color-bronze-light);
+  color: var(--color-espresso);
+  transform: translateY(-2px);
+}
+
+/* Modal Popup */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(26, 18, 12, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modalContent {
+  background: #FAF6F0;
+  border: 1px solid rgba(183, 154, 114, 0.4);
+  border-radius: 14px;
+  max-width: 540px;
+  width: 100%;
+  padding: 34px 38px;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: rgba(183, 154, 114, 0.15);
+  border: none;
+  color: var(--color-espresso);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modalCloseBtn:hover {
+  background: var(--color-bronze);
+  color: #FAF4EB;
+}
+
+.modalHeader {
+  margin-bottom: 22px;
+}
+
+.modalTag {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--color-bronze);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.modalTitle {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--color-espresso);
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalFieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modalFieldLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-espresso);
+}
+
+.modalInput, .modalSelect, .modalTextarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(133, 104, 75, 0.35);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: #1a120c;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modalInput:focus, .modalSelect:focus, .modalTextarea:focus {
+  border-color: var(--color-bronze);
+  box-shadow: 0 0 0 3px rgba(133, 104, 75, 0.15);
+}
+
+.modalSubmitBtn {
+  background: var(--color-espresso);
+  border: 1px solid var(--color-bronze);
+  color: #FAF4EB;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 13px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-top: 4px;
+}
+
+.modalSubmitBtn:hover {
+  background: var(--color-bronze);
+  transform: translateY(-1px);
+}
+
+.modalSuccessState {
+  text-align: center;
+  padding: 30px 10px;
+}
+
+.modalSuccessTitle {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--color-espresso);
+  margin-bottom: 10px;
+}
+
+.modalSuccessText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(44, 34, 26, 0.85);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .packagesGrid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 32px;
+  }
+
+  .customConciergeBanner {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 24px;
+  }
+
+  .conciergeActions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .conciergeCallBtn {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 640px) {
+  .portalHeader {
+    padding: 16px 20px;
+  }
+
+  .brandName {
+    font-size: 18px;
+  }
+
+  .portalHero {
+    padding: 110px 16px 40px;
+  }
+
+  .signatureWrapper {
+    width: 90vw;
+  }
+
+  .packagesGridSection {
+    padding: 0 16px 60px;
+  }
+
+  .packageCard {
+    padding: 28px 20px;
+  }
+
+  .modalContent {
+    padding: 28px 20px;
+  }
+}
