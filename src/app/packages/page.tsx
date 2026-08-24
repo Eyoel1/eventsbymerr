@@ -146,79 +146,6 @@ const PACKAGES: PackageData[] = [
 
 export default function PackagesPage() {
   const [lang, setLang] = useState<"en" | "am">("en");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPkg, setSelectedPkg] = useState<PackageData>(PACKAGES[0]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [modalSubmitted, setModalSubmitted] = useState(false);
-  const [modalData, setModalData] = useState({
-    name: "",
-    contact: "",
-    weddingDate: "",
-    guestCount: "",
-    notes: ""
-  });
-
-  const handleOpenModal = (pkg: PackageData) => {
-    setSelectedPkg(pkg);
-    setModalSubmitted(false);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setModalSubmitted(false);
-    setModalData({
-      name: "",
-      contact: "",
-      weddingDate: "",
-      guestCount: "",
-      notes: ""
-    });
-  };
-
-  const handleModalSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "630abce7-e18b-4de9-8b81-87c984494fa0";
-      if (accessKey) {
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-          },
-          body: JSON.stringify({
-            access_key: accessKey,
-            subject: `💎 Package Inquiry: ${selectedPkg.title.en} - ${modalData.name}`,
-            from_name: "Events by Mer Client Portal",
-            package_name: selectedPkg.title.en,
-            client_name: modalData.name,
-            client_contact: modalData.contact,
-            wedding_date: modalData.weddingDate || "Not provided",
-            guest_count: modalData.guestCount || "Not provided",
-            notes: modalData.notes || "None"
-          })
-        });
-      }
-    } catch {
-      // Ignore network errors in local dev
-    } finally {
-      setIsSubmitting(false);
-      setModalSubmitted(true);
-      setTimeout(() => {
-        handleCloseModal();
-      }, 2600);
-    }
-  };
-
-  const generateWhatsAppUrl = (pkg: PackageData) => {
-    const text = encodeURIComponent(
-      `Hello Mer, I am reviewing your packages on eventsbymer.com/packages and would like to inquire about the "${pkg.title.en}" package for my wedding.`
-    );
-    return `https://wa.me/251953525354?text=${text}`;
-  };
 
   return (
     <main className={styles.portalMain}>
@@ -254,15 +181,6 @@ export default function PackagesPage() {
               አማርኛ
             </button>
           </div>
-
-          <a
-            href="https://wa.me/251953525354"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.whatsappHeaderBtn}
-          >
-            <span>WhatsApp Concierge</span>
-          </a>
         </div>
       </header>
 
@@ -281,16 +199,6 @@ export default function PackagesPage() {
           <div className={styles.signatureWrapper}>
             <Signature />
           </div>
-
-          <h1 className={styles.portalHeading}>
-            {lang === "en" ? "Curated Wedding Planning Collections" : "የተሟሉ የሠርግ ዕቅድና ዝግጅት ፓኬጆች"}
-          </h1>
-
-          <p className={styles.portalSubtext}>
-            {lang === "en"
-              ? "Designed with intention, precision, and elegance. Review our packages below and inquire directly with Mer and our team."
-              : "በጥንቃቄ እና በከፍተኛ ጥራት የተዘጋጁ የሠርግ ፓኬጆች። ከታች ያሉትን አማራጮች በመመልከት ለሠርግዎ ተስማሚ የሆነውን ይምረጡ።"}
-          </p>
         </div>
       </section>
 
@@ -318,178 +226,11 @@ export default function PackagesPage() {
                     ))}
                   </ul>
                 </div>
-
-                <div className={styles.cardActions}>
-                  <button
-                    type="button"
-                    className={styles.inquirePackageBtn}
-                    onClick={() => handleOpenModal(pkg)}
-                  >
-                    <span>
-                      {lang === "en"
-                        ? `INQUIRE THIS PACKAGE →`
-                        : `ይህንን ፓኬጅ ያማክሩ →`}
-                    </span>
-                  </button>
-
-                  <a
-                    href={generateWhatsAppUrl(pkg)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.whatsappQuickBtn}
-                  >
-                    <span>💬 WhatsApp Concierge</span>
-                  </a>
-                </div>
               </div>
             );
           })}
         </div>
       </section>
-
-      {/* Concierge Banner */}
-      <section className={styles.customConciergeBanner}>
-        <div className={styles.conciergeText}>
-          <span className={styles.conciergeTag}>
-            {lang === "en" ? "NEED BESPOKE CUSTOMIZATION?" : "ልዩና የተለየ ጥያቄ አለዎት?"}
-          </span>
-          <h3 className={styles.conciergeTitle}>
-            {lang === "en"
-              ? "Every wedding has a unique story. Let's tailor a bespoke proposal."
-              : "እያንዳንዱ ሠርግ የራሱ የሆነ ውበት አለው። ለእርስዎ ልዩ የሆነ ዕቅድ እናዘጋጃለን።"}
-          </h3>
-          <p className={styles.conciergeDesc}>
-            {lang === "en"
-              ? "Direct phone and WhatsApp consultations are available directly with Mer for customized destination weddings and multi-day celebrations."
-              : "ከሀገር ውጭ ለሚደረጉ ሠርጎች ወይም ለየት ላሉ ዝግጅቶች በቀጥታ በስልክ ወይም በዋትስአፕ ያማክሩን።"}
-          </p>
-        </div>
-
-        <div className={styles.conciergeActions}>
-          <a href="tel:+251953525354" className={styles.conciergeCallBtn}>
-            📞 +251 953 525 354
-          </a>
-        </div>
-      </section>
-
-      {/* Inquiry Modal */}
-      {isModalOpen && (
-        <div className={styles.modalBackdrop} onClick={handleCloseModal}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className={styles.modalCloseBtn}
-              onClick={handleCloseModal}
-              aria-label="Close Modal"
-            >
-              ✕
-            </button>
-
-            <div className={styles.modalHeader}>
-              <span className={styles.modalTag}>
-                {lang === "en" ? "DIRECT INQUIRY" : "የፓኬጅ ማማከሪያ"}
-              </span>
-              <h3 className={styles.modalTitle}>
-                {selectedPkg.title[lang]}
-              </h3>
-            </div>
-
-            {modalSubmitted ? (
-              <div className={styles.modalSuccessState}>
-                <div style={{ fontSize: "36px", marginBottom: "12px", color: "var(--color-bronze)" }}>✦</div>
-                <h4 className={styles.modalSuccessTitle}>
-                  {lang === "en" ? "Inquiry Confirmed" : "መልዕክትዎ ደርሶናል"}
-                </h4>
-                <p className={styles.modalSuccessText}>
-                  {lang === "en"
-                    ? `Thank you for inquiring about ${selectedPkg.title.en}. Mer will review your wedding date and reach out personally within 24 hours.`
-                    : `ስለ ${selectedPkg.title.am} ላቀረቡት ጥያቄ እናመሰግናለን። በ24 ሰዓታት ውስጥ በግል እንደውልልዎታለን።`}
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleModalSubmit} className={styles.modalForm}>
-                <div className={styles.modalFieldGroup}>
-                  <label className={styles.modalFieldLabel}>
-                    {lang === "en" ? "YOUR NAME / COUPLE'S NAMES" : "የእርስዎ ወይም የጥንዶቹ ስም"}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder={lang === "en" ? "e.g. Meron & Michael" : "ሙሉ ስም ያስገቡ"}
-                    value={modalData.name}
-                    onChange={(e) => setModalData({ ...modalData, name: e.target.value })}
-                    className={styles.modalInput}
-                  />
-                </div>
-
-                <div className={styles.modalFieldGroup}>
-                  <label className={styles.modalFieldLabel}>
-                    {lang === "en" ? "PHONE / WHATSAPP / EMAIL" : "ስልክ ቁጥር ወይም ኢሜይል"}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="+251 9... / email@example.com"
-                    value={modalData.contact}
-                    onChange={(e) => setModalData({ ...modalData, contact: e.target.value })}
-                    className={styles.modalInput}
-                  />
-                </div>
-
-                <div className={styles.modalFieldGroup}>
-                  <label className={styles.modalFieldLabel}>
-                    {lang === "en" ? "PROPOSED WEDDING DATE" : "የሠርጉ ቀን"}
-                  </label>
-                  <input
-                    type="date"
-                    value={modalData.weddingDate}
-                    onChange={(e) => setModalData({ ...modalData, weddingDate: e.target.value })}
-                    className={styles.modalInput}
-                  />
-                </div>
-
-                <div className={styles.modalFieldGroup}>
-                  <label className={styles.modalFieldLabel}>
-                    {lang === "en" ? "ESTIMATED GUEST COUNT" : "የእንግዶች ብዛት"}
-                  </label>
-                  <input
-                    type="text"
-                    placeholder={lang === "en" ? "e.g. 350 Guests" : "ለምሳሌ፡ 350 እንግዶች"}
-                    value={modalData.guestCount}
-                    onChange={(e) => setModalData({ ...modalData, guestCount: e.target.value })}
-                    className={styles.modalInput}
-                  />
-                </div>
-
-                <div className={styles.modalFieldGroup}>
-                  <label className={styles.modalFieldLabel}>
-                    {lang === "en" ? "VISION & NOTES" : "ተጨማሪ ማስታወሻ ወይም ጥያቄ"}
-                  </label>
-                  <textarea
-                    rows={3}
-                    placeholder={lang === "en" ? "Share any venue, timing, or special requests..." : "ስለ ሠርጉ ዝግጅት ማወቅ የሚፈልጉትን ይፃፉልን..."}
-                    value={modalData.notes}
-                    onChange={(e) => setModalData({ ...modalData, notes: e.target.value })}
-                    className={styles.modalTextarea}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={styles.modalSubmitBtn}
-                >
-                  <span>
-                    {isSubmitting
-                      ? lang === "en" ? "TRANSMITTING..." : "በመላክ ላይ..."
-                      : lang === "en" ? "SUBMIT INQUIRY" : "ጥያቄውን ይላኩ"}
-                  </span>
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
     </main>
   );
 }
