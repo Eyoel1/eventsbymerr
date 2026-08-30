@@ -23,6 +23,7 @@ const PACKAGES: PackageData[] = [
     },
     features: {
       am: [
+        "በFull Wedding Planning ፓኬጅ ውስጥ የተካተቱ ሁሉም አገልግሎቶች",
         "ያልተገደበ የዕቅድና የምክር ድጋፍ",
         "ሙሉ የሠርግ ዕቅድ",
         "የግል የሠርግ ጽንሰ-ሀሳብ (Wedding Concept)",
@@ -44,6 +45,7 @@ const PACKAGES: PackageData[] = [
         "ከሠርጉ በፊት ወይም በኋላ ከሚደረጉ ዝግጅቶች ሁለቱን ሙሉ በሙሉ ማስተባበር (ሽምግልና፣ መልስ፣ Engagement ወዘተ)"
       ],
       en: [
+        "Includes All Services from the Full Wedding Planning Package",
         "Unlimited Planning & Consultation Support",
         "Full Wedding Planning",
         "Personalized Wedding Concept",

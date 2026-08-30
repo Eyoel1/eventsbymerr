@@ -153,7 +153,7 @@ export default function Home() {
         <div className={styles.mobileMenuFooter}>
           <div className={styles.mobileMenuContactInfo}>
             <span>Addis Ababa, Ethiopia</span>
-            <a href="tel:+251953525354" className={styles.mobileMenuPhone}>+251 953 525 354</a>
+            <a href="tel:+251994083821" className={styles.mobileMenuPhone}>+251 994 083 821</a>
             <a href="mailto:contact@eventsbymer.com" className={styles.mobileMenuEmail}>contact@eventsbymer.com</a>
           </div>
           <div className={styles.mobileMenuSocials}>
@@ -279,10 +279,10 @@ export default function Home() {
 
               <div className={styles.contactBlock}>
                 <span className={styles.contactBlockLabel}>✦ DIRECT PHONE & WHATSAPP</span>
-                <a href="tel:+251953525354" className={styles.contactPhoneLink}>
-                  +251 953 525 354
+                <a href="tel:+251994083821" className={styles.contactPhoneLink}>
+                  +251 994 083 821
                 </a>
-                <span className={styles.contactBlockSub}>Direct call or WhatsApp concierge</span>
+                <span className={styles.contactBlockSub}>Direct call or WhatsApp concierge (0994 08 38 21)</span>
               </div>
 
               <div className={styles.contactDivider} />
@@ -480,7 +480,7 @@ export default function Home() {
 
         <div className={styles.footerBottomRow}>
           <span className={styles.footerLocation}>
-            Addis Ababa, Ethiopia · <a href="tel:+251953525354" className={styles.footerPhoneLink}>+251 953 525 354</a>
+            Addis Ababa, Ethiopia · <a href="tel:+251994083821" className={styles.footerPhoneLink}>+251 994 083 821</a>
           </span>
           <span className={styles.footerCopyright}>© {new Date().getFullYear()} Events by Mer. All rights reserved.</span>
           <a href="#home" className={styles.backToTopBtn} aria-label="Back to Top">

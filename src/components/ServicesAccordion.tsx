@@ -11,6 +11,7 @@ export interface ServiceItem {
   title: string;
   desc: string;
   image: string;
+  images?: string[];
 }
 
 export const SERVICES: ServiceItem[] = [
@@ -20,7 +21,12 @@ export const SERVICES: ServiceItem[] = [
     shortTitle: "Full-Wedding Planning",
     title: "Full-Wedding Planning & Coordination",
     desc: "Comprehensive end-to-end guidance from conceptualization to execution. We orchestrate vendors, timelines, guest logistics, and day-of management with uncompromising precision.",
-    image: "/images/user_photos/service_ethiopian_ceremony.webp"
+    image: "/images/user_photos/service_ethiopian_ceremony.webp",
+    images: [
+      "/images/user_photos/service_ethiopian_ceremony.webp",
+      "/images/user_photos/service_wedding_corset_back.jpg",
+      "/images/user_photos/service_wedding_camera_live.png"
+    ]
   },
   {
     id: "vendor-sourcing",
@@ -66,10 +72,19 @@ export const SERVICES: ServiceItem[] = [
 
 export default function ServicesAccordion() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [slideshowIdx, setSlideshowIdx] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string>("all-services");
   const [modalSubmitted, setModalSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Auto-advance slideshow for multi-image services
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSlideshowIdx((prev) => (prev + 1) % 3);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
   const [modalData, setModalData] = useState({
     name: "",
     phoneOrEmail: "",
@@ -193,14 +208,28 @@ export default function ServicesAccordion() {
               }}
             >
               <div className={styles.imageWrapper}>
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  sizes="(max-width: 991px) 100vw, 35vw"
-                  className={styles.panelImage}
-                  priority={idx < 2}
-                />
+                {service.images ? (
+                  service.images.map((imgSrc, imgIdx) => (
+                    <Image
+                      key={imgSrc}
+                      src={imgSrc}
+                      alt={`${service.title} Photo ${imgIdx + 1}`}
+                      fill
+                      sizes="(max-width: 991px) 100vw, 35vw"
+                      className={`${styles.panelImage} ${styles.slideshowImg} ${slideshowIdx === imgIdx ? styles.slideActive : styles.slideInactive}`}
+                      priority={idx === 0 && imgIdx === 0}
+                    />
+                  ))
+                ) : (
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 991px) 100vw, 35vw"
+                    className={styles.panelImage}
+                    priority={idx < 2}
+                  />
+                )}
               </div>
 
               {/* Collapsed Vertical Title (Desktop Only) */}
