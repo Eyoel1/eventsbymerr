@@ -157,6 +157,7 @@ export default function Home() {
             <a href="mailto:contact@eventsbymer.com" className={styles.mobileMenuEmail}>contact@eventsbymer.com</a>
           </div>
           <div className={styles.mobileMenuSocials}>
+            <a href="https://wa.me/251994083821" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
             <a href="https://www.instagram.com/events_by_mer_?utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
             <a href="https://www.tiktok.com/@eventsbymer?_r=1&_t=ZS-991EPfKiOAx" target="_blank" rel="noopener noreferrer">TikTok ↗</a>
           </div>
@@ -298,8 +299,20 @@ export default function Home() {
               <div className={styles.contactDivider} />
 
               <div className={styles.contactBlock}>
-                <span className={styles.contactBlockLabel}>✦ SOCIAL PORTFOLIO</span>
+                <span className={styles.contactBlockLabel}>✦ SOCIAL & DIRECT CHANNELS</span>
                 <div className={styles.contactSocialsRow}>
+                  <a
+                    href="https://wa.me/251994083821"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactSocialPill}
+                    aria-label="Events by Mer WhatsApp"
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.45 0-2.87-.38-4.12-1.1l-.3-.18-3.06.8.82-2.98-.19-.31a8.17 8.17 0 0 1-1.25-4.47c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.53c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.17-.48-.29z"/>
+                    </svg>
+                    <span>WhatsApp</span>
+                  </a>
                   <a
                     href="https://www.instagram.com/events_by_mer_?utm_source=qr"
                     target="_blank"
@@ -440,6 +453,18 @@ export default function Home() {
           </div>
 
           <div className={styles.footerSocials}>
+            <a
+              href="https://wa.me/251994083821"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.footerSocialPill}
+              aria-label="Events by Mer WhatsApp"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24-1.45 0-2.87-.38-4.12-1.1l-.3-.18-3.06.8.82-2.98-.19-.31a8.17 8.17 0 0 1-1.25-4.47c0-4.54 3.7-8.24 8.24-8.24zm4.52 11.53c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.81.6.26 1.07.42 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.17-.48-.29z"/>
+              </svg>
+              <span>WhatsApp</span>
+            </a>
             <a
               href="https://www.instagram.com/events_by_mer_?utm_source=qr"
               target="_blank"
