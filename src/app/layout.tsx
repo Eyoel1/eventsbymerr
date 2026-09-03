@@ -110,7 +110,7 @@ const jsonLd = {
   url: "https://eventsbymer.com",
   logo: "https://eventsbymer.com/icon.png",
   image: "https://eventsbymer.com/images/about-brand.webp",
-  telephone: "+251994083821",
+  telephone: "+251953525354",
   email: "contact@eventsbymer.com",
   sameAs: [
     "https://www.instagram.com/events_by_mer_?utm_source=qr",

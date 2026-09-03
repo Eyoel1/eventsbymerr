@@ -24,8 +24,8 @@ export const SERVICES: ServiceItem[] = [
     image: "/images/user_photos/service_ethiopian_ceremony.webp",
     images: [
       "/images/user_photos/service_ethiopian_ceremony.webp",
-      "/images/user_photos/service_wedding_corset_back.jpg",
-      "/images/user_photos/service_wedding_camera_live.png"
+      "/images/user_photos/service_wedding_veil_flatlay.jpg",
+      "/images/user_photos/service_wedding_hands_ivy.jpg"
     ]
   },
   {
