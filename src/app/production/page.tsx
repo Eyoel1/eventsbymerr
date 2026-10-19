@@ -20,8 +20,8 @@ interface ProductionSection {
 const PRODUCTION_SECTIONS: ProductionSection[] = [
   {
     title: {
-      en: "Photoshoot",
-      am: "የቅድመ-ሠርግ ፎቶ ቀረጻ (Photoshoot)"
+      en: "Landscape",
+      am: "ላንድስኬፕ (Landscape)"
     },
     icon: "📸",
     items: [
