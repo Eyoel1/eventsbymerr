@@ -46,7 +46,6 @@ const PACKAGES: PackageData[] = [
         "ልዩ ዲጂታል የእንግዶች ፎቶ ጋለሪ",
         "በአዳራሹ የCharging Station አገልግሎት",
         "ለእንግዶች የዳንስ ስሊፐር",
-        "ልዩ የሠርግ አክሰሰሪዎች — Bride Fan፣ Customized Glasses ወዘተ",
         "ከሠርጉ በፊት ወይም በኋላ ከሚደረጉ ዝግጅቶች ሁለቱን ሙሉ በሙሉ ማስተባበር (ሽምግልና፣ መልስ፣ Engagement ወዘተ)"
       ],
       en: [
@@ -68,7 +67,6 @@ const PACKAGES: PackageData[] = [
         "Special Digital Guest Photo Gallery",
         "In-Hall Charging Station Service",
         "Dance Slippers for Guests",
-        "Special Wedding Accessories — Bride Fan, Customized Glasses, etc.",
         "Full Coordination for Two Pre/Post-Wedding Events (Shimglina, Mels, Engagement, etc.)"
       ]
     }
@@ -81,8 +79,8 @@ const PACKAGES: PackageData[] = [
       am: "Full wedding planning"
     },
     price: {
-      en: "120,000 Birr",
-      am: "120,000 ብር"
+      en: "Starting from 120,000 Birr",
+      am: "ከ 120,000 ብር ጀምሮ"
     },
     features: {
       am: [
@@ -125,8 +123,8 @@ const PACKAGES: PackageData[] = [
       am: "Wedding day Coordination"
     },
     price: {
-      en: "80,000 Birr",
-      am: "80,000 ብር"
+      en: "Starting from 80,000 Birr",
+      am: "ከ 80,000 ብር ጀምሮ"
     },
     features: {
       am: [
@@ -226,11 +224,10 @@ export default function PackagesPage() {
                 key={pkg.id}
                 className={styles.packageCard}
               >
-                <div>
+                <div className={styles.cardContent}>
                   <div className={styles.cardHeader}>
                     <span className={styles.packageNum}>TIER {pkg.num}</span>
                     <h2 className={styles.packageTitle}>{pkg.title[lang]}</h2>
-                    <span className={styles.packagePrice}>{pkg.price[lang]}</span>
                   </div>
 
                   <ul className={styles.featuresList}>
@@ -241,6 +238,14 @@ export default function PackagesPage() {
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                {/* Shining Luxury Price at Bottom */}
+                <div className={styles.cardPriceBottom}>
+                  <div className={styles.shimmerEffect} />
+                  <span className={styles.priceSparkle}>✦</span>
+                  <span className={styles.packagePriceText}>{pkg.price[lang]}</span>
+                  <span className={styles.priceSparkle}>✦</span>
                 </div>
               </div>
             );

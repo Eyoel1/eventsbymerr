@@ -217,14 +217,90 @@
   margin: 0;
 }
 
-.packagePrice {
-  display: block;
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Shining Luxury Price at Bottom */
+.cardPriceBottom {
+  position: relative;
+  overflow: hidden;
+  margin-top: 28px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(230, 207, 172, 0.25) 0%, rgba(183, 154, 114, 0.12) 100%);
+  border: 1px solid rgba(183, 154, 114, 0.45);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 18px rgba(133, 104, 75, 0.08);
+  transition: all 0.35s ease;
+}
+
+.packageCard:hover .cardPriceBottom {
+  border-color: var(--color-bronze);
+  box-shadow: 0 8px 24px rgba(183, 154, 114, 0.22);
+}
+
+/* Moving Shining Light Sweep */
+.shimmerEffect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  animation: shineSweep 3.2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes shineSweep {
+  0% {
+    left: -100%;
+  }
+  45%, 100% {
+    left: 170%;
+  }
+}
+
+.packagePriceText {
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
-  color: var(--color-bronze);
+  color: var(--color-espresso);
   letter-spacing: 0.02em;
-  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.priceSparkle {
+  color: var(--color-bronze);
+  font-size: 11px;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+  animation: pulseSparkle 2.5s infinite ease-in-out;
+}
+
+@keyframes pulseSparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
 }
 
 /* Features Checklist */
