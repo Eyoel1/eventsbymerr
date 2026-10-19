@@ -10,6 +10,7 @@ interface PackageData {
   id: string;
   num: string;
   title: { en: string; am: string };
+  price: { en: string; am: string };
   features: { en: string[]; am: string[] };
 }
 
@@ -20,6 +21,10 @@ const PACKAGES: PackageData[] = [
     title: {
       en: "Exclusive",
       am: "Exclusive"
+    },
+    price: {
+      en: "Starting from 150,000 Birr",
+      am: "ከ 150,000 ብር ጀምሮ"
     },
     features: {
       am: [
@@ -75,6 +80,10 @@ const PACKAGES: PackageData[] = [
       en: "Full wedding planning",
       am: "Full wedding planning"
     },
+    price: {
+      en: "120,000 Birr",
+      am: "120,000 ብር"
+    },
     features: {
       am: [
         "በWedding Day Coordination ፓኬጅ ውስጥ የተካተቱ ሁሉም አገልግሎቶች",
@@ -114,6 +123,10 @@ const PACKAGES: PackageData[] = [
     title: {
       en: "Wedding day Coordination",
       am: "Wedding day Coordination"
+    },
+    price: {
+      en: "80,000 Birr",
+      am: "80,000 ብር"
     },
     features: {
       am: [
@@ -217,6 +230,7 @@ export default function PackagesPage() {
                   <div className={styles.cardHeader}>
                     <span className={styles.packageNum}>TIER {pkg.num}</span>
                     <h2 className={styles.packageTitle}>{pkg.title[lang]}</h2>
+                    <span className={styles.packagePrice}>{pkg.price[lang]}</span>
                   </div>
 
                   <ul className={styles.featuresList}>

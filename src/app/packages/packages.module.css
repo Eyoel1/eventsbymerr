@@ -217,6 +217,16 @@
   margin: 0;
 }
 
+.packagePrice {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-bronze);
+  letter-spacing: 0.02em;
+  margin-top: 8px;
+}
+
 /* Features Checklist */
 .featuresList {
   list-style: none;
