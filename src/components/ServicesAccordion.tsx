@@ -21,9 +21,8 @@ export const SERVICES: ServiceItem[] = [
     shortTitle: "Full-Wedding Planning",
     title: "Full-Wedding Planning & Coordination",
     desc: "Comprehensive end-to-end guidance from conceptualization to execution. We orchestrate vendors, timelines, guest logistics, and day-of management with uncompromising precision.",
-    image: "/images/user_photos/service_ethiopian_ceremony.webp",
+    image: "/images/user_photos/service_wedding_veil_flatlay.jpg",
     images: [
-      "/images/user_photos/service_ethiopian_ceremony.webp",
       "/images/user_photos/service_wedding_veil_flatlay.jpg",
       "/images/user_photos/service_wedding_hands_ivy.jpg"
     ]
@@ -81,7 +80,7 @@ export default function ServicesAccordion() {
   // Auto-advance slideshow for multi-image services
   useEffect(() => {
     const timer = setInterval(() => {
-      setSlideshowIdx((prev) => (prev + 1) % 3);
+      setSlideshowIdx((prev) => (prev + 1) % 2);
     }, 3500);
     return () => clearInterval(timer);
   }, []);
