@@ -1,0 +1,308 @@
+/* Production Portal Luxury Styling */
+.portalMain {
+  background-color: var(--color-alabaster);
+  color: var(--color-espresso);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating Portal Header */
+.portalHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px;
+  background: rgba(244, 236, 225, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(183, 154, 114, 0.2);
+  box-sizing: border-box;
+}
+
+.brandHomeLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--color-espresso);
+}
+
+.brandLogoImage {
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(133, 104, 75, 0.25));
+}
+
+.brandName {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--color-espresso);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Language Pill Switcher */
+.langSwitcher {
+  display: flex;
+  background: rgba(183, 154, 114, 0.15);
+  border: 1px solid rgba(183, 154, 114, 0.35);
+  border-radius: 30px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.langBtn {
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-espresso);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.langBtn.activeLang {
+  background: var(--color-espresso);
+  color: #FAF4EB;
+  box-shadow: 0 2px 8px rgba(26, 18, 12, 0.2);
+}
+
+/* Hero Section with Centered Cursive Signature & Arch */
+.portalHero {
+  position: relative;
+  padding: 130px 24px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(circle at 50% 30%, rgba(230, 207, 172, 0.45) 0%, rgba(244, 236, 225, 0.1) 70%);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.heroArchSvg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(540px, 94vw);
+  height: min(720px, 80vh);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.heroArchMainPath {
+  fill: none;
+  stroke: rgba(183, 154, 114, 0.28);
+  stroke-width: 1.5;
+}
+
+.heroArchInnerPath {
+  fill: none;
+  stroke: rgba(183, 154, 114, 0.16);
+  stroke-width: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.portalBadge {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  background: rgba(183, 154, 114, 0.12);
+  border: 1px solid rgba(183, 154, 114, 0.3);
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.signatureWrapper {
+  width: min(620px, 92vw);
+  max-width: 620px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Master Production Package Container */
+.productionSection {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 24px 100px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+/* Master Luxury Card */
+.masterCard {
+  background: #FAF6F0;
+  border: 1px solid rgba(183, 154, 114, 0.3);
+  border-radius: 16px;
+  padding: 44px 44px;
+  box-shadow: 0 10px 36px rgba(133, 104, 75, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.masterCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 44px rgba(133, 104, 75, 0.15);
+  border-color: var(--color-bronze);
+}
+
+/* Card Main Header */
+.cardMainHeader {
+  text-align: center;
+  margin-bottom: 36px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(183, 154, 114, 0.22);
+}
+
+.packageTagline {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-bronze);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.packageMainTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.5vw, 36px);
+  line-height: 1.2;
+  color: var(--color-espresso);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Two Sections Grid inside Master Card */
+.sectionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.productionSubSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.subSectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed rgba(183, 154, 114, 0.3);
+}
+
+.subSectionIcon {
+  color: var(--color-bronze);
+  font-size: 15px;
+}
+
+.subSectionTitle {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-espresso);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* Features Checklist */
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(44, 34, 26, 0.9);
+}
+
+.checkIcon {
+  color: var(--color-bronze);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 860px) {
+  .sectionsGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .masterCard {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .portalHeader {
+    padding: 16px 20px;
+  }
+
+  .brandName {
+    font-size: 18px;
+  }
+
+  .portalHero {
+    padding: 110px 16px 20px;
+  }
+
+  .signatureWrapper {
+    width: 90vw;
+  }
+
+  .productionSection {
+    padding: 0 16px 60px;
+  }
+
+  .masterCard {
+    padding: 26px 18px;
+  }
+}
